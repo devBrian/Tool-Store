@@ -7,6 +7,7 @@
 //
 
 #import "UserManager.h"
+#import "AppDelegate.h"
 
 @interface UserManager()
 @property (strong, nonatomic) User *currentUser;
@@ -20,40 +21,79 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[UserManager alloc] init];
+        
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+        sharedInstance.currentUser = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
         // Do any other initialization stuff here
     });
     return sharedInstance;
 }
-- (User *)getCurrentUser
+-(User *)getCurrentUser
 {
-    // TODO: Change this to fetch the user?
     return self.currentUser;
 }
--(void)signInUser:(User *)user
+-(void)insertUser:(User *)user completion:(void (^)(NSError *error))completion
 {
-    self.currentUser = user;
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    [context insertObject:user];
+    NSError *error;
+    if (![context save:&error])
+    {
+        if (completion)
+        {
+            completion(error);
+        }
+    }
+    else
+    {
+        if (completion)
+        {
+            completion(nil);
+        }
+    }
 }
--(void)signOutUser:(User *)user
+-(void)signOut
 {
     self.currentUser = nil;
 }
-//-(User *)getSavedUser:(User *)user
-//{
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"email = %@ AND password = %@ AND fb_id = %@ AND google_id = %@ AND isDeleted = %i",user.email,user.password,user.fb_id,user.google_id,0];
-//    RLMResults *results = [User objectsWithPredicate:predicate];
-//    User *savedUser = (User *)[results firstObject];
-//    return savedUser;
-//}
-//-(BOOL)userExists:(User *)user
-//{
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"email = %@ AND password = %@ AND fb_id = %@ AND google_id = %@ AND isDeleted = %i",user.email,user.password,user.fb_id,user.google_id,0];
-//    RLMResults *results = [User objectsWithPredicate:predicate];
-//    return (results.count > 0);
-//}
-//-(BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password
-//{
-//   NSPredicate *pred = [NSPredicate predicateWithFormat:@"email = %@ AND password = %@ AND isDeleted = %i",email,password,0];
-//   RLMResults *results = [User objectsWithPredicate:pred];
-//   return (results.count > 0);
-//}
+-(BOOL)userExistsWithEmail:(NSString *)email
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest new];
+    [request setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(email == %@)",email];
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    return (results && results.count > 0);
+}
+-(BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest new];
+    [request setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(email == %@) AND (password == %@)",email,password];
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    if (results && results.count > 0)
+    {
+        self.currentUser = [results firstObject];
+    }
+    
+    return (results && results.count > 0);
+}
 @end

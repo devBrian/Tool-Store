@@ -12,6 +12,7 @@
 #import "Functions.h"
 #import "Constants.h"
 #import "KeyboardManager.h"
+#import "AppDelegate.h"
 
 @interface SignInViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -25,6 +26,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"Sign In";
 }
 - (void)didReceiveMemoryWarning
 {
@@ -67,10 +69,7 @@
 {
     if ([self formValidation:YES])
     {
-//        User *user = [[User alloc] init];
-//        user.email = self.emailTextField.text;
-//        user.password = self.passwordTextField.text;
-//        [[UserManager sharedInstance] signInUser:user];
+        [self performSegueWithIdentifier:@"main" sender:self];
     }
 }
 #pragma mark - Form Validation
@@ -100,6 +99,14 @@
         if (showError)
         {
             [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your password falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+        return NO;
+    }
+    if (![[UserManager sharedInstance] userExistsWithEmail:email andPassword:password])
+    {
+        if (showError)
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"My records indicate that account does not exist." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
         return NO;
     }

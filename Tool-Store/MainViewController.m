@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "UserManager.h"
 
 @interface MainViewController ()
 
@@ -18,6 +19,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
 }
 - (void)didReceiveMemoryWarning
 {

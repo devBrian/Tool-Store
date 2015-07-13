@@ -47,16 +47,22 @@
     {
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+        User *user = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
         user.email = self.emailTextField.text;
         user.company = self.companyTextField.text;
         user.password = self.passwordTextField.text;
-        NSError *error;
-        if (![context save:&error])
-        {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-        [[UserManager sharedInstance] signInUser:user];
+        user.joined_date = [NSDate date];
+        [[UserManager sharedInstance]insertUser:user completion:^(NSError *error) {
+            if (error)
+            {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }
+            else
+            {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+        }];
     }
 }
 #pragma mark - UITextfield Delegate
@@ -131,6 +137,14 @@
         if (showError)
         {
             [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your password and confirm password do not match." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+        return NO;
+    }
+    if ([[UserManager sharedInstance] userExistsWithEmail:email])
+    {
+        if (showError)
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"My records indicate that account exist already." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
         return NO;
     }

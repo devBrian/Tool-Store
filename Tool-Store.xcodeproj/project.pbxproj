@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7C1B458D300012926B /* SignupViewController.m */; };
+		DC58ED801B4590200012926B /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7E1B4590200012926B /* SignInViewController.m */; };
+		DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED831B459FE90012926B /* MainTableViewController.m */; };
+		DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED861B45A0020012926B /* MainTableViewCell.m */; };
+		DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */; };
+		DC58ED8E1B45A06F0012926B /* ToolsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED8D1B45A06F0012926B /* ToolsTableViewCell.m */; };
 		DC9CF5701B44D7E1004DA1B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF56F1B44D7E1004DA1B4 /* main.m */; };
 		DC9CF5731B44D7E1004DA1B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5721B44D7E1004DA1B4 /* AppDelegate.m */; };
 		DC9CF5761B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5741B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld */; };
-		DC9CF5791B44D7E1004DA1B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5781B44D7E1004DA1B4 /* ViewController.m */; };
+		DC9CF5791B44D7E1004DA1B4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5781B44D7E1004DA1B4 /* MainViewController.m */; };
 		DC9CF57C1B44D7E1004DA1B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC9CF57A1B44D7E1004DA1B4 /* Main.storyboard */; };
 		DC9CF57E1B44D7E1004DA1B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC9CF57D1B44D7E1004DA1B4 /* Images.xcassets */; };
 		DC9CF5811B44D7E1004DA1B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC9CF57F1B44D7E1004DA1B4 /* LaunchScreen.xib */; };
 		DC9CF58D1B44D7E1004DA1B4 /* Tool_StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF58C1B44D7E1004DA1B4 /* Tool_StoreTests.m */; };
+		DC9CF5991B44E245004DA1B4 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5981B44E245004DA1B4 /* Tool.m */; };
+		DC9CF59C1B44E246004DA1B4 /* Rental.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF59B1B44E246004DA1B4 /* Rental.m */; };
+		DC9CF59F1B44E246004DA1B4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF59E1B44E246004DA1B4 /* User.m */; };
+		DC9CF5A71B44F349004DA1B4 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5A61B44F349004DA1B4 /* UserManager.m */; };
+		DC9CF5AF1B44F477004DA1B4 /* KeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5AE1B44F477004DA1B4 /* KeyboardManager.m */; };
+		DC9CF5B51B44F496004DA1B4 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5B21B44F496004DA1B4 /* Functions.m */; };
+		DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5B41B44F496004DA1B4 /* Constants.m */; };
+		DC9CF5BA1B44F990004DA1B4 /* ToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */; };
+		DC9CF5BE1B44FA3D004DA1B4 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5BD1B44FA3D004DA1B4 /* ShoppingCartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,20 +43,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC58ED7B1B458D300012926B /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		DC58ED7C1B458D300012926B /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		DC58ED7E1B4590200012926B /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		DC58ED7F1B4590200012926B /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		DC58ED821B459FE90012926B /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		DC58ED831B459FE90012926B /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		DC58ED851B45A0020012926B /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
+		DC58ED861B45A0020012926B /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
+		DC58ED891B45A0530012926B /* ToolsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsTableViewController.h; sourceTree = "<group>"; };
+		DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsTableViewController.m; sourceTree = "<group>"; };
+		DC58ED8C1B45A06F0012926B /* ToolsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsTableViewCell.h; sourceTree = "<group>"; };
+		DC58ED8D1B45A06F0012926B /* ToolsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsTableViewCell.m; sourceTree = "<group>"; };
 		DC9CF56A1B44D7E1004DA1B4 /* Tool-Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tool-Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC9CF56E1B44D7E1004DA1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC9CF56F1B44D7E1004DA1B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC9CF5711B44D7E1004DA1B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DC9CF5721B44D7E1004DA1B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DC9CF5751B44D7E1004DA1B4 /* Tool_Store.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tool_Store.xcdatamodel; sourceTree = "<group>"; };
-		DC9CF5771B44D7E1004DA1B4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DC9CF5781B44D7E1004DA1B4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DC9CF5771B44D7E1004DA1B4 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		DC9CF5781B44D7E1004DA1B4 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DC9CF57B1B44D7E1004DA1B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC9CF57D1B44D7E1004DA1B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DC9CF5801B44D7E1004DA1B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		DC9CF5861B44D7E1004DA1B4 /* Tool-StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tool-StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC9CF58B1B44D7E1004DA1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC9CF58C1B44D7E1004DA1B4 /* Tool_StoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tool_StoreTests.m; sourceTree = "<group>"; };
+		DC9CF5971B44E245004DA1B4 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		DC9CF5981B44E245004DA1B4 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+		DC9CF59A1B44E246004DA1B4 /* Rental.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rental.h; sourceTree = "<group>"; };
+		DC9CF59B1B44E246004DA1B4 /* Rental.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rental.m; sourceTree = "<group>"; };
+		DC9CF59D1B44E246004DA1B4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DC9CF59E1B44E246004DA1B4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DC9CF5A51B44F349004DA1B4 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		DC9CF5A61B44F349004DA1B4 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		DC9CF5AD1B44F477004DA1B4 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		DC9CF5AE1B44F477004DA1B4 /* KeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardManager.m; sourceTree = "<group>"; };
+		DC9CF5B11B44F496004DA1B4 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
+		DC9CF5B21B44F496004DA1B4 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
+		DC9CF5B31B44F496004DA1B4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DC9CF5B41B44F496004DA1B4 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		DC9CF5B81B44F990004DA1B4 /* ToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsViewController.h; sourceTree = "<group>"; };
+		DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsViewController.m; sourceTree = "<group>"; };
+		DC9CF5BC1B44FA3D004DA1B4 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
+		DC9CF5BD1B44FA3D004DA1B4 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +107,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC58ED811B459FC10012926B /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				DC58ED851B45A0020012926B /* MainTableViewCell.h */,
+				DC58ED861B45A0020012926B /* MainTableViewCell.m */,
+				DC58ED821B459FE90012926B /* MainTableViewController.h */,
+				DC58ED831B459FE90012926B /* MainTableViewController.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		DC58ED881B45A0360012926B /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				DC58ED8C1B45A06F0012926B /* ToolsTableViewCell.h */,
+				DC58ED8D1B45A06F0012926B /* ToolsTableViewCell.m */,
+				DC58ED891B45A0530012926B /* ToolsTableViewController.h */,
+				DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		DC58ED8F1B45A0990012926B /* Table */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
 		DC9CF5611B44D7E1004DA1B4 = {
 			isa = PBXGroup;
 			children = (
@@ -83,10 +157,12 @@
 		DC9CF56C1B44D7E1004DA1B4 /* Tool-Store */ = {
 			isa = PBXGroup;
 			children = (
+				DC9CF5B01B44F480004DA1B4 /* Globals */,
+				DC9CF5A11B44F276004DA1B4 /* Screens */,
+				DC9CF5A01B44F263004DA1B4 /* Managers */,
+				DC9CF5961B44E208004DA1B4 /* Models */,
 				DC9CF5711B44D7E1004DA1B4 /* AppDelegate.h */,
 				DC9CF5721B44D7E1004DA1B4 /* AppDelegate.m */,
-				DC9CF5771B44D7E1004DA1B4 /* ViewController.h */,
-				DC9CF5781B44D7E1004DA1B4 /* ViewController.m */,
 				DC9CF57A1B44D7E1004DA1B4 /* Main.storyboard */,
 				DC9CF57D1B44D7E1004DA1B4 /* Images.xcassets */,
 				DC9CF57F1B44D7E1004DA1B4 /* LaunchScreen.xib */,
@@ -120,6 +196,93 @@
 				DC9CF58B1B44D7E1004DA1B4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC9CF5961B44E208004DA1B4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC9CF59D1B44E246004DA1B4 /* User.h */,
+				DC9CF59E1B44E246004DA1B4 /* User.m */,
+				DC9CF59A1B44E246004DA1B4 /* Rental.h */,
+				DC9CF59B1B44E246004DA1B4 /* Rental.m */,
+				DC9CF5971B44E245004DA1B4 /* Tool.h */,
+				DC9CF5981B44E245004DA1B4 /* Tool.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DC9CF5A01B44F263004DA1B4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DC9CF5AD1B44F477004DA1B4 /* KeyboardManager.h */,
+				DC9CF5AE1B44F477004DA1B4 /* KeyboardManager.m */,
+				DC9CF5A51B44F349004DA1B4 /* UserManager.h */,
+				DC9CF5A61B44F349004DA1B4 /* UserManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		DC9CF5A11B44F276004DA1B4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DC9CF5BB1B44FA28004DA1B4 /* Cart */,
+				DC9CF5B71B44F96E004DA1B4 /* Tools */,
+				DC9CF5A21B44F282004DA1B4 /* Main */,
+				DC9CF5AC1B44F3A2004DA1B4 /* Account */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
+		DC9CF5A21B44F282004DA1B4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DC58ED811B459FC10012926B /* Table */,
+				DC9CF5771B44D7E1004DA1B4 /* MainViewController.h */,
+				DC9CF5781B44D7E1004DA1B4 /* MainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		DC9CF5AC1B44F3A2004DA1B4 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				DC58ED7F1B4590200012926B /* SignInViewController.h */,
+				DC58ED7E1B4590200012926B /* SignInViewController.m */,
+				DC58ED7B1B458D300012926B /* SignupViewController.h */,
+				DC58ED7C1B458D300012926B /* SignupViewController.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		DC9CF5B01B44F480004DA1B4 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				DC9CF5B11B44F496004DA1B4 /* Functions.h */,
+				DC9CF5B21B44F496004DA1B4 /* Functions.m */,
+				DC9CF5B31B44F496004DA1B4 /* Constants.h */,
+				DC9CF5B41B44F496004DA1B4 /* Constants.m */,
+			);
+			name = Globals;
+			sourceTree = "<group>";
+		};
+		DC9CF5B71B44F96E004DA1B4 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DC58ED881B45A0360012926B /* Table */,
+				DC9CF5B81B44F990004DA1B4 /* ToolsViewController.h */,
+				DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		DC9CF5BB1B44FA28004DA1B4 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				DC58ED8F1B45A0990012926B /* Table */,
+				DC9CF5BC1B44FA3D004DA1B4 /* ShoppingCartViewController.h */,
+				DC9CF5BD1B44FA3D004DA1B4 /* ShoppingCartViewController.m */,
+			);
+			name = Cart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,9 +385,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */,
+				DC9CF5BA1B44F990004DA1B4 /* ToolsViewController.m in Sources */,
+				DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */,
+				DC9CF5991B44E245004DA1B4 /* Tool.m in Sources */,
+				DC9CF5AF1B44F477004DA1B4 /* KeyboardManager.m in Sources */,
+				DC9CF5BE1B44FA3D004DA1B4 /* ShoppingCartViewController.m in Sources */,
+				DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */,
+				DC9CF59F1B44E246004DA1B4 /* User.m in Sources */,
+				DC58ED8E1B45A06F0012926B /* ToolsTableViewCell.m in Sources */,
+				DC9CF5A71B44F349004DA1B4 /* UserManager.m in Sources */,
 				DC9CF5731B44D7E1004DA1B4 /* AppDelegate.m in Sources */,
+				DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */,
+				DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */,
 				DC9CF5701B44D7E1004DA1B4 /* main.m in Sources */,
-				DC9CF5791B44D7E1004DA1B4 /* ViewController.m in Sources */,
+				DC58ED801B4590200012926B /* SignInViewController.m in Sources */,
+				DC9CF59C1B44E246004DA1B4 /* Rental.m in Sources */,
+				DC9CF5B51B44F496004DA1B4 /* Functions.m in Sources */,
+				DC9CF5791B44D7E1004DA1B4 /* MainViewController.m in Sources */,
 				DC9CF5761B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +598,7 @@
 				DC9CF5921B44D7E1004DA1B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC9CF5931B44D7E1004DA1B4 /* Build configuration list for PBXNativeTarget "Tool-StoreTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +607,7 @@
 				DC9CF5951B44D7E1004DA1B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

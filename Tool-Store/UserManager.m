@@ -51,6 +51,28 @@
     {
         if (completion)
         {
+            self.currentUser = user;
+            completion(nil);
+        }
+    }
+}
+-(void)saveUser:(User *)user completion:(void (^)(NSError *error))completion
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    if (![context save:&error])
+    {
+        if (completion)
+        {
+            completion(error);
+        }
+    }
+    else
+    {
+        if (completion)
+        {
+            self.currentUser = user;
             completion(nil);
         }
     }

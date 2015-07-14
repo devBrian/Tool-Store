@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hsx-xc-SLl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-451.5" y="-281.5"/>
+            <point key="canvasLocation" x="-551.5" y="-281.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -62,16 +62,22 @@
                                 <state key="normal" title="Account">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="accountAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="517-Mh-vPr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="6eo-kc-gJK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="5Ic-us-BUZ" kind="modal" identifier="account" id="bkA-Ub-6gN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556.5333333333333" y="21.300000000000001"/>
+            <point key="canvasLocation" x="556.5" y="4.5"/>
         </scene>
         <!--Tools-->
         <scene sceneID="yjC-oJ-way">
@@ -115,7 +121,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1137.5" y="20.5"/>
+            <point key="canvasLocation" x="1221.5" y="-331.5"/>
         </scene>
         <!--Shopping Cart-->
         <scene sceneID="hbQ-ha-hnY">
@@ -142,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTG-KV-PhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687.5" y="20.5"/>
+            <point key="canvasLocation" x="1715.5" y="-331.5"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="AR9-gy-oR3">
@@ -168,7 +174,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDH-Il-SMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2174.5" y="-241"/>
+            <point key="canvasLocation" x="2182.5" y="-485"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="jFR-Ak-Y6M">
@@ -196,6 +202,24 @@
             </objects>
             <point key="canvasLocation" x="556.5333333333333" y="664.55999999999995"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0u0-PC-pN5">
+            <objects>
+                <navigationController id="LYg-YH-8T2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="EWf-Ka-QPM"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8zW-l5-Kb5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="8Sc-Xf-BWY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQz-20-rg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-89.5" y="663.5"/>
+        </scene>
         <!--Tools Table View Controller-->
         <scene sceneID="Jk5-gm-2iQ">
             <objects>
@@ -220,7 +244,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfT-xX-7cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137.5" y="869.5"/>
+            <point key="canvasLocation" x="1221.5" y="605.5"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="1d4-ae-4Ui">
@@ -237,7 +261,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NgI-bp-sTd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="evV-KN-bQV">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="evV-KN-bQV">
                                         <rect key="frame" x="35" y="242" width="304" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -245,7 +269,7 @@
                                             <outlet property="delegate" destination="CM1-qg-WEv" id="sHw-bN-o9v"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-u9-scH">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-u9-scH">
                                         <rect key="frame" x="35" y="300" width="304" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -281,12 +305,12 @@
                         <outlet property="passwordTextField" destination="XU0-u9-scH" id="Ma7-LN-4t8"/>
                         <outlet property="scrollView" destination="NgI-bp-sTd" id="nbn-3x-Udd"/>
                         <outlet property="view" destination="qzF-Lo-b9u" id="YwJ-lb-AjC"/>
-                        <segue destination="vXZ-lx-hvc" kind="push" identifier="main" id="2HD-6U-9vL"/>
+                        <segue destination="LYg-YH-8T2" kind="modal" identifier="main" id="KsJ-r2-mjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9H-uh-9gj" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58.5" y="-281.5"/>
+            <point key="canvasLocation" x="-89.5" y="-281.5"/>
         </scene>
         <!--Signup-->
         <scene sceneID="AvE-Zz-FBr">
@@ -303,7 +327,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zg-xK-ssk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yS-ik-vpe">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5yS-ik-vpe">
                                         <rect key="frame" x="35" y="164" width="304" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -311,7 +335,7 @@
                                             <outlet property="delegate" destination="5Ic-us-BUZ" id="QTf-V3-Nx0"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="company (optional)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-rW-tn7">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="company (optional)" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-rW-tn7">
                                         <rect key="frame" x="35" y="222" width="304" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -319,7 +343,7 @@
                                             <outlet property="delegate" destination="5Ic-us-BUZ" id="0Rx-mL-tvw"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKF-5s-QGO">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eKF-5s-QGO">
                                         <rect key="frame" x="35" y="280" width="304" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -327,7 +351,7 @@
                                             <outlet property="delegate" destination="5Ic-us-BUZ" id="sF8-YH-Iy1"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="confirm password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jSn-X2-OWm">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="confirm password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jSn-X2-OWm">
                                         <rect key="frame" x="35" y="338" width="304" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -338,21 +362,31 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcl-1M-Yy9">
                                         <rect key="frame" x="35" y="396" width="304" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="submit / save">
+                                        <state key="normal" title="submit">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="submitAction:" destination="5Ic-us-BUZ" eventType="touchUpInside" id="p7H-oU-Je3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncG-a8-4DD">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncG-a8-4DD">
                                         <rect key="frame" x="35" y="454" width="304" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="cancel">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="submitAction:" destination="5Ic-us-BUZ" eventType="touchUpInside" id="TTX-ku-Gai"/>
+                                            <action selector="cancelAction:" destination="5Ic-us-BUZ" eventType="touchUpInside" id="GUH-tX-vKt"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7de-47-TDf">
+                                        <rect key="frame" x="35" y="396" width="304" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="save">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveAction:" destination="5Ic-us-BUZ" eventType="touchUpInside" id="Rmn-nr-APx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -365,17 +399,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Signup" id="5Jb-3H-YCq"/>
                     <connections>
+                        <outlet property="cancelButton" destination="ncG-a8-4DD" id="vxi-Zu-cRs"/>
                         <outlet property="companyTextField" destination="2Nt-rW-tn7" id="ly0-dp-wfk"/>
                         <outlet property="confirmPasswordTextField" destination="jSn-X2-OWm" id="FEz-Y5-ocR"/>
                         <outlet property="emailTextField" destination="5yS-ik-vpe" id="SVI-mD-7qR"/>
                         <outlet property="passwordTextField" destination="eKF-5s-QGO" id="lbN-uZ-3bz"/>
+                        <outlet property="saveButton" destination="7de-47-TDf" id="LTF-hC-5un"/>
                         <outlet property="scrollView" destination="6zg-xK-ssk" id="VMU-Fc-UnL"/>
+                        <outlet property="submitButton" destination="Kcl-1M-Yy9" id="N2O-4R-lJx"/>
                         <outlet property="view" destination="IiL-I4-vGe" id="5qZ-Mv-ApL"/>
                         <outletCollection property="formFields" destination="5yS-ik-vpe" id="VKF-VP-OzR"/>
                         <outletCollection property="formFields" destination="eKF-5s-QGO" id="yXH-cg-R2B"/>
                         <outletCollection property="formFields" destination="jSn-X2-OWm" id="Vr0-DC-SVV"/>
                         <outletCollection property="formFields" destination="2Nt-rW-tn7" id="92Y-pz-Pg8"/>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="main" id="qAI-pv-a16"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wn1-kC-7Af" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -389,6 +425,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="qAI-pv-a16"/>
+        <segue reference="0YN-23-JNx"/>
     </inferredMetricsTieBreakers>
 </document>

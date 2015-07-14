@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface SignupViewController : UIViewController
-
+@property (nonatomic, assign) BOOL isChangingAccount;
+@property (strong, nonatomic) User *loadedUserData;
 @end

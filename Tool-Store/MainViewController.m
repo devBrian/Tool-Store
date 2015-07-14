@@ -7,7 +7,9 @@
 //
 
 #import "MainViewController.h"
+#import "SignupViewController.h"
 #import "UserManager.h"
+
 
 @interface MainViewController ()
 
@@ -19,12 +21,41 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+   // NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
+    NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].password);
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(IBAction)accountAction:(id)sender
+{
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Account" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [actionSheet dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Modify" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self performSegueWithIdentifier:@"account" sender:self];
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [[UserManager sharedInstance] signOut];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"account"])
+    {
+        SignupViewController *signup = (SignupViewController *)segue.destinationViewController;
+        signup.loadedUserData = [[UserManager sharedInstance] getCurrentUser];
+    }
+}
 @end

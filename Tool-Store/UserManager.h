@@ -9,7 +9,9 @@
 @interface UserManager : NSObject
 + (UserManager*)sharedInstance;
 - (User *)getCurrentUser;
--(BOOL)userExistsWithEmail:(NSString *)email;
--(BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password;
--(void)insertUser:(User *)user completion:(void (^)(NSError *error))completion;
+- (void)signOut;
+- (BOOL)userExistsWithEmail:(NSString *)email;
+- (BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password;
+- (void)saveUser:(User *)user completion:(void (^)(NSError *error))completion;
+- (void)insertUser:(User *)user completion:(void (^)(NSError *error))completion;
 @end

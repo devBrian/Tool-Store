@@ -29,7 +29,6 @@
 		DC9CF5B51B44F496004DA1B4 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5B21B44F496004DA1B4 /* Functions.m */; };
 		DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5B41B44F496004DA1B4 /* Constants.m */; };
 		DC9CF5BA1B44F990004DA1B4 /* ToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */; };
-		DC9CF5BE1B44FA3D004DA1B4 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5BD1B44FA3D004DA1B4 /* ShoppingCartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +84,6 @@
 		DC9CF5B41B44F496004DA1B4 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DC9CF5B81B44F990004DA1B4 /* ToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsViewController.h; sourceTree = "<group>"; };
 		DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsViewController.m; sourceTree = "<group>"; };
-		DC9CF5BC1B44FA3D004DA1B4 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
-		DC9CF5BD1B44FA3D004DA1B4 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,13 +122,6 @@
 				DC58ED8D1B45A06F0012926B /* ToolsTableViewCell.m */,
 				DC58ED891B45A0530012926B /* ToolsTableViewController.h */,
 				DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */,
-			);
-			name = Table;
-			sourceTree = "<group>";
-		};
-		DC58ED8F1B45A0990012926B /* Table */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -225,7 +215,6 @@
 		DC9CF5A11B44F276004DA1B4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				DC9CF5BB1B44FA28004DA1B4 /* Cart */,
 				DC9CF5B71B44F96E004DA1B4 /* Tools */,
 				DC9CF5A21B44F282004DA1B4 /* Main */,
 				DC9CF5AC1B44F3A2004DA1B4 /* Account */,
@@ -273,16 +262,6 @@
 				DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */,
 			);
 			name = Tools;
-			sourceTree = "<group>";
-		};
-		DC9CF5BB1B44FA28004DA1B4 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				DC58ED8F1B45A0990012926B /* Table */,
-				DC9CF5BC1B44FA3D004DA1B4 /* ShoppingCartViewController.h */,
-				DC9CF5BD1B44FA3D004DA1B4 /* ShoppingCartViewController.m */,
-			);
-			name = Cart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,7 +369,6 @@
 				DC3E240D1B5386D900A27BAE /* User.m in Sources */,
 				DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */,
 				DC9CF5AF1B44F477004DA1B4 /* KeyboardManager.m in Sources */,
-				DC9CF5BE1B44FA3D004DA1B4 /* ShoppingCartViewController.m in Sources */,
 				DC3E240A1B5386D900A27BAE /* Tool.m in Sources */,
 				DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */,
 				DC3E24101B5386D900A27BAE /* Rental.m in Sources */,

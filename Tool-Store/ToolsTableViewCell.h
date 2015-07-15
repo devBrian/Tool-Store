@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tool.h"
 
 @interface ToolsTableViewCell : UITableViewCell
-
+-(void)setCellData:(Tool *)tool;
 @end

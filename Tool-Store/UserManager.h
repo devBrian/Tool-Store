@@ -9,6 +9,7 @@
 @interface UserManager : NSObject
 + (UserManager*)sharedInstance;
 - (User *)getCurrentUser;
+- (BOOL)isLoggedIn;
 - (void)signOut;
 - (BOOL)userExistsWithEmail:(NSString *)email;
 - (BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password;

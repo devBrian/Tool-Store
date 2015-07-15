@@ -7,12 +7,13 @@
 //
 
 #import "MainViewController.h"
+#import "MainTableViewController.h"
 #import "SignupViewController.h"
 #import "UserManager.h"
 
 
-@interface MainViewController ()
-
+@interface MainViewController () <MainTableViewControllerDelegate>
+@property (strong, nonatomic) MainTableViewController *mainTableViewController;
 @end
 
 @implementation MainViewController
@@ -21,12 +22,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-   // NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
+    NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].company);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].password);
 }
 - (void)didReceiveMemoryWarning
@@ -49,6 +50,11 @@
     }]];
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
+#pragma mark - MainTableViewController Delegate
+-(void)selectedRentTool:(NSString *)tool
+{
+    
+}
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -56,6 +62,11 @@
     {
         SignupViewController *signup = (SignupViewController *)segue.destinationViewController;
         signup.loadedUserData = [[UserManager sharedInstance] getCurrentUser];
+    }
+    else if ([segue.identifier isEqualToString:@"mainTable"])
+    {
+        self.mainTableViewController = (MainTableViewController *)segue.destinationViewController;
+        self.mainTableViewController.mainTableDelegate = self;
     }
 }
 @end

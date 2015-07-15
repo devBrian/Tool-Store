@@ -31,8 +31,13 @@
     self.view = scrollView;
     self.scrollView = scrollView;
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:[KeyboardManager sharedInstance] action:@selector(hideKeyboard)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollView addGestureRecognizer:tapGesture];
+    
+    if (self.scrollView.contentOffset.x!=0 || self.scrollView.contentOffset.y!=0)
+    {
+       [self hideKeyboard];
+    }
 }
 #pragma mark - Private
 -(void)dealloc

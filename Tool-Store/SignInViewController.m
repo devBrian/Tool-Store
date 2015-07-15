@@ -43,8 +43,12 @@
 {
     [super viewDidAppear:animated];
     [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView];
+    
+    if ([[UserManager sharedInstance] isLoggedIn])
+    {
+        [self performSegueWithIdentifier:@"main" sender:self];
+    }
 }
-
 #pragma mark - UITextField Delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {

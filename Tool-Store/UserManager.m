@@ -34,6 +34,10 @@
 {
     return self.currentUser;
 }
+-(BOOL)isLoggedIn
+{
+    return self.currentUser.email;
+}
 -(void)insertUser:(User *)user completion:(void (^)(NSError *error))completion
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

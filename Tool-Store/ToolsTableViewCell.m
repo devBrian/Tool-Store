@@ -8,16 +8,19 @@
 
 #import "ToolsTableViewCell.h"
 
+@interface ToolsTableViewCell()
+@property (weak, nonatomic) IBOutlet UIImageView *toolImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *manufacturerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *conditionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stockStatusLabel;
+@end
+
 @implementation ToolsTableViewCell
-
-- (void)awakeFromNib {
-    // Initialization code
+-(void)setCellData:(Tool *)tool
+{
+    
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

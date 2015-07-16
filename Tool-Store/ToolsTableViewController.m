@@ -66,7 +66,7 @@
 - (NSFetchedResultsController *)fetchedResultsController
 {
     // Set up the fetched results controller if needed.
-    if (self.fetchedResultsController == nil)
+    if (_fetchedResultsController == nil)
     {
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -86,8 +86,8 @@
         // nil for section name key path means "no sections".
         NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Root"];
         aFetchedResultsController.delegate = self;
-        self.fetchedResultsController = aFetchedResultsController;
+        _fetchedResultsController = aFetchedResultsController;
     }
-    return self.fetchedResultsController;
+    return _fetchedResultsController;
 }
 @end

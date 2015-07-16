@@ -15,15 +15,6 @@
 
 @property (nonatomic, retain) NSDate * due_date;
 @property (nonatomic, retain) NSDate * rent_date;
-@property (nonatomic, retain) NSSet *tool;
+@property (nonatomic, retain) Tool *tool;
 @property (nonatomic, retain) User *user;
-@end
-
-@interface Rental (CoreDataGeneratedAccessors)
-
-- (void)addToolObject:(Tool *)value;
-- (void)removeToolObject:(Tool *)value;
-- (void)addTool:(NSSet *)values;
-- (void)removeTool:(NSSet *)values;
-
 @end

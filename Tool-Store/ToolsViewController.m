@@ -7,31 +7,36 @@
 //
 
 #import "ToolsViewController.h"
+#import "ToolsTableViewController.h"
 
-@interface ToolsViewController ()
-
+@interface ToolsViewController () <ToolsTableViewControllerDelegate>
+@property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
 @end
 
 @implementation ToolsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Tools Delegate 
+-(void)selectedTool:(Tool *)tool
+{
+    NSLog(@"%@", tool.name);
 }
-*/
-
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toolsTable"])
+    {
+        self.toolsTableViewController = (ToolsTableViewController *)segue.destinationViewController;
+        self.toolsTableViewController.toolsDelegate = self;
+    }
+}
 @end

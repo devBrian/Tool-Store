@@ -3,7 +3,7 @@
     <entity name="Rental" representedClassName="Rental" syncable="YES">
         <attribute name="due_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="rent_date" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="tool" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tool" inverseName="rental" inverseEntity="Tool" syncable="YES"/>
+        <relationship name="tool" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tool" inverseName="rental" inverseEntity="Tool" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rental" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Tool" representedClassName="Tool" syncable="YES">

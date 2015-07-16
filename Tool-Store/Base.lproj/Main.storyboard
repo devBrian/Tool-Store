@@ -245,6 +245,15 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="conditionLabel" destination="q8q-UK-dBg" id="Pj4-z2-2CF"/>
+                                    <outlet property="durationLabel" destination="xau-v2-LYe" id="F2b-zF-5lQ"/>
+                                    <outlet property="manufacturerLabel" destination="GmH-u2-W1z" id="zs0-dl-gyd"/>
+                                    <outlet property="nameLabel" destination="Uh0-LT-75b" id="gOw-50-yEW"/>
+                                    <outlet property="priceLabel" destination="sfL-DS-0sv" id="4N5-Mt-KLU"/>
+                                    <outlet property="stockStatusLabel" destination="bcG-QQ-dUw" id="dWT-N7-fe1"/>
+                                    <outlet property="toolImageView" destination="0Zt-nw-5ML" id="ayq-1s-3dx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

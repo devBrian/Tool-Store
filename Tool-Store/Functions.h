@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@import CoreData;
+
 @interface Functions : NSObject
+
 extern BOOL NSStringIsValidEmail(NSString *checkString, BOOL useStrictFilter);
+
++ (void)preloadObjectModels:(NSManagedObjectContext *)context;
 @end

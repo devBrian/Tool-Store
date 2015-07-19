@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rental.h"
 #import "Tool.h"
 
 @interface MainTableViewCell : UITableViewCell
--(void)setCellData:(Tool *)data;
+-(void)setCellData:(Rental *)data;
 @end

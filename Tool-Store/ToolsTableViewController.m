@@ -43,8 +43,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ToolsTableViewCell *cell = (ToolsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"ToolsTableViewCell" forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"ToolsTableViewCell";
+    ToolsTableViewCell *cell = (ToolsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
+        cell = (ToolsTableViewCell *)[nib objectAtIndex:0];
+    }
     // Configure the cell...
     Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell setCellData:tool];

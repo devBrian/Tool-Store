@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Functions.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        [Functions preloadObjectModels:self.managedObjectContext];
+//    });
     return YES;
 }
 

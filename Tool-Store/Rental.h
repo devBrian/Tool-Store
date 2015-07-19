@@ -17,4 +17,5 @@
 @property (nonatomic, retain) NSDate * rent_date;
 @property (nonatomic, retain) Tool *tool;
 @property (nonatomic, retain) User *user;
+
 @end

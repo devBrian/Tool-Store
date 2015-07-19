@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rental.h"
+
 @protocol MainTableViewControllerDelegate <NSObject>
 @required
--(void)selectedRentTool:(NSString *)tool;
+-(void)selectedRental:(Rental *)tool;
 @end
 
 
 @interface MainTableViewController : UITableViewController
 @property (weak, nonatomic) id <MainTableViewControllerDelegate> mainTableDelegate;
--(void)refreshTableWithData:(NSMutableArray *)data;
+-(void)refreshData;
 @end

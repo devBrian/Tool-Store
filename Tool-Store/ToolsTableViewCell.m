@@ -21,14 +21,14 @@
 @implementation ToolsTableViewCell
 -(void)setCellData:(Tool *)tool
 {
-    self.toolImageView.image = tool.image;
+    self.toolImageView.image = [UIImage imageNamed:tool.image];
     self.nameLabel.text = tool.name;
     self.manufacturerLabel.text = tool.manufacturer;
     self.conditionLabel.text = tool.condition;
-    self.priceLabel.text = [NSString stringWithFormat:@"%i",[tool.rent_price intValue]];
-    self.durationLabel.text = [NSString stringWithFormat:@"%i",[tool.rent_duration intValue]];
+    self.priceLabel.text = [NSString stringWithFormat:@"%.2f",[tool.rent_price floatValue]];
+    self.durationLabel.text = [NSString stringWithFormat:@"%i days",[tool.rent_duration intValue]];
     
-    if (tool.stock > 0)
+    if ([tool.stock intValue] > 0)
     {
         self.stockStatusLabel.text = @"In-Stock";
     }

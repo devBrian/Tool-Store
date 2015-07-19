@@ -10,6 +10,8 @@
 		DC3E240A1B5386D900A27BAE /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E24091B5386D900A27BAE /* Tool.m */; };
 		DC3E240D1B5386D900A27BAE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E240C1B5386D900A27BAE /* User.m */; };
 		DC3E24101B5386D900A27BAE /* Rental.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E240F1B5386D900A27BAE /* Rental.m */; };
+		DC4999AA1B5B496000C1005A /* Tools.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4999A81B5B496000C1005A /* Tools.json */; };
+		DC4999AB1B5B496000C1005A /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4999A91B5B496000C1005A /* Users.json */; };
 		DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7C1B458D300012926B /* SignupViewController.m */; };
 		DC58ED801B4590200012926B /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7E1B4590200012926B /* SignInViewController.m */; };
 		DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED831B459FE90012926B /* MainTableViewController.m */; };
@@ -48,6 +50,8 @@
 		DC3E240C1B5386D900A27BAE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		DC3E240E1B5386D900A27BAE /* Rental.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rental.h; sourceTree = "<group>"; };
 		DC3E240F1B5386D900A27BAE /* Rental.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rental.m; sourceTree = "<group>"; };
+		DC4999A81B5B496000C1005A /* Tools.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tools.json; sourceTree = "<group>"; };
+		DC4999A91B5B496000C1005A /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		DC58ED7B1B458D300012926B /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		DC58ED7C1B458D300012926B /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		DC58ED7E1B4590200012926B /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 		DC9CF56D1B44D7E1004DA1B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DC4999A81B5B496000C1005A /* Tools.json */,
+				DC4999A91B5B496000C1005A /* Users.json */,
 				DC9CF56E1B44D7E1004DA1B4 /* Info.plist */,
 				DC9CF56F1B44D7E1004DA1B4 /* main.m */,
 			);
@@ -347,6 +353,8 @@
 				DC9CF57C1B44D7E1004DA1B4 /* Main.storyboard in Resources */,
 				DC9CF5811B44D7E1004DA1B4 /* LaunchScreen.xib in Resources */,
 				DC9CF57E1B44D7E1004DA1B4 /* Images.xcassets in Resources */,
+				DC4999AB1B5B496000C1005A /* Users.json in Resources */,
+				DC4999AA1B5B496000C1005A /* Tools.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

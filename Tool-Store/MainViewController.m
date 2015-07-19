@@ -29,6 +29,10 @@
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].company);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].password);
+    if (self.mainTableViewController)
+    {
+       [self.mainTableViewController refreshData];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -51,7 +55,7 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 #pragma mark - MainTableViewController Delegate
--(void)selectedRentTool:(NSString *)tool
+-(void)selectedRental:(Rental *)tool
 {
     
 }
@@ -66,6 +70,7 @@
     else if ([segue.identifier isEqualToString:@"mainTable"])
     {
         self.mainTableViewController = (MainTableViewController *)segue.destinationViewController;
+        [self.mainTableViewController refreshData];
         self.mainTableViewController.mainTableDelegate = self;
     }
 }

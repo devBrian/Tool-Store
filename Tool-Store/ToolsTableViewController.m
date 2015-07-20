@@ -82,11 +82,12 @@
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tool" inManagedObjectContext:context];
         [fetchRequest setEntity:entity];
         
-        // Edit the sort key as appropriate.
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+        [fetchRequest setFetchLimit:20];
         
-        [fetchRequest setSortDescriptors:sortDescriptors];
+        // Edit the sort key as appropriate.
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        NSSortDescriptor *sortByPrice = [[NSSortDescriptor alloc] initWithKey:@"rent_price" ascending:NO];
+        [fetchRequest setSortDescriptors:@[sortByName,sortByPrice]];
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".

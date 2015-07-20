@@ -11,7 +11,8 @@
 
 @protocol MainTableViewControllerDelegate <NSObject>
 @required
--(void)selectedRental:(Rental *)tool;
+-(void)selectedRental:(Rental *)rental;
+-(void)returnRental:(Rental *)rental;
 @end
 
 

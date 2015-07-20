@@ -7,6 +7,7 @@
 //
 
 #import "MainTableViewCell.h"
+#import "Functions.h"
 
 @import CoreData;
 
@@ -25,9 +26,7 @@
     self.toolImageView.image = [UIImage imageNamed:tool.image];
     self.nameLabel.text = tool.name;
     self.manufacturerLabel.text = tool.manufacturer;
-    self.rentOnLabel.text = [NSString stringWithFormat:@"Rented on: %@",[NSDateFormatter localizedStringFromDate:data.rent_date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle]];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:data.due_date options:0];
-    self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left", (long)difference.day];
+    self.rentOnLabel.text = [NSString stringWithFormat:@"Rented on: %@",[Functions stringFromDate:data.rent_date]];
+    self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left",[Functions differenceInDays:[NSDate date] toDate:data.due_date]];
 }
 @end

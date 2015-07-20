@@ -11,8 +11,9 @@
 @import CoreData;
 
 @interface Functions : NSObject
-
 extern BOOL NSStringIsValidEmail(NSString *checkString, BOOL useStrictFilter);
-
 + (void)preloadObjectModels:(NSManagedObjectContext *)context;
++ (NSInteger)differenceInDays:(NSDate *)fromDate toDate:(NSDate *)toDate;
++ (NSString *)stringFromDate:(NSDate *)date;
++ (NSDate *)dateFromString:(NSString *)string;
 @end

@@ -9,6 +9,7 @@
 #import "MainTableViewController.h"
 #import "MainTableViewCell.h"
 #import "AppDelegate.h"
+#import "UserManager.h"
 
 @interface MainTableViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -19,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
 }
 -(void)refreshData
 {
@@ -49,16 +51,40 @@
 {
     static NSString *cellIdentifier = @"MainTableViewCell";
     MainTableViewCell *cell = (MainTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
         cell = (MainTableViewCell *)[nib objectAtIndex:0];
     }
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+- (void)configureCell:(MainTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
     Rental *rental = (Rental *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell setCellData:rental];
-    
-    return cell;
+}
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        if (self.mainTableDelegate != nil)
+        {
+            if ([self.mainTableDelegate respondsToSelector:@selector(returnRental:)])
+            {
+                Rental *rental = (Rental *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+                [self.mainTableDelegate returnRental:rental];
+            }
+        }
+    }
+}
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Return";
 }
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController
@@ -69,23 +95,50 @@
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
         // Create the fetch request for the entity.
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Rental" inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Rental"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user == %@", [UserManager sharedInstance].getCurrentUser];
+        [fetchRequest setPredicate:predicate];
         
         // Edit the sort key as appropriate.
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"due_date" ascending:YES];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-        
-        [fetchRequest setSortDescriptors:sortDescriptors];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Root"];
+        NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
         aFetchedResultsController.delegate = self;
         _fetchedResultsController = aFetchedResultsController;
     }
     return _fetchedResultsController;
+}
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id) anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:
+//            [self configureCell:(MainTableViewCell *)[self.tableView
+//                                 cellForRowAtIndexPath:indexPath]
+//                    atIndexPath:indexPath];
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray
+                                                    arrayWithObject:newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
 }
 @end

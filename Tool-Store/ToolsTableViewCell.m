@@ -31,10 +31,14 @@
     if ([tool.stock intValue] > 0)
     {
         self.stockStatusLabel.text = @"In-Stock";
+        self.stockStatusLabel.textColor = [UIColor blueColor];
+        self.userInteractionEnabled = YES;
     }
     else
     {
         self.stockStatusLabel.text = @"Out-of-Stock";
+        self.stockStatusLabel.textColor = [UIColor redColor];
+        self.userInteractionEnabled = NO;
     }
 }
 @end

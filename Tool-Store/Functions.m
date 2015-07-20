@@ -11,6 +11,7 @@
 #import "Tool.h"
 
 @implementation Functions
+#pragma mark - Public
 BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
 {
     NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -24,6 +25,25 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     [Functions loadTools:[Functions toolsFromJSON] andContext:context];
     [Functions loadUsers:[Functions usersFromJSON] andContext:context];
 }
++ (NSInteger)differenceInDays:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
+    return difference.day;
+}
++ (NSString *)stringFromDate:(NSDate *)date
+{
+    NSDateFormatter *df = [NSDateFormatter new]; 
+    [df setDateFormat:@"MM/dd/yyyy hh:mm a"];
+    return [df stringFromDate:date];
+}
++ (NSDate *)dateFromString:(NSString *)string
+{
+    NSDateFormatter *df = [NSDateFormatter new];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [df dateFromString:string];
+}
+#pragma mark - Private
 + (void)loadTools:(NSArray *)tools andContext:(NSManagedObjectContext *)context
 {
     [tools enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -51,7 +71,7 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
         user.email = [obj objectForKey:@"email"];
         user.company = [obj objectForKey:@"company"];
         user.password = [obj objectForKey:@"password"];
-        user.joined_date = [Functions getDateFromJSONString:[obj objectForKey:@"joined_date"]];
+        user.joined_date = (NSDate *)[Functions getDateFromJSONString:[obj objectForKey:@"joined_date"]];
         NSError *error;
         if (![context save:&error])
         {
@@ -71,11 +91,10 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"Users" ofType:@"json"];
     return [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath] options:kNilOptions error:&error];
 }
-+ (NSDate *)getDateFromJSONString:(NSString *)dateString
++ (NSDate *)getDateFromJSONString:(NSString *)string
 {
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSDate *date = [dateFormatter dateFromString:dateString];
-    return date;
+    NSDateFormatter *df = [NSDateFormatter new];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [df dateFromString:string];
 }
 @end

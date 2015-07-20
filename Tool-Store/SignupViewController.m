@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UILabel *joinedLabel;
 @end
 
 @implementation SignupViewController
@@ -39,6 +40,7 @@
     [super viewWillAppear:animated];
     if (self.loadedUserData)
     {
+        self.joinedLabel.text = [NSString stringWithFormat:@"Joined: %@",[Functions stringFromDate:self.loadedUserData.joined_date]];
         self.emailTextField.text = self.loadedUserData.email;
         self.companyTextField.text = self.loadedUserData.company;
         self.passwordTextField.placeholder = @"old Password";
@@ -47,6 +49,7 @@
         self.cancelButton.hidden = NO;
         self.saveButton.hidden = NO;
         self.submitButton.hidden = YES;
+        self.joinedLabel.hidden = NO;
     }
 }
 -(void)viewDidDisappear:(BOOL)animated

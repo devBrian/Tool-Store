@@ -39,6 +39,7 @@
     }]];
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self createRentalForTool:tool andUser:[[UserManager sharedInstance] getCurrentUser]];
+        [self saveExistingTool:tool];
     }]];
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
@@ -59,7 +60,26 @@
     {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
+}
+-(void)saveExistingTool:(Tool *)tool
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tool"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == %@", tool];
+    request.predicate = predicate;
+    
+    NSError *error;
+    Tool *temp = [[context executeFetchRequest:request error:&error] lastObject];
+    temp.stock = [NSNumber numberWithInt:[tool.stock intValue]-1];
+    
+    if (![context save:&error])
+    {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    //[self.toolsTableViewController.tableView reloadData];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

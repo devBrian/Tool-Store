@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="66" id="3EJ-j1-hvG" customClass="MainTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="66" id="3EJ-j1-hvG" customClass="MainTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3EJ-j1-hvG" id="jKW-mS-rnZ">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -240,7 +240,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In-stock" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-QQ-dUw">
-                                            <rect key="frame" x="267" y="39" width="67" height="26"/>
+                                            <rect key="frame" x="261" y="39" width="73" height="26"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -414,6 +414,12 @@
                                             <action selector="saveAction:" destination="5Ic-us-BUZ" eventType="touchUpInside" id="Rmn-nr-APx"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joined: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsC-ug-CaY">
+                                        <rect key="frame" x="35" y="512" width="304" height="50"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="5Ic-us-BUZ" id="nPM-fR-aRd"/>
@@ -428,6 +434,7 @@
                         <outlet property="companyTextField" destination="2Nt-rW-tn7" id="ly0-dp-wfk"/>
                         <outlet property="confirmPasswordTextField" destination="jSn-X2-OWm" id="FEz-Y5-ocR"/>
                         <outlet property="emailTextField" destination="5yS-ik-vpe" id="SVI-mD-7qR"/>
+                        <outlet property="joinedLabel" destination="UsC-ug-CaY" id="xUZ-V7-6jq"/>
                         <outlet property="passwordTextField" destination="eKF-5s-QGO" id="lbN-uZ-3bz"/>
                         <outlet property="saveButton" destination="7de-47-TDf" id="LTF-hC-5un"/>
                         <outlet property="scrollView" destination="6zg-xK-ssk" id="VMU-Fc-UnL"/>

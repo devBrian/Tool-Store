@@ -10,6 +10,7 @@
 #import "MainTableViewController.h"
 #import "SignupViewController.h"
 #import "UserManager.h"
+#import "AppDelegate.h"
 
 
 @interface MainViewController () <MainTableViewControllerDelegate>
@@ -22,6 +23,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -29,15 +31,12 @@
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].company);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].password);
-    if (self.mainTableViewController)
-    {
-       [self.mainTableViewController refreshData];
-    }
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    // TODO: Refresh data after user chooses tools
+//    if (self.mainTableViewController)
+//    {
+//       [self.mainTableViewController refreshData];
+//    }
 }
 -(IBAction)accountAction:(id)sender
 {
@@ -55,9 +54,20 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 #pragma mark - MainTableViewController Delegate
--(void)selectedRental:(Rental *)tool
+-(void)selectedRental:(Rental *)rental
 {
     
+}
+-(void)returnRental:(Rental *)rental
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    [context deleteObject:rental];
+    NSError *error;
+    if (![context save:&error])
+    {
+        NSLog(@"Whoops, couldn't delete: %@", [error localizedDescription]);
+    }
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

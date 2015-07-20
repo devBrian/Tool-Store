@@ -27,6 +27,26 @@
     self.nameLabel.text = tool.name;
     self.manufacturerLabel.text = tool.manufacturer;
     self.rentOnLabel.text = [NSString stringWithFormat:@"Rented on: %@",[Functions stringFromDate:data.rent_date]];
-    self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left",[Functions differenceInDays:[NSDate date] toDate:data.due_date]];
+    NSInteger days = [Functions differenceInDays:[NSDate date] toDate:data.due_date];
+    if (days < 1)
+    {
+        self.daysLeftLabel.text = @"Almost due";
+        self.daysLeftLabel.textColor = [UIColor orangeColor];
+    }
+    else if (days < 0)
+    {
+        self.daysLeftLabel.text = @"Over due";
+        self.daysLeftLabel.textColor = [UIColor purpleColor];
+    }
+    else if (days < 30)
+    {
+        self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left",days];
+        self.daysLeftLabel.textColor = [UIColor redColor];
+    }
+    else
+    {
+        self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left",days];
+        self.daysLeftLabel.textColor = [UIColor blackColor];
+    }
 }
 @end

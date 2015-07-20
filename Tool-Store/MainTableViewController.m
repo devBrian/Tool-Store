@@ -86,6 +86,10 @@
 {
     return @"Return";
 }
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"My Rentals";
+}
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -128,9 +132,9 @@
                                   withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
-//            [self configureCell:(MainTableViewCell *)[self.tableView
-//                                 cellForRowAtIndexPath:indexPath]
-//                    atIndexPath:indexPath];
+            [self configureCell:(MainTableViewCell *)[self.tableView
+                                 cellForRowAtIndexPath:indexPath]
+                    atIndexPath:indexPath];
             break;
         case NSFetchedResultsChangeMove:
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]

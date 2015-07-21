@@ -13,7 +13,7 @@
 #import "Rental.h"
 #import "AppDelegate.h"
 
-@interface ToolsViewController () <ToolsTableViewControllerDelegate>
+@interface ToolsViewController () <ToolsTableViewControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
 @end
 
@@ -23,11 +23,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UISearchBar *searchBar = [[UISearchBar alloc]init];
+    searchBar.delegate=self;
+    [searchBar setPlaceholder:@"Search Tools"];
+    self.navigationItem.titleView = searchBar;
 }
-- (void)didReceiveMemoryWarning
+#pragma mark - Search Delegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (searchBar.text.length > 3 || (searchBar.text.length == 0))
+    {
+       [self.toolsTableViewController searchForText:searchBar.text];
+    }
+    if ((searchBar.text.length == 0))
+    {
+        [searchBar resignFirstResponder];
+    }
+}
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 #pragma mark - Tools Delegate 
 -(void)selectedTool:(Tool *)tool

@@ -30,22 +30,22 @@
     NSInteger days = [Functions differenceInDays:[NSDate date] toDate:data.due_date];
     if (days < 1)
     {
-        self.daysLeftLabel.text = @"Almost due";
-        self.daysLeftLabel.textColor = [UIColor orangeColor];
+        self.daysLeftLabel.text = @"Less than a day";
+        self.daysLeftLabel.textColor = [UIColor redColor];
     }
     else if (days < 0)
     {
-        self.daysLeftLabel.text = @"Over due";
+        self.daysLeftLabel.text = @"Over due!";
         self.daysLeftLabel.textColor = [UIColor purpleColor];
     }
     else if (days < 30)
     {
-        self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left",days];
-        self.daysLeftLabel.textColor = [UIColor redColor];
+        self.daysLeftLabel.text = [NSString stringWithFormat:@"%li \ndays left",days];
+        self.daysLeftLabel.textColor = [UIColor orangeColor];
     }
     else
     {
-        self.daysLeftLabel.text = [NSString stringWithFormat:@"%li days left",days];
+        self.daysLeftLabel.text = [NSString stringWithFormat:@"%li \ndays left",days];
         self.daysLeftLabel.textColor = [UIColor blackColor];
     }
 }

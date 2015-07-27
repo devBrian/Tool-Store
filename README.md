@@ -1,5 +1,5 @@
 ##### Tool-Store
-An example project to play around with Core Data
+A project to demostrate and try out Core Data framework.
 
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/main.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/tools.png)

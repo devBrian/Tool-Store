@@ -19,8 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    // [Functions deleteAllForEntity:@"Tool" andContext:self.managedObjectContext];
-//    [Functions preloadTools:self.managedObjectContext];
+//     [Functions deleteAllForEntity:@"Tool" andContext:self.managedObjectContext];
+//     [Functions preloadTools:self.managedObjectContext];
 //    [Functions preloadUsers:self.managedObjectContext];
 
     return YES;

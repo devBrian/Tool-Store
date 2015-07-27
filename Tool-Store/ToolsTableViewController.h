@@ -16,5 +16,5 @@
 
 @interface ToolsTableViewController : UITableViewController
 @property (weak, nonatomic) id <ToolsTableViewControllerDelegate> toolsDelegate;
--(void)searchForText:(NSString *)text;
+-(void)searchForText:(NSString *)text completion:(void (^)(NSError *error))completion;
 @end

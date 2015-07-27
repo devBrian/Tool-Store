@@ -19,10 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        [Functions preloadObjectModels:self.managedObjectContext];
-//    });
+    // [Functions deleteAllForEntity:@"Tool" andContext:self.managedObjectContext];
+//    [Functions preloadTools:self.managedObjectContext];
+//    [Functions preloadUsers:self.managedObjectContext];
+
     return YES;
 }
 

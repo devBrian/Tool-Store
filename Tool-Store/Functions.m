@@ -11,6 +11,7 @@
 #import "Tool.h"
 
 @implementation Functions
+
 #pragma mark - Public
 BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
 {
@@ -20,10 +21,28 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
 }
-+ (void)preloadObjectModels:(NSManagedObjectContext *)context
++ (void)preloadUsers:(NSManagedObjectContext *)context
+{
+    [Functions loadUsers:[Functions usersFromJSON] andContext:context];
+}
++ (void)preloadTools:(NSManagedObjectContext *)context
 {
     [Functions loadTools:[Functions toolsFromJSON] andContext:context];
-    [Functions loadUsers:[Functions usersFromJSON] andContext:context];
+}
++ (void)deleteAllForEntity:(NSString *)entityName andContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *fetchAllObjects = [[NSFetchRequest alloc] init];
+    [fetchAllObjects setEntity:[NSEntityDescription entityForName:entityName inManagedObjectContext:context]];
+    [fetchAllObjects setIncludesPropertyValues:NO];
+    
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:fetchAllObjects error:&error];
+    for (NSManagedObject *obj in results)
+    {
+        [context deleteObject:obj];
+    }
+    NSError *saveError = nil;
+    [context save:&saveError];
 }
 + (NSInteger)differenceInDays:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
@@ -42,6 +61,66 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     NSDateFormatter *df = [NSDateFormatter new];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [df dateFromString:string];
+}
++ (BOOL)isDateOverDue:(NSDate *)date
+{
+    NSInteger days = [Functions differenceInDays:[NSDate date] toDate:date];
+    return (days < 1);
+}
++ (NSString *)countDownMessageForDays:(NSInteger)days
+{
+    NSString *message = [NSString new];
+    if (days < 0)
+    {
+        message = @"Overdue";
+    }
+    else if (days < 1)
+    {
+        message = @"< 24 hours";
+    }
+    else if (days == 1)
+    {
+        message = @"1 day left";
+    }
+    else
+    {
+        message = [NSString stringWithFormat:@"%li \ndays left",days];
+    }
+    return message;
+}
++ (UIColor *)colorForDays:(NSInteger)days
+{
+    UIColor *color = [UIColor clearColor];
+    
+    if (days < 0)
+    {
+        color = [UIColor purpleColor];
+    }
+    else if (days < 1)
+    {
+        color = [UIColor redColor];
+    }
+    else if (days == 1)
+    {
+        color = [UIColor orangeColor];
+    }
+    else if (days < 30)
+    {
+        color = [UIColor orangeColor];
+    }
+    else
+    {
+        color = [UIColor blackColor];
+    }
+    return color;
+}
++ (void)showErrorWithMessage:(NSString *)message forViewController:(UIViewController *)viewController
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [viewController presentViewController:alertController animated:YES completion:nil];
 }
 #pragma mark - Private
 + (void)loadTools:(NSArray *)tools andContext:(NSManagedObjectContext *)context

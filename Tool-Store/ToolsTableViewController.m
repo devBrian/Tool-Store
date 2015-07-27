@@ -21,28 +21,24 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self fetchData];
 }
--(void)fetchData
+-(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error])
     {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+        completion(error);
     }
+    completion(error);
 }
--(void)searchForText:(NSString *)text
+-(void)searchForText:(NSString *)text completion:(void (^)(NSError *error))completion
 {
     self.searchText = text;
     self.fetchedResultsController = nil;
-    [self fetchData];
-    [self.tableView reloadData];
+    [self fetchDataWithCompletion:^(NSError *error) {
+        completion(error);
+    }];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -99,18 +95,15 @@
         // Edit the entity name as appropriate.
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tool" inManagedObjectContext:context];
         [fetchRequest setEntity:entity];
-        
         if (self.searchText && self.searchText.length > 0)
         {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", self.searchText];
             [fetchRequest setPredicate:predicate];
         }
-        
         // Edit the sort key as appropriate.
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         NSSortDescriptor *sortByPrice = [[NSSortDescriptor alloc] initWithKey:@"rent_price" ascending:NO];
         [fetchRequest setSortDescriptors:@[sortByName,sortByPrice]];
-        
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
         NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];

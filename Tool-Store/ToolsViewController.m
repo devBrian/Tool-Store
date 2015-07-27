@@ -12,6 +12,7 @@
 #import "UserManager.h"
 #import "Rental.h"
 #import "AppDelegate.h"
+#import "Functions.h"
 
 @interface ToolsViewController () <ToolsTableViewControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
@@ -27,13 +28,26 @@
     searchBar.delegate=self;
     [searchBar setPlaceholder:@"Search Tools"];
     self.navigationItem.titleView = searchBar;
+    
+    [self searchForText:searchBar.text];
+}
+-(void)searchForText:(NSString *)text
+{
+    [self.toolsTableViewController searchForText:text completion:^(NSError *error) {
+        if (error)
+        {
+            [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+        }
+    }];
 }
 #pragma mark - Search Delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchBar.text.length > 3 || (searchBar.text.length == 0))
     {
-       [self.toolsTableViewController searchForText:searchBar.text];
+        // FIXME: Crash after searching
+        //Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'no object at index 30 in section at index 0'
+        //[self searchForText:searchBar.text];
     }
     if ((searchBar.text.length == 0))
     {

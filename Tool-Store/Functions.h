@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @import CoreData;
+@import UIKit;
 
 @interface Functions : NSObject
 extern BOOL NSStringIsValidEmail(NSString *checkString, BOOL useStrictFilter);
-+ (void)preloadObjectModels:(NSManagedObjectContext *)context;
++ (void)preloadUsers:(NSManagedObjectContext *)context;
++ (void)preloadTools:(NSManagedObjectContext *)context;
++ (void)deleteAllForEntity:(NSString *)entityName andContext:(NSManagedObjectContext *)context;
 + (NSInteger)differenceInDays:(NSDate *)fromDate toDate:(NSDate *)toDate;
 + (NSString *)stringFromDate:(NSDate *)date;
 + (NSDate *)dateFromString:(NSString *)string;
++ (void)showErrorWithMessage:(NSString *)message forViewController:(UIViewController *)viewController;
++ (NSString *)countDownMessageForDays:(NSInteger)days;
++ (UIColor *)colorForDays:(NSInteger)days;
++ (BOOL)isDateOverDue:(NSDate *)date;
 @end

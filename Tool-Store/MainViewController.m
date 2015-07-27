@@ -11,7 +11,8 @@
 #import "SignupViewController.h"
 #import "UserManager.h"
 #import "AppDelegate.h"
-
+#import "Functions.h"
+#import "Tool.h"
 
 @interface MainViewController () <MainTableViewControllerDelegate>
 @property (strong, nonatomic) MainTableViewController *mainTableViewController;
@@ -31,12 +32,6 @@
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].company);
     NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].password);
-    
-    // TODO: Refresh data after user chooses tools
-//    if (self.mainTableViewController)
-//    {
-//       [self.mainTableViewController refreshData];
-//    }
 }
 -(IBAction)accountAction:(id)sender
 {
@@ -44,7 +39,7 @@
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         [actionSheet dismissViewControllerAnimated:YES completion:nil];
     }]];
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Change Account Details" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Account info" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self performSegueWithIdentifier:@"account" sender:self];
     }]];
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
@@ -56,9 +51,17 @@
 #pragma mark - MainTableViewController Delegate
 -(void)selectedRental:(Rental *)rental
 {
-    
+    // TODO: Product detail screen
 }
 -(void)returnRental:(Rental *)rental
+{
+    if ([Functions isDateOverDue:rental.due_date])
+    {
+        [Functions showErrorWithMessage:[NSString stringWithFormat:@"Rental is overdue! You will be charged %.2f.", [rental.tool.overdue_fee floatValue]] forViewController:self];
+    }
+    [self deleteTool:rental];
+}
+-(void)deleteTool:(Rental *)rental
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -66,7 +69,7 @@
     NSError *error;
     if (![context save:&error])
     {
-        NSLog(@"Whoops, couldn't delete: %@", [error localizedDescription]);
+        [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
     }
 }
 #pragma mark - Navigation

@@ -52,6 +52,7 @@
     rental.tool = tool;
     rental.user = user;
     rental.rent_date = [NSDate date];
+    rental.quantity = [NSNumber numberWithInt:1];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *due_date = [calendar dateByAddingUnit:NSCalendarUnitDay value:[tool.rent_duration intValue] toDate:[NSDate date] options:0];
     rental.due_date = due_date;

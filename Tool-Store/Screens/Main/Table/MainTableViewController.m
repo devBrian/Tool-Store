@@ -101,6 +101,7 @@
         {
             if ([self.mainTableDelegate respondsToSelector:@selector(returnRental:)])
             {
+                [self.tableView setEditing:NO animated:YES];
                 Rental *rental = (Rental *)[self.fetchedResultsController objectAtIndexPath:indexPath];
                 [self.mainTableDelegate returnRental:rental];
             }

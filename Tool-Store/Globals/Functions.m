@@ -84,7 +84,7 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     }
     else
     {
-        message = [NSString stringWithFormat:@"%li \ndays left",days];
+        message = [NSString stringWithFormat:@"%li days left",days];
     }
     return message;
 }

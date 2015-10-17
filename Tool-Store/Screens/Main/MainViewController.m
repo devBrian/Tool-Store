@@ -57,7 +57,14 @@
     {
         [Functions showErrorWithMessage:[NSString stringWithFormat:@"Rental is overdue! You will be charged %.2f.", [rental.tool.overdue_fee floatValue]] forViewController:self];
     }
-    [self deleteTool:rental];
+    if ([rental.quantity intValue] == 1)
+    {
+        [self deleteTool:rental];
+    }
+    else
+    {
+        rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]-1];
+    }
 }
 -(void)deleteTool:(Rental *)rental
 {

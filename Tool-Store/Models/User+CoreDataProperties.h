@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *joined_date;
 @property (nullable, nonatomic, retain) NSString *password;
 @property (nullable, nonatomic, retain) NSSet<Rental *> *rental;
-@property (nullable, nonatomic, retain) Comment *comment;
+@property (nullable, nonatomic, retain) NSSet<Comment *> *comments;
 
 @end
 
@@ -31,6 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeRentalObject:(Rental *)value;
 - (void)addRental:(NSSet<Rental *> *)values;
 - (void)removeRental:(NSSet<Rental *> *)values;
+
+- (void)addCommentsObject:(Comment *)value;
+- (void)removeCommentsObject:(Comment *)value;
+- (void)addComments:(NSSet<Comment *> *)values;
+- (void)removeComments:(NSSet<Comment *> *)values;
 
 @end
 

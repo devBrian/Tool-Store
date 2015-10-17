@@ -5,7 +5,7 @@
         <attribute name="comment_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="post_date" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="tool" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tool" inverseName="comments" inverseEntity="Tool" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comment" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comments" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Rental" representedClassName="Rental" syncable="YES">
         <attribute name="due_date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -32,7 +32,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="joined_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="comment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
         <relationship name="rental" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rental" inverseName="user" inverseEntity="Rental" syncable="YES"/>
     </entity>
     <elements>

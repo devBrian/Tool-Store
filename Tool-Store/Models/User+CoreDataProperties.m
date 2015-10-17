@@ -18,6 +18,6 @@
 @dynamic joined_date;
 @dynamic password;
 @dynamic rental;
-@dynamic comment;
+@dynamic comments;
 
 @end

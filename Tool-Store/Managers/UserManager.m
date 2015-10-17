@@ -8,6 +8,7 @@
 
 #import "UserManager.h"
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @interface UserManager()
 @property (strong, nonatomic) User *currentUser;
@@ -26,7 +27,10 @@
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
-        sharedInstance.currentUser = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+        if (sharedInstance.currentUser == nil)
+        {
+            sharedInstance.currentUser = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+        }
     });
     return sharedInstance;
 }
@@ -37,7 +41,7 @@
 -(BOOL)isLoggedIn  
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"email == 'admin@example.com'"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"email == '%@'",[[NSUserDefaults standardUserDefaults] stringForKey:LAST_EMAIL_KEY]]];
     [request setPredicate:predicate];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -50,7 +54,7 @@
         User *user = results.firstObject;
         self.currentUser = user;
     }
-    return [results count] == 1;
+    return [results count] == 1 || self.currentUser.email;
 }
 -(void)insertUser:(User *)user completion:(void (^)(NSError *error))completion
 {
@@ -97,6 +101,8 @@
 }
 -(void)signOut
 {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:LAST_EMAIL_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     self.currentUser = nil;
 }
 -(BOOL)userExistsWithEmail:(NSString *)email
@@ -133,7 +139,6 @@
     {
         self.currentUser = [results firstObject];
     }
-    
     return (results && results.count > 0);
 }
 @end

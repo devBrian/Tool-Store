@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "Functions.h"
 
-@interface ToolsViewController () <ToolsTableViewControllerDelegate, UISearchBarDelegate>
+@interface ToolsViewController () <ToolsTableViewControllerDelegate>
 @property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
 @end
 
@@ -24,45 +24,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UISearchBar *searchBar = [[UISearchBar alloc]init];
-    searchBar.delegate=self;
-    [searchBar setPlaceholder:@"Search Tools"];
-    self.navigationItem.titleView = searchBar;
-    
-    [self searchForText:searchBar.text];
-}
--(void)searchForText:(NSString *)text
-{
-    [self.toolsTableViewController searchForText:text completion:^(NSError *error) {
-        if (error)
-        {
-            [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
-        }
+    [self.toolsTableViewController fetchDataWithCompletion:^(NSError *error) {
+        /**
+         *  Load Tools
+         */
     }];
 }
-#pragma mark - Search Delegate
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    if (searchBar.text.length > 3 || (searchBar.text.length == 0))
-    {
-        // FIXME: Crash after searching
-        //Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'no object at index 30 in section at index 0'
-        [self searchForText:searchBar.text];
-    }
-    if ((searchBar.text.length == 0))
-    {
-        [searchBar resignFirstResponder];
-    }
-}
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    [searchBar resignFirstResponder];
-}
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    [searchBar resignFirstResponder];
-}
-#pragma mark - Tools Delegate 
+#pragma mark - Tools Delegate
 -(void)moreTool:(Tool *)tool
 {
     [Functions showErrorWithMessage:@"More" forViewController:self];
@@ -110,8 +78,6 @@
     {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-    
-    //[self.toolsTableViewController.tableView reloadData];
 }
 -(BOOL)toolRentalExists:(Tool *)tool
 {
@@ -126,8 +92,17 @@
     if ([[context executeFetchRequest:request error:&error] count] > 0)
     {
         Rental *rental = [[context executeFetchRequest:request error:&error] lastObject];
-        rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]+1];
-        return YES;
+        NSDateComponents *otherDay = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:rental.rent_date];
+        NSDateComponents *today = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:[NSDate date]];
+        if([today day] == [otherDay day] && [today month] == [otherDay month] && [today year] == [otherDay year] && [today era] == [otherDay era])
+        {
+            rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]+1];
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
     }
     else
     {

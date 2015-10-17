@@ -24,13 +24,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [[NSUserDefaults standardUserDefaults] setObject:[[UserManager sharedInstance] getCurrentUser].email forKey:LAST_EMAIL_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].email);
-    NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].company);
-    NSLog(@"%@", [[UserManager sharedInstance] getCurrentUser].password);
 }
 -(IBAction)accountAction:(id)sender
 {
@@ -82,7 +81,9 @@
     else if ([segue.identifier isEqualToString:@"mainTable"])
     {
         self.mainTableViewController = (MainTableViewController *)segue.destinationViewController;
-        [self.mainTableViewController refreshData];
+        [self.mainTableViewController fetchDataWithCompletion:^(NSError *error) {
+            
+        }];
         self.mainTableViewController.mainTableDelegate = self;
     }
 }

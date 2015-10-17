@@ -13,6 +13,7 @@
 
 @interface MainTableViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSString *searchText;
 @end
 
 @implementation MainTableViewController
@@ -24,36 +25,38 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 66.0f;
 }
--(void)refreshData
+-(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error])
     {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    else
+    completion(error);
+}
+#pragma mark - Search bar Delegate
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length > 2)
     {
-        if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] == 0)
-        {
-            UILabel *label = [[UILabel alloc] initWithFrame:self.tableView.frame];
-            label.text = @"You currently do not have any rentals.";
-            label.numberOfLines = 0;
-            label.textAlignment = NSTextAlignmentCenter;
-            label.font = [UIFont boldSystemFontOfSize:24.0f];
-            self.tableView.backgroundView = label;
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        }
-        else
-        {
-            self.tableView.backgroundView = [UIView new];
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        }
+        self.searchText = searchText;
+        self.fetchedResultsController = nil;
+        [self fetchDataWithCompletion:^(NSError *error) {
+            if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0)
+            {
+                [self.tableView reloadData];
+            }
+        }];
+    }
+    else if (searchText.length == 0)
+    {
+        [searchBar resignFirstResponder];
+        self.searchText = @"";
+        self.fetchedResultsController = nil;
+        [self fetchDataWithCompletion:^(NSError *error) {
+            [self.tableView reloadData];
+        }];
     }
 }
 #pragma mark - Table view data source
@@ -124,7 +127,11 @@
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Rental"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user == %@", [UserManager sharedInstance].getCurrentUser];
         [fetchRequest setPredicate:predicate];
-        
+        if (self.searchText.length > 0)
+        {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tool.name CONTAINS[cd] %@", self.searchText];
+            [fetchRequest setPredicate:predicate];
+        }
         // Edit the sort key as appropriate.
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"due_date" ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];

@@ -18,5 +18,5 @@
 
 @interface MainTableViewController : UITableViewController
 @property (weak, nonatomic) id <MainTableViewControllerDelegate> mainTableDelegate;
--(void)refreshData;
+-(void)fetchDataWithCompletion:(void (^)(NSError *error))completion;
 @end

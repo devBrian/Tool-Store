@@ -12,7 +12,7 @@
 
 #define BATCH_SIZE 25
 
-@interface ToolsTableViewController () <NSFetchedResultsControllerDelegate>
+@interface ToolsTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSString *searchText;
 @end
@@ -34,13 +34,29 @@
     }
     completion(error);
 }
--(void)searchForText:(NSString *)text completion:(void (^)(NSError *error))completion
+#pragma mark - Search bar Delegate
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    self.searchText = text;
-    self.fetchedResultsController = nil;
-    [self fetchDataWithCompletion:^(NSError *error) {
-        completion(error);
-    }];
+    if (searchText.length > 2)
+    {
+        self.searchText = searchText;
+        self.fetchedResultsController = nil;
+        [self fetchDataWithCompletion:^(NSError *error) {
+            if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0)
+            {
+                [self.tableView reloadData];
+            }
+        }];
+    }
+    else if (searchText.length == 0)
+    {
+        [searchBar resignFirstResponder];
+        self.searchText = @"";
+        self.fetchedResultsController = nil;
+        [self fetchDataWithCompletion:^(NSError *error) {
+             [self.tableView reloadData];
+        }];
+    }
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,7 +73,6 @@
 {
     static NSString *cellIdentifier = @"ToolsTableViewCell";
     ToolsTableViewCell *cell = (ToolsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
@@ -65,7 +80,6 @@
     }
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
-    
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
     return cell;
@@ -75,19 +89,15 @@
     Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell setCellData:tool];
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *array = [NSMutableArray new];
-    
     UITableViewRowAction *rentAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Rent" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         if (self.toolsDelegate != nil)
         {
             if ([self.toolsDelegate respondsToSelector:@selector(selectedTool:)])
             {
+                [self.tableView setEditing:NO animated:YES];
                 Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
                 [self.toolsDelegate selectedTool:tool];
             }
@@ -100,16 +110,16 @@
         {
             if ([self.toolsDelegate respondsToSelector:@selector(moreTool:)])
             {
+                [self.tableView setEditing:NO animated:YES];
                 Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
                 [self.toolsDelegate moreTool:tool];
+                
             }
         }
     }];
     moreAction.backgroundColor = [UIColor blueColor];
-    
     [array addObject:rentAction];
     [array addObject:moreAction];
-    
     return array;
 }
 #pragma mark - Fetched results controller

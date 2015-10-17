@@ -44,7 +44,7 @@
     [super viewDidAppear:animated];
 //    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView]; // FIXME: Textfield becomes unresponsive.
     
-    if ([[UserManager sharedInstance] isLoggedIn])
+    if ([[UserManager sharedInstance] isLoggedIn] == YES)
     {
         [self performSegueWithIdentifier:@"main" sender:self];
     }

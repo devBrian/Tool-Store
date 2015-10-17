@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Functions.h"
 
 @interface Constants : NSObject
 
 @end
 
+
+#define LAST_EMAIL_KEY @"last_email"

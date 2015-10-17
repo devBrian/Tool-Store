@@ -125,7 +125,7 @@
 				DC58ED821B459FE90012926B /* MainTableViewController.h */,
 				DC58ED831B459FE90012926B /* MainTableViewController.m */,
 			);
-			name = Table;
+			path = Table;
 			sourceTree = "<group>";
 		};
 		DC58ED881B45A0360012926B /* Table */ = {
@@ -136,15 +136,15 @@
 				DC58ED891B45A0530012926B /* ToolsTableViewController.h */,
 				DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */,
 			);
-			name = Table;
+			path = Table;
 			sourceTree = "<group>";
 		};
 		DC9CF5611B44D7E1004DA1B4 = {
 			isa = PBXGroup;
 			children = (
+				DC9CF56B1B44D7E1004DA1B4 /* Products */,
 				DC9CF56C1B44D7E1004DA1B4 /* Tool-Store */,
 				DC9CF5891B44D7E1004DA1B4 /* Tool-StoreTests */,
-				DC9CF56B1B44D7E1004DA1B4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,16 +161,16 @@
 			isa = PBXGroup;
 			children = (
 				DC9CF5B01B44F480004DA1B4 /* Globals */,
-				DC9CF5A11B44F276004DA1B4 /* Screens */,
 				DC9CF5A01B44F263004DA1B4 /* Managers */,
 				DC9CF5961B44E208004DA1B4 /* Models */,
+				DC9CF5A11B44F276004DA1B4 /* Screens */,
+				DC9CF56D1B44D7E1004DA1B4 /* Supporting Files */,
 				DC9CF5711B44D7E1004DA1B4 /* AppDelegate.h */,
 				DC9CF5721B44D7E1004DA1B4 /* AppDelegate.m */,
-				DC9CF57A1B44D7E1004DA1B4 /* Main.storyboard */,
 				DC9CF57D1B44D7E1004DA1B4 /* Images.xcassets */,
 				DC9CF57F1B44D7E1004DA1B4 /* LaunchScreen.xib */,
+				DC9CF57A1B44D7E1004DA1B4 /* Main.storyboard */,
 				DC9CF5741B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld */,
-				DC9CF56D1B44D7E1004DA1B4 /* Supporting Files */,
 			);
 			path = "Tool-Store";
 			sourceTree = "<group>";
@@ -178,19 +178,19 @@
 		DC9CF56D1B44D7E1004DA1B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DC9CF56E1B44D7E1004DA1B4 /* Info.plist */,
 				DC4999A81B5B496000C1005A /* Tools.json */,
 				DC4999A91B5B496000C1005A /* Users.json */,
-				DC9CF56E1B44D7E1004DA1B4 /* Info.plist */,
 				DC9CF56F1B44D7E1004DA1B4 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		DC9CF5891B44D7E1004DA1B4 /* Tool-StoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				DC9CF58C1B44D7E1004DA1B4 /* Tool_StoreTests.m */,
 				DC9CF58A1B44D7E1004DA1B4 /* Supporting Files */,
+				DC9CF58C1B44D7E1004DA1B4 /* Tool_StoreTests.m */,
 			);
 			path = "Tool-StoreTests";
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			children = (
 				DC9CF58B1B44D7E1004DA1B4 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		DC9CF5961B44E208004DA1B4 /* Models */ = {
@@ -219,7 +219,7 @@
 				DC2DC1371BD1E26C0071FB8E /* User.h */,
 				DC2DC1381BD1E26C0071FB8E /* User.m */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DC9CF5A01B44F263004DA1B4 /* Managers */ = {
@@ -230,17 +230,17 @@
 				DC9CF5A51B44F349004DA1B4 /* UserManager.h */,
 				DC9CF5A61B44F349004DA1B4 /* UserManager.m */,
 			);
-			name = Managers;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		DC9CF5A11B44F276004DA1B4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				DC9CF5B71B44F96E004DA1B4 /* Tools */,
-				DC9CF5A21B44F282004DA1B4 /* Main */,
 				DC9CF5AC1B44F3A2004DA1B4 /* Account */,
+				DC9CF5A21B44F282004DA1B4 /* Main */,
+				DC9CF5B71B44F96E004DA1B4 /* Tools */,
 			);
-			name = Screens;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		DC9CF5A21B44F282004DA1B4 /* Main */ = {
@@ -250,7 +250,7 @@
 				DC9CF5771B44D7E1004DA1B4 /* MainViewController.h */,
 				DC9CF5781B44D7E1004DA1B4 /* MainViewController.m */,
 			);
-			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		DC9CF5AC1B44F3A2004DA1B4 /* Account */ = {
@@ -261,18 +261,18 @@
 				DC58ED7B1B458D300012926B /* SignupViewController.h */,
 				DC58ED7C1B458D300012926B /* SignupViewController.m */,
 			);
-			name = Account;
+			path = Account;
 			sourceTree = "<group>";
 		};
 		DC9CF5B01B44F480004DA1B4 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
-				DC9CF5B11B44F496004DA1B4 /* Functions.h */,
-				DC9CF5B21B44F496004DA1B4 /* Functions.m */,
 				DC9CF5B31B44F496004DA1B4 /* Constants.h */,
 				DC9CF5B41B44F496004DA1B4 /* Constants.m */,
+				DC9CF5B11B44F496004DA1B4 /* Functions.h */,
+				DC9CF5B21B44F496004DA1B4 /* Functions.m */,
 			);
-			name = Globals;
+			path = Globals;
 			sourceTree = "<group>";
 		};
 		DC9CF5B71B44F96E004DA1B4 /* Tools */ = {
@@ -282,7 +282,7 @@
 				DC9CF5B81B44F990004DA1B4 /* ToolsViewController.h */,
 				DC9CF5B91B44F990004DA1B4 /* ToolsViewController.m */,
 			);
-			name = Tools;
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +436,7 @@
 				DC9CF57B1B44D7E1004DA1B4 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		DC9CF57F1B44D7E1004DA1B4 /* LaunchScreen.xib */ = {
@@ -444,6 +445,7 @@
 				DC9CF5801B44D7E1004DA1B4 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -534,7 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Tool-Store/Info.plist";
+				INFOPLIST_FILE = "Tool-Store/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
@@ -547,7 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Tool-Store/Info.plist";
+				INFOPLIST_FILE = "Tool-Store/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
@@ -568,7 +570,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Tool-StoreTests/Info.plist";
+				INFOPLIST_FILE = "Tool-StoreTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -584,7 +586,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Tool-StoreTests/Info.plist";
+				INFOPLIST_FILE = "Tool-StoreTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

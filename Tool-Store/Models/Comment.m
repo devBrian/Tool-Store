@@ -1,14 +1,16 @@
 //
-//  CommentTableViewCell.h
+//  Comment.m
 //  Tool-Store
 //
 //  Created by Brian Sinnicke on 10/17/15.
 //  Copyright © 2015 Brian Sinnicke. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "Comment.h"
+#import "Tool.h"
 
-@interface CommentTableViewCell : UITableViewCell
--(void)setCellData:(Comment *)comment;
+@implementation Comment
+
+// Insert code here to add functionality to your managed object subclass
+
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Comment.h"
+
+@protocol CommentTableViewControllerDelegate <NSObject>
+@required
+-(void)deleteComment:(Comment *)comment;
+@end
 
 @interface CommentTableViewController : UITableViewController
-
+-(void)refreshTableData:(NSMutableArray *)data;
+@property (weak, nonatomic) id <CommentTableViewControllerDelegate> delegate;
 @end

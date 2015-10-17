@@ -2,7 +2,7 @@
 //  Tool+CoreDataProperties.h
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 10/16/15.
+//  Created by Brian Sinnicke on 10/17/15.
 //  Copyright © 2015 Brian Sinnicke. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,6 +10,7 @@
 //
 
 #import "Tool.h"
+#import "Comment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,7 +25,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *rent_duration;
 @property (nullable, nonatomic, retain) NSNumber *rent_price;
 @property (nullable, nonatomic, retain) NSNumber *stock;
+@property (nullable, nonatomic, retain) NSSet<Comment *> *comments;
 @property (nullable, nonatomic, retain) Rental *rental;
+
+@end
+
+@interface Tool (CoreDataGeneratedAccessors)
+
+- (void)addCommentsObject:(Comment *)value;
+- (void)removeCommentsObject:(Comment *)value;
+- (void)addComments:(NSSet<Comment *> *)values;
+- (void)removeComments:(NSSet<Comment *> *)values;
 
 @end
 

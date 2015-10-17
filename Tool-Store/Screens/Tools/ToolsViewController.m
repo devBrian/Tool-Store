@@ -13,9 +13,12 @@
 #import "Rental.h"
 #import "AppDelegate.h"
 #import "Functions.h"
+#import "DetailViewController.h"
 
 @interface ToolsViewController () <ToolsTableViewControllerDelegate>
 @property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
+@property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) Tool *selectedTool;
 @end
 
 @implementation ToolsViewController
@@ -33,7 +36,8 @@
 #pragma mark - Tools Delegate
 -(void)moreTool:(Tool *)tool
 {
-    [Functions showErrorWithMessage:@"More" forViewController:self];
+    self.selectedTool = tool;
+    [self performSegueWithIdentifier:@"detailSegue" sender:self];
 }
 -(void)selectedTool:(Tool *)tool
 {
@@ -117,6 +121,11 @@
     {
         self.toolsTableViewController = (ToolsTableViewController *)segue.destinationViewController;
         self.toolsTableViewController.toolsDelegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"detailSegue"])
+    {
+        self.detailViewController = (DetailViewController *)segue.destinationViewController;
+        self.detailViewController.loadedToolData = self.selectedTool;
     }
 }
 @end

@@ -1,5 +1,5 @@
 //
-//  User+CoreDataProperties.m
+//  Comment+CoreDataProperties.m
 //  Tool-Store
 //
 //  Created by Brian Sinnicke on 10/17/15.
@@ -9,15 +9,14 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "User+CoreDataProperties.h"
+#import "Comment+CoreDataProperties.h"
 
-@implementation User (CoreDataProperties)
+@implementation Comment (CoreDataProperties)
 
-@dynamic company;
-@dynamic email;
-@dynamic joined_date;
-@dynamic password;
-@dynamic rental;
-@dynamic comment;
+@dynamic author;
+@dynamic comment_text;
+@dynamic post_date;
+@dynamic tool;
+@dynamic user;
 
 @end

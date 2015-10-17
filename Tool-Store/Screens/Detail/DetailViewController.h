@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tool.h"
 
 @interface DetailViewController : UIViewController
-
+@property (strong, nonatomic) Tool *loadedToolData;
 @end

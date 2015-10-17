@@ -61,7 +61,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="5Ic-us-BUZ" kind="modal" identifier="account" id="bkA-Ub-6gN"/>
-                        <segue destination="hHc-La-6nf" kind="push" id="KaA-wp-9ey"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -92,10 +91,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tools" id="JzA-6o-p7b"/>
+                    <connections>
+                        <segue destination="hHc-La-6nf" kind="push" identifier="detailSegue" id="xDl-ue-o0H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7I-14-A6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290.5" y="-224.5"/>
+            <point key="canvasLocation" x="1075.5" y="-171.5"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="jFR-Ak-Y6M">
@@ -411,7 +413,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfT-xX-7cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221.5" y="451.5"/>
+            <point key="canvasLocation" x="1590.5" y="-171.5"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="1d4-ae-4Ui">
@@ -775,10 +777,10 @@
             </objects>
             <point key="canvasLocation" x="396" y="-965"/>
         </scene>
-        <!--ABrotanum-->
+        <!--Detail-->
         <scene sceneID="Fh0-Fu-Zi9">
             <objects>
-                <viewController id="hHc-La-6nf" sceneMemberID="viewController">
+                <viewController id="hHc-La-6nf" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xCg-rq-Uzh"/>
                         <viewControllerLayoutGuide type="bottom" id="F9N-CR-oX4"/>
@@ -790,20 +792,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mH-S7-Co1" userLabel="Top">
                                 <rect key="frame" x="0.0" y="64" width="375" height="341"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Kg-3w-165">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Kg-3w-165">
                                         <rect key="frame" x="20" y="8" width="335" height="250"/>
                                         <animations/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYf-BR-JG5" userLabel="Content">
                                         <rect key="frame" x="0.0" y="266" width="375" height="75"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by: Aimbu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lna-ET-tRd">
-                                                <rect key="frame" x="20" y="0.0" width="123" height="26"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: Best" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NS1-al-gS5">
                                                 <rect key="frame" x="20" y="26" width="88" height="26"/>
                                                 <animations/>
@@ -829,6 +824,13 @@
                                                 <rect key="frame" x="20" y="48" width="254" height="27"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by: Aimbu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lna-ET-tRd">
+                                                <rect key="frame" x="20" y="0.0" width="123" height="26"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -873,7 +875,7 @@
                                 <rect key="frame" x="0.0" y="413" width="375" height="254"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="0Ad-LX-ZX6" kind="embed" id="zQI-NK-yz0"/>
+                                    <segue destination="0Ad-LX-ZX6" kind="embed" identifier="commentTable" id="zQI-NK-yz0"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -891,46 +893,60 @@
                             <constraint firstItem="Ksj-wm-42v" firstAttribute="top" secondItem="4mH-S7-Co1" secondAttribute="bottom" constant="8" id="zGL-Fp-tej"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ABrotanum" id="5tc-Nq-iAb"/>
+                    <navigationItem key="navigationItem" title="Detail" id="5tc-Nq-iAb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kyu-Yx-Af4">
+                            <connections>
+                                <action selector="commentAction:" destination="hHc-La-6nf" id="OvK-Fl-x8D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="2Kg-3w-165" id="OXY-Lq-1Wd"/>
+                        <outlet property="manufactorLabel" destination="lna-ET-tRd" id="Evn-JR-P2A"/>
+                        <outlet property="priceLabel" destination="ira-r9-P38" id="TTF-dz-WWT"/>
+                        <outlet property="ratingLabel" destination="NS1-al-gS5" id="EHE-ag-pyM"/>
+                        <outlet property="rentDurationLabel" destination="lV3-4S-ryc" id="L3P-35-Tvy"/>
+                        <outlet property="stockLabel" destination="KPz-6O-kqn" id="wkd-tJ-GTt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olN-wY-txk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860.5" y="-976.5"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Comment Table View Controller-->
         <scene sceneID="G8J-FH-hW7">
             <objects>
-                <tableViewController id="0Ad-LX-ZX6" sceneMemberID="viewController">
+                <tableViewController id="0Ad-LX-ZX6" customClass="CommentTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ysM-ll-L5p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="100" id="koG-ya-0vE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="100" id="koG-ya-0vE" customClass="CommentTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="koG-ya-0vE" id="hRt-5u-FUe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-13-2015" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXV-Oy-Dl0">
-                                            <rect key="frame" x="299" y="8" width="68" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-13-2015" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iXV-Oy-Dl0">
+                                            <rect key="frame" x="266" y="8" width="101" height="22"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="68" id="AvA-q3-cl0"/>
+                                                <constraint firstAttribute="width" constant="101" id="AvA-q3-cl0"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="brian@example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRt-HV-bZx">
-                                            <rect key="frame" x="8" y="8" width="283" height="22"/>
+                                            <rect key="frame" x="8" y="8" width="250" height="22"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="wws-pC-owR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -938,7 +954,7 @@
                                             <rect key="frame" x="8" y="30" width="359" height="61"/>
                                             <animations/>
                                             <string key="text">Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -959,6 +975,11 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="authorLabel" destination="dRt-HV-bZx" id="j41-xW-Qum"/>
+                                    <outlet property="commentTextLabel" destination="Tjy-v8-Zax" id="SvP-bc-mUc"/>
+                                    <outlet property="dateLabel" destination="iXV-Oy-Dl0" id="oQb-vT-UQN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

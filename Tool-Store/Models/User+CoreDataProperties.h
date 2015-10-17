@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.h
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 10/16/15.
+//  Created by Brian Sinnicke on 10/17/15.
 //  Copyright © 2015 Brian Sinnicke. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,6 +10,7 @@
 //
 
 #import "User.h"
+#import "Comment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *joined_date;
 @property (nullable, nonatomic, retain) NSString *password;
 @property (nullable, nonatomic, retain) NSSet<Rental *> *rental;
+@property (nullable, nonatomic, retain) Comment *comment;
 
 @end
 

@@ -15,6 +15,8 @@
 		DC2DC13E1BD1E26C0071FB8E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1381BD1E26C0071FB8E /* User.m */; settings = {ASSET_TAGS = (); }; };
 		DC4999AA1B5B496000C1005A /* Tools.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4999A81B5B496000C1005A /* Tools.json */; };
 		DC4999AB1B5B496000C1005A /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4999A91B5B496000C1005A /* Users.json */; };
+		DC57AD281BD2B5BC005BA16E /* Comment+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC57AD251BD2B5BC005BA16E /* Comment+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		DC57AD291BD2B5BC005BA16E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = DC57AD271BD2B5BC005BA16E /* Comment.m */; settings = {ASSET_TAGS = (); }; };
 		DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7C1B458D300012926B /* SignupViewController.m */; };
 		DC58ED801B4590200012926B /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7E1B4590200012926B /* SignInViewController.m */; };
 		DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED831B459FE90012926B /* MainTableViewController.m */; };
@@ -64,6 +66,10 @@
 		DC2DC1381BD1E26C0071FB8E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		DC4999A81B5B496000C1005A /* Tools.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tools.json; sourceTree = "<group>"; };
 		DC4999A91B5B496000C1005A /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
+		DC57AD241BD2B5BC005BA16E /* Comment+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Comment+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DC57AD251BD2B5BC005BA16E /* Comment+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Comment+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DC57AD261BD2B5BC005BA16E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		DC57AD271BD2B5BC005BA16E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		DC58ED7B1B458D300012926B /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		DC58ED7C1B458D300012926B /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		DC58ED7E1B4590200012926B /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
@@ -215,6 +221,10 @@
 		DC9CF5961B44E208004DA1B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC57AD241BD2B5BC005BA16E /* Comment+CoreDataProperties.h */,
+				DC57AD251BD2B5BC005BA16E /* Comment+CoreDataProperties.m */,
+				DC57AD261BD2B5BC005BA16E /* Comment.h */,
+				DC57AD271BD2B5BC005BA16E /* Comment.m */,
 				DC2DC12D1BD1E26C0071FB8E /* Rental+CoreDataProperties.h */,
 				DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */,
 				DC2DC12F1BD1E26C0071FB8E /* Rental.h */,
@@ -434,10 +444,12 @@
 				DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */,
 				DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */,
 				DC9CF5731B44D7E1004DA1B4 /* AppDelegate.m in Sources */,
+				DC57AD281BD2B5BC005BA16E /* Comment+CoreDataProperties.m in Sources */,
 				DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */,
 				DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */,
 				DC9CF5701B44D7E1004DA1B4 /* main.m in Sources */,
 				DCD66E921BD2AE0000D06B1C /* CommentTableViewCell.m in Sources */,
+				DC57AD291BD2B5BC005BA16E /* Comment.m in Sources */,
 				DC58ED801B4590200012926B /* SignInViewController.m in Sources */,
 				DC9CF5B51B44F496004DA1B4 /* Functions.m in Sources */,
 				DC9CF5791B44D7E1004DA1B4 /* MainViewController.m in Sources */,

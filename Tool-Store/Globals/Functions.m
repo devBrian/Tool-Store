@@ -50,6 +50,12 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
     return difference.day;
 }
++ (NSString *)chatStringFromDate:(NSDate *)date
+{
+    NSDateFormatter *df = [NSDateFormatter new];
+    [df setDateFormat:@"MM/dd/yyyy hh:mm a"];
+    return [df stringFromDate:date];
+}
 + (NSString *)stringFromDate:(NSDate *)date
 {
     NSDateFormatter *df = [NSDateFormatter new]; 

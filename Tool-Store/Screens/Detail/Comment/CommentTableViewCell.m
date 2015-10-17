@@ -7,17 +7,21 @@
 //
 
 #import "CommentTableViewCell.h"
+#import "Functions.h"
+
+@interface CommentTableViewCell()
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@end
 
 @implementation CommentTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
+-(void)setCellData:(Comment *)comment
+{
+    self.commentTextLabel.text = comment.comment_text;
+    self.authorLabel.text = comment.author;
+    self.dateLabel.text = [Functions chatStringFromDate:comment.post_date];
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

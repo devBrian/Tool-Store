@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="Comment" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comment_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="tool" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tool" inverseName="comments" inverseEntity="Tool" syncable="YES"/>
+    </entity>
     <entity name="Rental" representedClassName="Rental" syncable="YES">
         <attribute name="due_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -17,6 +23,7 @@
         <attribute name="rent_duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rent_price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="stock" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="comments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" inverseName="tool" inverseEntity="Comment" syncable="YES"/>
         <relationship name="rental" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rental" inverseName="tool" inverseEntity="Rental" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -28,7 +35,8 @@
     </entity>
     <elements>
         <element name="Rental" positionX="-189" positionY="-1368" width="101" height="120"/>
-        <element name="Tool" positionX="-38" positionY="-1413" width="128" height="193"/>
+        <element name="Tool" positionX="-38" positionY="-1413" width="128" height="208"/>
         <element name="User" positionX="-351" positionY="-1404" width="99" height="120"/>
+        <element name="Comment" positionX="133" positionY="-1408" width="128" height="103"/>
     </elements>
 </model>

@@ -51,10 +51,12 @@
         self.submitButton.hidden = YES;
         self.joinedLabel.hidden = NO;
     }
+    [self.navigationController setNavigationBarHidden:NO];
 }
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 - (void)didReceiveMemoryWarning
 {

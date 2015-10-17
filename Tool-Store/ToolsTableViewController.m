@@ -21,6 +21,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 66.0f;
 }
 -(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
@@ -63,6 +65,9 @@
     }
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
+    
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     return cell;
 }
 -(void)configureCell:(ToolsTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -72,14 +77,40 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.toolsDelegate != nil)
-    {
-        if ([self.toolsDelegate respondsToSelector:@selector(selectedTool:)])
+
+}
+- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *array = [NSMutableArray new];
+    
+    UITableViewRowAction *rentAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Rent" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        if (self.toolsDelegate != nil)
         {
-            Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-            [self.toolsDelegate selectedTool:tool];
+            if ([self.toolsDelegate respondsToSelector:@selector(selectedTool:)])
+            {
+                Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+                [self.toolsDelegate selectedTool:tool];
+            }
         }
-    }
+    }];
+    rentAction.backgroundColor = [UIColor purpleColor];
+    
+    UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"More" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        if (self.toolsDelegate != nil)
+        {
+            if ([self.toolsDelegate respondsToSelector:@selector(moreTool:)])
+            {
+                Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+                [self.toolsDelegate moreTool:tool];
+            }
+        }
+    }];
+    moreAction.backgroundColor = [UIColor blueColor];
+    
+    [array addObject:rentAction];
+    [array addObject:moreAction];
+    
+    return array;
 }
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController
@@ -112,33 +143,23 @@
     }
     return _fetchedResultsController;
 }
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id) anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
+#pragma mark - Fetched results controller Delegate
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id) anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
     switch(type)
     {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(ToolsTableViewCell *)[self.tableView
-                                                      cellForRowAtIndexPath:indexPath]
-                    atIndexPath:indexPath];
+            [self configureCell:(ToolsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
         case NSFetchedResultsChangeMove:
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView insertRowsAtIndexPaths:[NSArray
-                                                    arrayWithObject:newIndexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
+           [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }

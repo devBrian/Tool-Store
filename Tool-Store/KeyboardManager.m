@@ -11,6 +11,7 @@
 @interface KeyboardManager()
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) UIView *view;
+@property (nonatomic, assign) BOOL isKeyboardVisible;
 @end
 
 @implementation KeyboardManager
@@ -21,6 +22,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[KeyboardManager alloc] init];
+        sharedInstance.isKeyboardVisible = NO;
         // Do any other initialization stuff here
         [sharedInstance registerForKeyboardNotifications];
     });
@@ -31,13 +33,25 @@
     self.view = scrollView;
     self.scrollView = scrollView;
     
+    // Register Tap gesture to hide keyboard on taps outside textfields/textviews
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollView addGestureRecognizer:tapGesture];
     
-    if (self.scrollView.contentOffset.x!=0 || self.scrollView.contentOffset.y!=0)
+    // Reset the scrollview contentOffset to zero
+    if (self.scrollView.contentOffset.x != 0 || self.scrollView.contentOffset.y != 0)
     {
-       [self hideKeyboard];
+        [self.scrollView setContentOffset:CGPointZero];
     }
+}
+- (BOOL)isKeyboardVisible
+{
+    return self.isKeyboardVisible;
+}
+-(void)hideKeyboard
+{
+    [self.scrollView setContentOffset:CGPointZero];
+    [[self activeFirstResponderView] resignFirstResponder];
+    self.isKeyboardVisible = NO;
 }
 #pragma mark - Private
 -(void)dealloc
@@ -56,8 +70,18 @@
 }
 -(void)keyboardWasShown:(NSNotification *)notification
 {
+    self.isKeyboardVisible = YES;
     NSDictionary *info = [notification userInfo];
-    CGRect keyPadFrame = [[UIApplication sharedApplication].keyWindow convertRect:[[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue] fromView:self.view];
+    CGRect keyboardFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    [self adjustScrollViewToShowKeyViews:keyboardFrame];
+}
+-(void)keyboardWillBeHidden:(NSNotification *)notification
+{
+    [self hideKeyboard];
+}
+-(void)adjustScrollViewToShowKeyViews:(CGRect)keyboardFrame
+{
+    CGRect keyPadFrame = [[UIApplication sharedApplication].keyWindow convertRect:keyboardFrame fromView:self.view];
     CGSize kbSize = keyPadFrame.size;
     
     CGRect activeRect = [self.view convertRect:[self activeFirstResponderView].frame fromView:[self activeFirstResponderView].superview];
@@ -74,15 +98,6 @@
         CGPoint scrollPoint = CGPointMake(0.0,CGRectGetMaxY(activeRect)-(visibleRect.size.height));
         [self.scrollView setContentOffset:scrollPoint animated:YES];
     }
-}
--(void)keyboardWillBeHidden:(NSNotification *)notification
-{
-    [self hideKeyboard];
-}
--(void)hideKeyboard
-{
-    [self.scrollView setContentOffset:CGPointZero];
-    [[self activeFirstResponderView] resignFirstResponder];
 }
 -(UIView *)activeFirstResponderView
 {

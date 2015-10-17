@@ -13,4 +13,5 @@
 + (KeyboardManager*)sharedInstance;
 - (void)setScrollViewContainer:(UIScrollView *)scrollView;
 - (void)hideKeyboard;
+- (BOOL)isKeyboardVisible;
 @end

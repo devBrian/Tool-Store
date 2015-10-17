@@ -12,6 +12,7 @@
 @protocol ToolsTableViewControllerDelegate <NSObject>
 @required
 -(void)selectedTool:(Tool *)tool;
+-(void)moreTool:(Tool *)tool;
 @end
 
 @interface ToolsTableViewController : UITableViewController

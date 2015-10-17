@@ -2,8 +2,8 @@
 //  Tool.h
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 7/13/15.
-//  Copyright (c) 2015 Brian Sinnicke. All rights reserved.
+//  Created by Brian Sinnicke on 10/16/15.
+//  Copyright © 2015 Brian Sinnicke. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,17 +11,14 @@
 
 @class Rental;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface Tool : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * stock;
-@property (nonatomic, retain) NSNumber * rent_duration;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * rent_price;
-@property (nonatomic, retain) NSString * condition;
-@property (nonatomic, retain) id image;
-@property (nonatomic, retain) NSString * manufacturer;
-@property (nonatomic, retain) NSString * origin;
-@property (nonatomic, retain) NSNumber * overdue_fee;
-@property (nonatomic, retain) Rental *rental;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "Tool+CoreDataProperties.h"

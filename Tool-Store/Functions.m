@@ -142,6 +142,8 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
     }];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoaded"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 + (void)loadUsers:(NSArray *)users andContext:(NSManagedObjectContext *)context
 {

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *manufacturerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rentOnLabel;
 @property (weak, nonatomic) IBOutlet UILabel *daysLeftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *qtyLabel;
 @end
 
 @implementation MainTableViewCell
@@ -30,5 +31,6 @@
     NSInteger days = [Functions differenceInDays:[NSDate date] toDate:data.due_date];
     self.daysLeftLabel.text = [Functions countDownMessageForDays:days];
     self.daysLeftLabel.textColor = [Functions colorForDays:days];
+    self.qtyLabel.text = [NSString stringWithFormat:@"%i",[data.quantity intValue]];
 }
 @end

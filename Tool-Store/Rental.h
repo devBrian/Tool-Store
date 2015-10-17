@@ -2,8 +2,8 @@
 //  Rental.h
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 7/13/15.
-//  Copyright (c) 2015 Brian Sinnicke. All rights reserved.
+//  Created by Brian Sinnicke on 10/16/15.
+//  Copyright © 2015 Brian Sinnicke. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,11 +11,14 @@
 
 @class Tool, User;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface Rental : NSManagedObject
 
-@property (nonatomic, retain) NSDate * due_date;
-@property (nonatomic, retain) NSDate * rent_date;
-@property (nonatomic, retain) Tool *tool;
-@property (nonatomic, retain) User *user;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "Rental+CoreDataProperties.h"

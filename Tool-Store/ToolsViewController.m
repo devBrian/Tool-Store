@@ -47,7 +47,7 @@
     {
         // FIXME: Crash after searching
         //Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'no object at index 30 in section at index 0'
-        //[self searchForText:searchBar.text];
+        [self searchForText:searchBar.text];
     }
     if ((searchBar.text.length == 0))
     {
@@ -63,18 +63,17 @@
     [searchBar resignFirstResponder];
 }
 #pragma mark - Tools Delegate 
+-(void)moreTool:(Tool *)tool
+{
+    [Functions showErrorWithMessage:@"More" forViewController:self];
+}
 -(void)selectedTool:(Tool *)tool
 {
-    NSString *message = [NSString stringWithFormat:@"Do you want to rent %@ for %i days at %.2f?", tool.name, [tool.rent_duration intValue],[tool.rent_price floatValue]];
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Rent" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        [actionSheet dismissViewControllerAnimated:YES completion:nil];
-    }]];
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    if ([self toolRentalExists:tool] == NO)
+    {
         [self createRentalForTool:tool andUser:[[UserManager sharedInstance] getCurrentUser]];
         [self saveExistingTool:tool];
-    }]];
-    [self presentViewController:actionSheet animated:YES completion:nil];
+    }
 }
 -(void)createRentalForTool:(Tool *)tool andUser:(User *)user
 {
@@ -113,6 +112,27 @@
     }
     
     //[self.toolsTableViewController.tableView reloadData];
+}
+-(BOOL)toolRentalExists:(Tool *)tool
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Rental"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tool == %@", tool];
+    request.predicate = predicate;
+    
+    NSError *error;
+    if ([[context executeFetchRequest:request error:&error] count] > 0)
+    {
+        Rental *rental = [[context executeFetchRequest:request error:&error] lastObject];
+        rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]+1];
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

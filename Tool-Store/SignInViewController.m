@@ -42,7 +42,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView];
+//    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView]; // FIXME: Textfield becomes unresponsive.
     
     if ([[UserManager sharedInstance] isLoggedIn])
     {
@@ -86,15 +86,15 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your email falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Email too short. (3)" forViewController:self];
         }
         return NO;
     }
     if (NSStringIsValidEmail(email, YES) == NO)
     {
         if (showError)
-        {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your email is not valid." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        {[Functions showErrorWithMessage:@"Email format not valid." forViewController:self];
+          
         }
         return NO;
     }
@@ -102,7 +102,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your password falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Password too short. (3)" forViewController:self];
         }
         return NO;
     }
@@ -110,7 +110,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"My records indicate that account does not exist." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Invalid email or password." forViewController:self];
         }
         return NO;
     }

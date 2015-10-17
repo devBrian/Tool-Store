@@ -2,8 +2,8 @@
 //  User.h
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 7/13/15.
-//  Copyright (c) 2015 Brian Sinnicke. All rights reserved.
+//  Created by Brian Sinnicke on 10/16/15.
+//  Copyright © 2015 Brian Sinnicke. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,20 +11,14 @@
 
 @class Rental;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface User : NSManagedObject
 
-@property (nonatomic, retain) NSString * company;
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSDate * joined_date;
-@property (nonatomic, retain) NSString * password;
-@property (nonatomic, retain) NSSet *rental;
-@end
-
-@interface User (CoreDataGeneratedAccessors)
-
-- (void)addRentalObject:(Rental *)value;
-- (void)removeRentalObject:(Rental *)value;
-- (void)addRental:(NSSet *)values;
-- (void)removeRental:(NSSet *)values;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "User+CoreDataProperties.h"

@@ -20,13 +20,13 @@
     static UserManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        // Do any other initialization stuff here
         sharedInstance = [[UserManager alloc] init];
-        
+        // Allocates a currentUser for Core Data.
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
         sharedInstance.currentUser = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
-        // Do any other initialization stuff here
     });
     return sharedInstance;
 }
@@ -34,9 +34,23 @@
 {
     return self.currentUser;
 }
--(BOOL)isLoggedIn
+-(BOOL)isLoggedIn  
 {
-    return self.currentUser.email;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"email == 'admin@example.com'"];
+    [request setPredicate:predicate];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    if ([results count] == 1)
+    {
+        User *user = results.firstObject;
+        self.currentUser = user;
+    }
+    return [results count] == 1;
 }
 -(void)insertUser:(User *)user completion:(void (^)(NSError *error))completion
 {

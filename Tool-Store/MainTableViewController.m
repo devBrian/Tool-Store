@@ -21,6 +21,8 @@
 {
     [super viewDidLoad];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 66.0f;
 }
 -(void)refreshData
 {
@@ -34,6 +36,24 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
+    }
+    else
+    {
+        if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] == 0)
+        {
+            UILabel *label = [[UILabel alloc] initWithFrame:self.tableView.frame];
+            label.text = @"You currently do not have any rentals.";
+            label.numberOfLines = 0;
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [UIFont boldSystemFontOfSize:24.0f];
+            self.tableView.backgroundView = label;
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        }
+        else
+        {
+            self.tableView.backgroundView = [UIView new];
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        }
     }
 }
 #pragma mark - Table view data source
@@ -57,6 +77,8 @@
         cell = (MainTableViewCell *)[nib objectAtIndex:0];
     }
     [self configureCell:cell atIndexPath:indexPath];
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     return cell;
 }
 - (void)configureCell:(MainTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath

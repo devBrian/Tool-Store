@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView];
+//    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -77,7 +77,7 @@
         [[UserManager sharedInstance] insertUser:user completion:^(NSError *error) {
             if (error)
             {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
             }
             else
             {
@@ -105,7 +105,7 @@
             [[UserManager sharedInstance] saveUser:self.loadedUserData completion:^(NSError *error) {
                 if (error)
                 {
-                    [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
                 }
                 else
                 {
@@ -188,7 +188,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your email falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Email too short. (3)" forViewController:self];
         }
         return NO;
     }
@@ -196,7 +196,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your email is not valid." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Email format is invalid." forViewController:self];
         }
         return NO;
     }
@@ -204,7 +204,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please specify your password to continue." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Please specify your current password to continue." forViewController:self];
         }
         return NO;
     }
@@ -212,7 +212,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"My records indicate that account is invalid." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Invalid Email or Password." forViewController:self];
         }
         return NO;
     }
@@ -228,7 +228,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your email falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"It appears your email falls short. (min 3)" forViewController:self];
         }
         return NO;
     }
@@ -236,7 +236,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your email is not valid." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"It appears your email is not valid." forViewController:self];
         }
         return NO;
     }
@@ -244,7 +244,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your password falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"It appears your password falls short. (min 3)" forViewController:self];
         }
         return NO;
     }
@@ -252,7 +252,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your comfirm password falls short. (min 3)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Confirm password falls short. (3)" forViewController:self];
         }
         return NO;
     }
@@ -260,7 +260,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"It appears your password and confirm password do not match." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Passwords mismatch." forViewController:self];
         }
         return NO;
     }
@@ -268,7 +268,7 @@
     {
         if (showError)
         {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"My records indicate that account is taken." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [Functions showErrorWithMessage:@"Invalid email or password." forViewController:self];
         }
         return NO;
     }

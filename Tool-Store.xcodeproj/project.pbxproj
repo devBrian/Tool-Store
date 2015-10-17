@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC3E240A1B5386D900A27BAE /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E24091B5386D900A27BAE /* Tool.m */; };
-		DC3E240D1B5386D900A27BAE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E240C1B5386D900A27BAE /* User.m */; };
-		DC3E24101B5386D900A27BAE /* Rental.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E240F1B5386D900A27BAE /* Rental.m */; };
+		DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		DC2DC13A1BD1E26C0071FB8E /* Rental.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1301BD1E26C0071FB8E /* Rental.m */; settings = {ASSET_TAGS = (); }; };
+		DC2DC13B1BD1E26C0071FB8E /* Tool+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1321BD1E26C0071FB8E /* Tool+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		DC2DC13C1BD1E26C0071FB8E /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1341BD1E26C0071FB8E /* Tool.m */; settings = {ASSET_TAGS = (); }; };
+		DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		DC2DC13E1BD1E26C0071FB8E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1381BD1E26C0071FB8E /* User.m */; settings = {ASSET_TAGS = (); }; };
 		DC4999AA1B5B496000C1005A /* Tools.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4999A81B5B496000C1005A /* Tools.json */; };
 		DC4999AB1B5B496000C1005A /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4999A91B5B496000C1005A /* Users.json */; };
 		DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED7C1B458D300012926B /* SignupViewController.m */; };
@@ -44,12 +47,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DC3E24081B5386D900A27BAE /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
-		DC3E24091B5386D900A27BAE /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
-		DC3E240B1B5386D900A27BAE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		DC3E240C1B5386D900A27BAE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		DC3E240E1B5386D900A27BAE /* Rental.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rental.h; sourceTree = "<group>"; };
-		DC3E240F1B5386D900A27BAE /* Rental.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rental.m; sourceTree = "<group>"; };
+		DC2DC12D1BD1E26C0071FB8E /* Rental+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rental+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Rental+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DC2DC12F1BD1E26C0071FB8E /* Rental.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rental.h; sourceTree = "<group>"; };
+		DC2DC1301BD1E26C0071FB8E /* Rental.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rental.m; sourceTree = "<group>"; };
+		DC2DC1311BD1E26C0071FB8E /* Tool+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tool+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DC2DC1321BD1E26C0071FB8E /* Tool+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tool+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DC2DC1331BD1E26C0071FB8E /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		DC2DC1341BD1E26C0071FB8E /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+		DC2DC1351BD1E26C0071FB8E /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DC2DC1371BD1E26C0071FB8E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DC2DC1381BD1E26C0071FB8E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		DC4999A81B5B496000C1005A /* Tools.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tools.json; sourceTree = "<group>"; };
 		DC4999A91B5B496000C1005A /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		DC58ED7B1B458D300012926B /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
@@ -197,12 +206,18 @@
 		DC9CF5961B44E208004DA1B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC3E240E1B5386D900A27BAE /* Rental.h */,
-				DC3E240F1B5386D900A27BAE /* Rental.m */,
-				DC3E240B1B5386D900A27BAE /* User.h */,
-				DC3E240C1B5386D900A27BAE /* User.m */,
-				DC3E24081B5386D900A27BAE /* Tool.h */,
-				DC3E24091B5386D900A27BAE /* Tool.m */,
+				DC2DC12D1BD1E26C0071FB8E /* Rental+CoreDataProperties.h */,
+				DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */,
+				DC2DC12F1BD1E26C0071FB8E /* Rental.h */,
+				DC2DC1301BD1E26C0071FB8E /* Rental.m */,
+				DC2DC1311BD1E26C0071FB8E /* Tool+CoreDataProperties.h */,
+				DC2DC1321BD1E26C0071FB8E /* Tool+CoreDataProperties.m */,
+				DC2DC1331BD1E26C0071FB8E /* Tool.h */,
+				DC2DC1341BD1E26C0071FB8E /* Tool.m */,
+				DC2DC1351BD1E26C0071FB8E /* User+CoreDataProperties.h */,
+				DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */,
+				DC2DC1371BD1E26C0071FB8E /* User.h */,
+				DC2DC1381BD1E26C0071FB8E /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,7 +329,7 @@
 		DC9CF5621B44D7E1004DA1B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Brian Sinnicke";
 				TargetAttributes = {
 					DC9CF5691B44D7E1004DA1B4 = {
@@ -372,16 +387,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2DC13A1BD1E26C0071FB8E /* Rental.m in Sources */,
 				DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */,
 				DC9CF5BA1B44F990004DA1B4 /* ToolsViewController.m in Sources */,
-				DC3E240D1B5386D900A27BAE /* User.m in Sources */,
 				DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */,
 				DC9CF5AF1B44F477004DA1B4 /* KeyboardManager.m in Sources */,
-				DC3E240A1B5386D900A27BAE /* Tool.m in Sources */,
+				DC2DC13B1BD1E26C0071FB8E /* Tool+CoreDataProperties.m in Sources */,
+				DC2DC13C1BD1E26C0071FB8E /* Tool.m in Sources */,
 				DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */,
-				DC3E24101B5386D900A27BAE /* Rental.m in Sources */,
+				DC2DC13E1BD1E26C0071FB8E /* User.m in Sources */,
 				DC58ED8E1B45A06F0012926B /* ToolsTableViewCell.m in Sources */,
 				DC9CF5A71B44F349004DA1B4 /* UserManager.m in Sources */,
+				DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */,
+				DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */,
 				DC9CF5731B44D7E1004DA1B4 /* AppDelegate.m in Sources */,
 				DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */,
 				DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */,
@@ -452,6 +470,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -516,8 +535,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Tool-Store/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -526,8 +548,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Tool-Store/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -545,6 +570,7 @@
 				);
 				INFOPLIST_FILE = "Tool-StoreTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tool-Store.app/Tool-Store";
 			};
@@ -560,6 +586,7 @@
 				);
 				INFOPLIST_FILE = "Tool-StoreTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tool-Store.app/Tool-Store";
 			};

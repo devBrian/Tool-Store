@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Comment.h"
 #import "UserManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DetailViewController () <CommentTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -33,7 +34,7 @@
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"post_date" ascending:NO];
     NSArray *sortedArray = [[self.loadedToolData.comments allObjects].mutableCopy sortedArrayUsingDescriptors:@[sortDescriptor]];
     [self.commentTable refreshTableData:sortedArray.mutableCopy];
-    self.imageView.image = [UIImage imageNamed:self.loadedToolData.image];;
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.loadedToolData.image_url]];
     self.manufactorLabel.text = [NSString stringWithFormat:@"Made by: %@", self.loadedToolData.manufacturer];
     self.ratingLabel.text = [NSString stringWithFormat:@"Condition: %@", self.loadedToolData.condition];
     self.rentDurationLabel.text = [NSString stringWithFormat:@"%i days", [self.loadedToolData.rent_duration intValue]];

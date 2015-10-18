@@ -7,6 +7,7 @@
 //
 
 #import "ToolsTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ToolsTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *toolImageView;
@@ -21,7 +22,7 @@
 @implementation ToolsTableViewCell
 -(void)setCellData:(Tool *)tool
 {
-    self.toolImageView.image = [UIImage imageNamed:tool.image];
+    [self.toolImageView sd_setImageWithURL:[NSURL URLWithString:tool.image_url]];
     self.nameLabel.text = tool.name;
     self.manufacturerLabel.text = tool.manufacturer;
     self.conditionLabel.text = tool.condition;

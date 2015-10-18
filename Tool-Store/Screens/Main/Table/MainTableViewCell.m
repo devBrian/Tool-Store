@@ -8,6 +8,7 @@
 
 #import "MainTableViewCell.h"
 #import "Functions.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @import CoreData;
 
@@ -24,7 +25,7 @@
 -(void)setCellData:(Rental *)data
 {
     Tool *tool = data.tool;
-    self.toolImageView.image = [UIImage imageNamed:tool.image];
+    [self.toolImageView sd_setImageWithURL:[NSURL URLWithString:tool.image_url]];
     self.nameLabel.text = tool.name;
     self.manufacturerLabel.text = tool.manufacturer;
     self.rentOnLabel.text = [NSString stringWithFormat:@"Rented on: %@",[Functions stringFromDate:data.rent_date]];

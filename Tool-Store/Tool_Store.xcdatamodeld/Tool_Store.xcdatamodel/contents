@@ -16,7 +16,7 @@
     </entity>
     <entity name="Tool" representedClassName="Tool" syncable="YES">
         <attribute name="condition" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="origin" optional="YES" attributeType="String" syncable="YES"/>

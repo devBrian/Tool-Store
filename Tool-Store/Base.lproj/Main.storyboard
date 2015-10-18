@@ -125,13 +125,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF5-lb-TDN">
-                                            <rect key="frame" x="8" y="0.0" width="66" height="65"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="zgL-cW-M8T"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0uG-Ph-iHb">
                                             <rect key="frame" x="329" y="8" width="46" height="49"/>
                                             <animations/>
@@ -189,6 +182,13 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF5-lb-TDN">
+                                            <rect key="frame" x="8" y="0.0" width="66" height="65"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="66" id="zgL-cW-M8T"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>

@@ -14,7 +14,7 @@
 @implementation Tool (CoreDataProperties)
 
 @dynamic condition;
-@dynamic image;
+@dynamic image_url;
 @dynamic manufacturer;
 @dynamic name;
 @dynamic origin;

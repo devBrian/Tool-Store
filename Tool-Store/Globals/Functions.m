@@ -134,7 +134,7 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     [tools enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Tool *tool = [NSEntityDescription insertNewObjectForEntityForName:@"Tool" inManagedObjectContext:context];
         tool.condition = [obj objectForKey:@"condition"];
-        tool.image = [obj objectForKey:@"image"];
+        tool.image_url = [obj objectForKey:@"image"];
         tool.manufacturer = [obj objectForKey:@"manufacturer"];
         tool.name = [obj objectForKey:@"name"];
         tool.origin = [obj objectForKey:@"origin"];

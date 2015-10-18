@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Tool (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *condition;
-@property (nullable, nonatomic, retain) id image;
+@property (nullable, nonatomic, retain) NSString *image_url;
 @property (nullable, nonatomic, retain) NSString *manufacturer;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *origin;

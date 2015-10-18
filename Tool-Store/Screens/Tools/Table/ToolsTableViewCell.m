@@ -28,18 +28,16 @@
     self.conditionLabel.text = tool.condition;
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f",[tool.rent_price floatValue]];
     self.durationLabel.text = [NSString stringWithFormat:@"%i days",[tool.rent_duration intValue]];
-    
     if ([tool.stock intValue] > 0)
     {
         self.stockStatusLabel.text = @"In-Stock";
         self.stockStatusLabel.textColor = [UIColor blueColor];
-        self.userInteractionEnabled = YES;
     }
     else
     {
         self.stockStatusLabel.text = @"Out-of-Stock";
         self.stockStatusLabel.textColor = [UIColor redColor];
-        self.userInteractionEnabled = NO;
     }
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 @end

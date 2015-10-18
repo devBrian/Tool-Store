@@ -799,8 +799,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYf-BR-JG5" userLabel="Content">
                                         <rect key="frame" x="0.0" y="266" width="375" height="75"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: Best" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NS1-al-gS5">
-                                                <rect key="frame" x="20" y="26" width="88" height="26"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition: Best" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NS1-al-gS5">
+                                                <rect key="frame" x="20" y="26" width="111" height="26"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -834,17 +834,30 @@
                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mexico" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG5-ZC-eZF">
+                                                <rect key="frame" x="291" y="28" width="64" height="21"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="GAd-Ys-FTp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="MG5-ZC-eZF" secondAttribute="trailing" constant="20" id="3H3-sG-BKf"/>
                                             <constraint firstAttribute="bottom" secondItem="NS1-al-gS5" secondAttribute="bottom" constant="23" id="3bl-0V-X3k"/>
                                             <constraint firstItem="NS1-al-gS5" firstAttribute="top" secondItem="lna-ET-tRd" secondAttribute="bottom" id="3q5-Me-mgt"/>
+                                            <constraint firstItem="KPz-6O-kqn" firstAttribute="top" secondItem="MG5-ZC-eZF" secondAttribute="bottom" constant="3" id="6dJ-S2-BYR"/>
                                             <constraint firstItem="ira-r9-P38" firstAttribute="leading" secondItem="lna-ET-tRd" secondAttribute="trailing" constant="8" id="Br5-WD-Gvv"/>
                                             <constraint firstItem="KPz-6O-kqn" firstAttribute="leading" secondItem="lV3-4S-ryc" secondAttribute="trailing" constant="17" id="LOS-Hq-yCH"/>
                                             <constraint firstItem="lna-ET-tRd" firstAttribute="leading" secondItem="jYf-BR-JG5" secondAttribute="leading" constant="20" id="Mhp-yG-hGG"/>
                                             <constraint firstItem="lV3-4S-ryc" firstAttribute="top" secondItem="lna-ET-tRd" secondAttribute="bottom" constant="22" id="P6r-QE-1fP"/>
                                             <constraint firstItem="NS1-al-gS5" firstAttribute="top" secondItem="lna-ET-tRd" secondAttribute="bottom" id="Qxy-rW-0xU"/>
                                             <constraint firstAttribute="bottom" secondItem="lV3-4S-ryc" secondAttribute="bottom" id="Z3B-FJ-gAE"/>
+                                            <constraint firstItem="MG5-ZC-eZF" firstAttribute="leading" secondItem="KPz-6O-kqn" secondAttribute="leading" id="ZdA-ZN-o7Z"/>
                                             <constraint firstItem="lna-ET-tRd" firstAttribute="top" secondItem="jYf-BR-JG5" secondAttribute="top" id="agR-Bv-oe9"/>
                                             <constraint firstItem="KPz-6O-kqn" firstAttribute="top" secondItem="ira-r9-P38" secondAttribute="bottom" constant="23" id="bJ2-Nd-ojO"/>
                                             <constraint firstItem="NS1-al-gS5" firstAttribute="leading" secondItem="jYf-BR-JG5" secondAttribute="leading" constant="20" id="eoz-xU-IVb"/>
@@ -903,6 +916,7 @@
                     <connections>
                         <outlet property="imageView" destination="2Kg-3w-165" id="OXY-Lq-1Wd"/>
                         <outlet property="manufactorLabel" destination="lna-ET-tRd" id="Evn-JR-P2A"/>
+                        <outlet property="originLabel" destination="MG5-ZC-eZF" id="eE2-Pi-S3g"/>
                         <outlet property="priceLabel" destination="ira-r9-P38" id="TTF-dz-WWT"/>
                         <outlet property="ratingLabel" destination="NS1-al-gS5" id="EHE-ag-pyM"/>
                         <outlet property="rentDurationLabel" destination="lV3-4S-ryc" id="L3P-35-Tvy"/>

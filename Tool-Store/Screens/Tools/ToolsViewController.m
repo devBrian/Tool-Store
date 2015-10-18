@@ -102,6 +102,7 @@
         if([today day] == [otherDay day] && [today month] == [otherDay month] && [today year] == [otherDay year] && [today era] == [otherDay era])
         {
             rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]+1];
+            [self saveExistingTool:tool];
             return YES;
         }
         else

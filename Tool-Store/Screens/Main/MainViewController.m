@@ -59,6 +59,7 @@
     }
     if ([rental.quantity intValue] == 1)
     {
+        [self updateExistingTool:rental.tool];
         [self deleteTool:rental];
     }
     else
@@ -77,6 +78,24 @@
         [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
     }
 }
+-(void)updateExistingTool:(Tool *)tool
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tool"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == %@", tool];
+    request.predicate = predicate;
+    
+    NSError *error;
+    Tool *temp = [[context executeFetchRequest:request error:&error] lastObject];
+    temp.stock = [NSNumber numberWithInt:[tool.stock intValue] + 1];
+    
+    if (![context save:&error])
+    {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -89,7 +108,7 @@
     {
         self.mainTableViewController = (MainTableViewController *)segue.destinationViewController;
         [self.mainTableViewController fetchDataWithCompletion:^(NSError *error) {
-            
+            [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
         }];
         self.mainTableViewController.mainTableDelegate = self;
     }

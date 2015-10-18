@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rentDurationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stockLabel;
+@property (weak, nonatomic) IBOutlet UILabel *originLabel;
 @property (strong, nonatomic) CommentTableViewController *commentTable;
 @end
 
@@ -40,6 +41,7 @@
     self.rentDurationLabel.text = [NSString stringWithFormat:@"%i days", [self.loadedToolData.rent_duration intValue]];
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f", [self.loadedToolData.rent_price floatValue]];
     self.stockLabel.text = [NSString stringWithFormat:@"Stock: %i",  [self.loadedToolData.stock intValue]];
+    self.originLabel.text = self.loadedToolData.origin;
 }
 - (IBAction)commentAction:(id)sender
 {

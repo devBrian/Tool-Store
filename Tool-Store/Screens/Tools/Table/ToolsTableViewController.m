@@ -118,8 +118,16 @@
         }
     }];
     moreAction.backgroundColor = [UIColor blueColor];
-    [array addObject:rentAction];
-    [array addObject:moreAction];
+    Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([tool.stock intValue] > 0)
+    {
+        [array addObject:rentAction];
+        [array addObject:moreAction];
+    }
+    else
+    {
+        [array addObject:moreAction];
+    }
     return array;
 }
 #pragma mark - Fetched results controller

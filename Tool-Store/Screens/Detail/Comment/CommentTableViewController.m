@@ -12,7 +12,7 @@
 #import "UserManager.h"
 
 @interface CommentTableViewController ()
-@property (strong, nonatomic) NSMutableArray *tableData;
+
 @end
 
 @implementation CommentTableViewController
@@ -66,14 +66,17 @@
     {
         return YES;
     }
-    return NO;
+    else
+    {
+        return NO;
+    }
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         Comment *comment = (Comment *)[self.tableData objectAtIndex:indexPath.row];
-        [self.delegate deleteComment:comment];
+        [self.delegate deleteComment:comment atIndexPath:indexPath];
     }
 }
 @end

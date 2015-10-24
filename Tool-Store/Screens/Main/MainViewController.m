@@ -108,7 +108,10 @@
     {
         self.mainTableViewController = (MainTableViewController *)segue.destinationViewController;
         [self.mainTableViewController fetchDataWithCompletion:^(NSError *error) {
-            [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+            if (error)
+            {
+                [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+            }
         }];
         self.mainTableViewController.mainTableDelegate = self;
     }

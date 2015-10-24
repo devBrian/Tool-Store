@@ -126,6 +126,7 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         [alertController dismissViewControllerAnimated:YES completion:nil];
     }]];
+    NSLog(@"Error in %@", [viewController class]);
     [viewController presentViewController:alertController animated:YES completion:nil];
 }
 #pragma mark - Private

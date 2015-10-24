@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@protocol KeyboardManagerDelegate <NSObject>
+@optional
+-(void)keyboardHeight:(CGFloat)height;
+@end
+
 @interface KeyboardManager : NSObject
 + (KeyboardManager*)sharedInstance;
 - (void)setScrollViewContainer:(UIScrollView *)scrollView;
 - (void)hideKeyboard;
 - (BOOL)isKeyboardVisible;
+@property (weak, nonatomic) id <KeyboardManagerDelegate> delegate;
 @end

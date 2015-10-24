@@ -11,10 +11,11 @@
 
 @protocol CommentTableViewControllerDelegate <NSObject>
 @required
--(void)deleteComment:(Comment *)comment;
+-(void)deleteComment:(Comment *)comment atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface CommentTableViewController : UITableViewController
 -(void)refreshTableData:(NSMutableArray *)data;
 @property (weak, nonatomic) id <CommentTableViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSMutableArray *tableData;
 @end

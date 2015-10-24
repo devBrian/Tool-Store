@@ -83,6 +83,7 @@
 {
     CGRect keyPadFrame = [[UIApplication sharedApplication].keyWindow convertRect:keyboardFrame fromView:self.view];
     CGSize kbSize = keyPadFrame.size;
+    [self.delegate keyboardHeight:kbSize.height];
     
     CGRect activeRect = [self.view convertRect:[self activeFirstResponderView].frame fromView:[self activeFirstResponderView].superview];
     activeRect = CGRectMake(activeRect.origin.x, activeRect.origin.y + activeRect.size.height, activeRect.size.width, activeRect.size.height); // Plus height of view
@@ -101,7 +102,7 @@
 }
 -(UIView *)activeFirstResponderView
 {
-    for (UIView *view in self.view.subviews)
+    for (UIView *view in self.scrollView.subviews)
     {
         if ([view isFirstResponder])
         {

@@ -11,8 +11,7 @@
 
 @protocol KeyboardManagerDelegate <NSObject>
 @optional
--(void)keyboardShown:(CGFloat)height;
--(void)keyboardDidHide;
+-(void)keyboardHeight:(CGFloat)height;
 @end
 
 @interface KeyboardManager : NSObject

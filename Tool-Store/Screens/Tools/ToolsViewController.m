@@ -32,7 +32,6 @@
          *  Load Tools
          */
     }];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 #pragma mark - Tools Delegate
 -(void)moreTool:(Tool *)tool

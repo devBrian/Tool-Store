@@ -29,7 +29,6 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [super viewDidAppear:animated];
 }
 -(IBAction)accountAction:(id)sender

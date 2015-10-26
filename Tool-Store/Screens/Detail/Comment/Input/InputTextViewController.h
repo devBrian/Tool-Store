@@ -11,7 +11,8 @@
 @protocol InputTextViewControllerDelegate <NSObject>
 @required
 -(void)sendInputText:(NSString *)text;
--(void)textViewHeightUpdate:(CGFloat)height;
+-(void)updateContainerHeight:(CGFloat)height;
+-(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY;
 @end
 
 @interface InputTextViewController : UIViewController

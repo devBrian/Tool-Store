@@ -7,10 +7,11 @@
 //
 
 #import "InputTextViewController.h"
+#import "KeyboardManager.h"
 
 #define MAX_HEIGHT 150.0f
 
-@interface InputTextViewController () <UITextViewDelegate>
+@interface InputTextViewController () <UITextViewDelegate, KeyboardManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic) CGFloat inputHeight;
 @end
@@ -22,6 +23,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.textView.text = @"";
+    [KeyboardManager sharedInstance].delegate = self;
+}
+-(void)keyboardShown:(CGFloat)height
+{
+    if (self.delegate != nil)
+    {
+        if ([self.delegate respondsToSelector:@selector(updateContainerPosition:andPosY:)])
+        {
+            [self.delegate updateContainerPosition:0 andPosY:(height + 50)];
+        }
+    }
+}
+-(void)keyboardDidHide
+{
+    if (self.delegate != nil)
+    {
+        if ([self.delegate respondsToSelector:@selector(updateContainerPosition:andPosY:)])
+        {
+            [self.delegate updateContainerPosition:0 andPosY:0];
+        }
+    }
 }
 - (IBAction)sendAction:(id)sender
 {
@@ -51,13 +73,12 @@
     {
         if (self.delegate != nil)
         {
-            if ([self.delegate respondsToSelector:@selector(textViewHeightUpdate:)])
+            if ([self.delegate respondsToSelector:@selector(updateContainerHeight:)])
             {
                 [self.view setNeedsUpdateConstraints];
                 [self.view updateConstraintsIfNeeded];
-                NSLog(@"height: %f",height);
                 self.inputHeight = height;
-                [self.delegate textViewHeightUpdate:height];
+                [self.delegate updateContainerHeight:height];
             }
         }
     }

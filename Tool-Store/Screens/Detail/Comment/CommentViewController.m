@@ -14,7 +14,7 @@
 #import "InputTextViewController.h"
 #import "KeyboardManager.h"
 
-@interface CommentViewController () <CommentTableViewControllerDelegate, InputTextViewControllerDelegate, KeyboardManagerDelegate>
+@interface CommentViewController () <CommentTableViewControllerDelegate, InputTextViewControllerDelegate>
 @property (strong, nonatomic) CommentTableViewController *commentTableViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputContainerHeightConstraint;
 @property (strong, nonatomic) InputTextViewController *inputTextViewController;
@@ -30,8 +30,6 @@
     // Do any additional setup after loading the view.
     self.title = @"Comments";
     [self.commentTableViewController refreshTableData:[self.loadedToolData.comments allObjects].mutableCopy];
-//    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView];
-    [KeyboardManager sharedInstance].delegate = self;
 }
 -(void)createCommentWithText:(NSString *)text
 {
@@ -64,16 +62,16 @@
     [self.commentTableViewController.tableData removeObject:comment];
     [self.commentTableViewController.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
--(void)keyboardHeight:(CGFloat)height
-{
-    self.inputContainerView.frame = CGRectMake(0, height + self.inputContainerHeightConstraint.constant, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
-}
 #pragma mark - InputViewController Delegate
 -(void)sendInputText:(NSString *)text
 {
     [self createCommentWithText:text];
 }
--(void)textViewHeightUpdate:(CGFloat)height
+-(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY
+{
+    self.inputContainerView.frame = CGRectMake(posX, posY, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
+}
+-(void)updateContainerHeight:(CGFloat)height
 {
     self.inputContainerHeightConstraint.constant = height;
 }

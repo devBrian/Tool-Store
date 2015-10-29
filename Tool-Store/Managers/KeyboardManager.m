@@ -73,17 +73,18 @@
     self.isKeyboardVisible = YES;
     NSDictionary *info = [notification userInfo];
     CGRect keyboardFrame = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    [self.delegate keyboardShown:keyboardFrame.size.height];
     [self adjustScrollViewToShowKeyViews:keyboardFrame];
 }
 -(void)keyboardWillBeHidden:(NSNotification *)notification
 {
     [self hideKeyboard];
+    [self.delegate keyboardDidHide];
 }
 -(void)adjustScrollViewToShowKeyViews:(CGRect)keyboardFrame
 {
     CGRect keyPadFrame = [[UIApplication sharedApplication].keyWindow convertRect:keyboardFrame fromView:self.view];
     CGSize kbSize = keyPadFrame.size;
-    [self.delegate keyboardHeight:kbSize.height];
     
     CGRect activeRect = [self.view convertRect:[self activeFirstResponderView].frame fromView:[self activeFirstResponderView].superview];
     activeRect = CGRectMake(activeRect.origin.x, activeRect.origin.y + activeRect.size.height, activeRect.size.width, activeRect.size.height); // Plus height of view

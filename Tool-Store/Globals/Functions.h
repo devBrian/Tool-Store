@@ -26,4 +26,5 @@ extern BOOL NSStringIsValidEmail(NSString *checkString, BOOL useStrictFilter);
 + (UIColor *)colorForDays:(NSInteger)days;
 + (BOOL)isDateOverDue:(NSDate *)date;
 + (NSString *)chatStringFromDate:(NSDate *)date;
++ (UIColor *)colorForCondition:(NSString *)condition;
 @end

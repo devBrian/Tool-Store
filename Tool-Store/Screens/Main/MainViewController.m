@@ -13,9 +13,12 @@
 #import "AppDelegate.h"
 #import "Functions.h"
 #import "Tool.h"
+#import "DetailViewController.h"
 
 @interface MainViewController () <MainTableViewControllerDelegate>
 @property (strong, nonatomic) MainTableViewController *mainTableViewController;
+@property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) Rental *selectedRental;
 @end
 
 @implementation MainViewController
@@ -31,6 +34,11 @@
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [super viewDidAppear:animated];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [super viewDidDisappear:animated];
 }
 -(IBAction)accountAction:(id)sender
 {
@@ -48,9 +56,10 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 #pragma mark - MainTableViewController Delegate
--(void)selectedRental:(Rental *)rental
+-(void)moreRental:(Rental *)rental
 {
-    // TODO: Product detail screen
+    self.selectedRental = rental;
+    [self performSegueWithIdentifier:@"moreSegue" sender:self];
 }
 -(void)returnRental:(Rental *)rental
 {
@@ -115,6 +124,11 @@
             }
         }];
         self.mainTableViewController.mainTableDelegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"moreSegue"])
+    {
+        self.detailViewController = (DetailViewController *)segue.destinationViewController;
+        self.detailViewController.loadedToolData = self.selectedRental.tool;
     }
 }
 @end

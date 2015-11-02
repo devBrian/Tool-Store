@@ -16,10 +16,11 @@
 
 @interface CommentViewController () <CommentTableViewControllerDelegate, InputTextViewControllerDelegate>
 @property (strong, nonatomic) CommentTableViewController *commentTableViewController;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputContainerHeightConstraint;
 @property (strong, nonatomic) InputTextViewController *inputTextViewController;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputContainerHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *inputContainerView;
+@property (weak, nonatomic) IBOutlet UIView *tableContainerView;
+@property (weak, nonatomic) IBOutlet UIView *optionsContainerView;
 @end
 
 @implementation CommentViewController
@@ -62,19 +63,40 @@
     [self.commentTableViewController.tableData removeObject:comment];
     [self.commentTableViewController.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
 #pragma mark - InputViewController Delegate
 -(void)sendInputText:(NSString *)text
 {
     [self createCommentWithText:text];
 }
--(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY
+-(void)openBottom:(CGFloat)delta
 {
-    self.inputContainerView.frame = CGRectMake(posX, posY, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
+    CGFloat viewHeight = self.view.frame.size.height;
+    [UIView animateWithDuration:0.25f delay:0 usingSpringWithDamping:1.0f initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.optionsContainerView.frame = CGRectMake(self.optionsContainerView.frame.origin.x, viewHeight - delta, self.optionsContainerView.frame.size.width, self.optionsContainerView.frame.size.height);
+        self.inputContainerView.frame = CGRectMake(self.inputContainerView.frame.origin.x, self.inputContainerView.frame.origin.y - delta, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
+        self.tableContainerView.frame = CGRectMake(self.tableContainerView.frame.origin.x, self.tableContainerView.frame.origin.y, self.tableContainerView.frame.size.width, self.tableContainerView.frame.size.height - delta);
+        [self.commentTableViewController scrollToBottom];
+    } completion:nil];
 }
--(void)updateContainerHeight:(CGFloat)height
+-(void)closeBottom:(CGFloat)delta
 {
-    self.inputContainerHeightConstraint.constant = height;
+    CGFloat viewHeight = self.view.frame.size.height;
+    [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.optionsContainerView.frame = CGRectMake(self.optionsContainerView.frame.origin.x, viewHeight + delta, self.optionsContainerView.frame.size.width, self.optionsContainerView.frame.size.height);
+        self.inputContainerView.frame = CGRectMake(self.inputContainerView.frame.origin.x, self.inputContainerView.frame.origin.y + delta, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
+        self.tableContainerView.frame = CGRectMake(self.tableContainerView.frame.origin.x, self.tableContainerView.frame.origin.y, self.tableContainerView.frame.size.width, self.tableContainerView.frame.size.height + delta);
+        [self.commentTableViewController scrollToBottom];
+    } completion:nil];
 }
+//-(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY
+//{
+//    self.inputContainerView.frame = CGRectMake(posX, posY, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
+//}
+//-(void)updateContainerHeight:(CGFloat)height
+//{
+//    self.inputContainerHeightConstraint.constant = height;
+//}
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -16,6 +16,7 @@
 
 @interface CommentTableViewController : UITableViewController
 -(void)refreshTableData:(NSMutableArray *)data;
+-(void)scrollToBottom;
 @property (weak, nonatomic) id <CommentTableViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSMutableArray *tableData;
 @end

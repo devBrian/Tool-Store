@@ -28,9 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.toolsTableViewController fetchDataWithCompletion:^(NSError *error) {
-        /**
-         *  Load Tools
-         */
+        if (error)
+        {
+            [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+        }
     }];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }

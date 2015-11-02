@@ -90,7 +90,7 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     }
     else
     {
-        message = [NSString stringWithFormat:@"%li days left",days];
+        message = [NSString stringWithFormat:@"%li days left",(long)days];
     }
     return message;
 }
@@ -113,6 +113,32 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     else if (days < 30)
     {
         color = [UIColor orangeColor];
+    }
+    else
+    {
+        color = [UIColor blackColor];
+    }
+    return color;
+}
++ (UIColor *)colorForCondition:(NSString *)condition
+{
+    UIColor *color = [UIColor clearColor];
+    
+    if ([condition isEqualToString:@"best"])
+    {
+        color = [UIColor purpleColor];
+    }
+    else if ([condition isEqualToString:@"good"])
+    {
+        color = [UIColor redColor];
+    }
+    else if ([condition isEqualToString:@"average"])
+    {
+        color = [UIColor orangeColor];
+    }
+    else if ([condition isEqualToString:@"poor"])
+    {
+        color = [UIColor blackColor];
     }
     else
     {

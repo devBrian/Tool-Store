@@ -24,11 +24,22 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100.0f;
 }
+#pragma mark - Public
 -(void)refreshTableData:(NSMutableArray *)data
 {
     [self.tableData removeAllObjects];
-    [self.tableData addObjectsFromArray:data];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"post_date" ascending:YES];
+    NSArray *sortedArray = [data sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    [self.tableData addObjectsFromArray:sortedArray];
     [self.tableView reloadData];
+    [self scrollToBottom];
+}
+-(void)scrollToBottom
+{
+    if ([self.tableData count] > 0)
+    {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableData count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

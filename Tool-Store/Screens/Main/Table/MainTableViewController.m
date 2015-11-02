@@ -93,10 +93,10 @@
 {
     return YES;
 }
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
+    NSMutableArray *array = [NSMutableArray new];
+    UITableViewRowAction *returnAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Return" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         if (self.mainTableDelegate != nil)
         {
             if ([self.mainTableDelegate respondsToSelector:@selector(returnRental:)])
@@ -106,11 +106,21 @@
                 [self.mainTableDelegate returnRental:rental];
             }
         }
-    }
-}
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return @"Return";
+    }];
+    UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"More" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        if (self.mainTableDelegate != nil)
+        {
+            if ([self.mainTableDelegate respondsToSelector:@selector(moreRental:)])
+            {
+                [self.tableView setEditing:NO animated:YES];
+                Rental *rental = (Rental *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+                [self.mainTableDelegate moreRental:rental];
+            }
+        }
+    }];
+    [array addObject:moreAction];
+    [array addObject:returnAction];
+    return array;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

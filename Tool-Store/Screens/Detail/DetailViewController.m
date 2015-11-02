@@ -14,11 +14,13 @@
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *manufactorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rentDurationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *conditionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *originLabel;
+@property (weak, nonatomic) IBOutlet UILabel *overdueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) CommentViewController *commentViewController;
 @end
 
@@ -30,12 +32,15 @@
     // Do any additional setup after loading the view.
     self.title = self.loadedToolData.name;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.loadedToolData.image_url]];
-    self.manufactorLabel.text = [NSString stringWithFormat:@"Made by: %@", self.loadedToolData.manufacturer];
-    self.ratingLabel.text = [NSString stringWithFormat:@"Condition: %@", self.loadedToolData.condition];
-    self.rentDurationLabel.text = [NSString stringWithFormat:@"%i days", [self.loadedToolData.rent_duration intValue]];
-    self.priceLabel.text = [NSString stringWithFormat:@"%.2f", [self.loadedToolData.rent_price floatValue]];
-    self.stockLabel.text = [NSString stringWithFormat:@"Stock: %i",  [self.loadedToolData.stock intValue]];
+    self.nameLabel.text = self.title;
+    self.manufactorLabel.text = [NSString stringWithFormat:@"%@", self.loadedToolData.manufacturer];
+    self.conditionLabel.text = [NSString stringWithFormat:@"%@", [self.loadedToolData.condition capitalizedString]];
+    self.durationLabel.text = [NSString stringWithFormat:@"%i rental days", [self.loadedToolData.rent_duration intValue]];
+    self.priceLabel.text = [NSString stringWithFormat:@"%.2f rent price", [self.loadedToolData.rent_price floatValue]];
+    self.stockLabel.text = [NSString stringWithFormat:@"%i in stock",  [self.loadedToolData.stock intValue]];
     self.originLabel.text = self.loadedToolData.origin;
+    self.overdueLabel.text = [NSString stringWithFormat:@"%.2f overdue fee", [self.loadedToolData.overdue_fee floatValue]];
+    self.conditionLabel.textColor = [Functions colorForCondition:self.loadedToolData.condition];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

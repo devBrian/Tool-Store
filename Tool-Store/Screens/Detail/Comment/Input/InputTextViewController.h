@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @protocol InputTextViewControllerDelegate <NSObject>
-@required
+@optional
 -(void)sendInputText:(NSString *)text;
+-(void)openBottom:(CGFloat)delta;
+-(void)closeBottom:(CGFloat)delta;
 -(void)updateContainerHeight:(CGFloat)height;
 -(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY;
 @end

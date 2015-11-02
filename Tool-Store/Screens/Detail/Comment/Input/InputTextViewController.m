@@ -14,10 +14,11 @@
 @interface InputTextViewController () <UITextViewDelegate, KeyboardManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic) CGFloat inputHeight;
+@property (nonatomic, assign) BOOL isBottomOpen;
 @end
 
 @implementation InputTextViewController
-
+#pragma mark - Life
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -25,6 +26,7 @@
     self.textView.text = @"";
     [KeyboardManager sharedInstance].delegate = self;
 }
+#pragma mark - Keyboard Delegates
 -(void)keyboardShown:(CGFloat)height
 {
     if (self.delegate != nil)
@@ -45,6 +47,7 @@
         }
     }
 }
+#pragma mark - IBActions
 - (IBAction)sendAction:(id)sender
 {
     if ([self textViewHasText])
@@ -61,6 +64,31 @@
         }
     }
 }
+-(IBAction)otherAction:(id)sender
+{
+    if (self.delegate != nil)
+    {
+        if (self.isBottomOpen == YES)
+        {
+            if ([self.delegate respondsToSelector:@selector(closeBottom:)])
+            {
+                self.isBottomOpen = NO;
+                [self.delegate closeBottom:100.0f];
+            }
+        }
+        else
+        {
+            if ([self.delegate respondsToSelector:@selector(openBottom:)])
+            {
+                self.isBottomOpen = YES;
+                [self.delegate openBottom:100.0f];
+            }
+        }
+        
+
+    }
+}
+#pragma mark - Private
 -(BOOL)textViewHasText
 {
     return (self.textView.text.length > 0);

@@ -72,7 +72,7 @@
 -(void)openBottom:(CGFloat)delta
 {
     CGFloat viewHeight = self.view.frame.size.height;
-    [UIView animateWithDuration:0.25f delay:0 usingSpringWithDamping:1.0f initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.5f delay:0 usingSpringWithDamping:1.0f initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.optionsContainerView.frame = CGRectMake(self.optionsContainerView.frame.origin.x, viewHeight - delta, self.optionsContainerView.frame.size.width, self.optionsContainerView.frame.size.height);
         self.inputContainerView.frame = CGRectMake(self.inputContainerView.frame.origin.x, self.inputContainerView.frame.origin.y - delta, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
         self.tableContainerView.frame = CGRectMake(self.tableContainerView.frame.origin.x, self.tableContainerView.frame.origin.y, self.tableContainerView.frame.size.width, self.tableContainerView.frame.size.height - delta);

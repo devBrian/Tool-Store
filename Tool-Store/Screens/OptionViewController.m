@@ -9,7 +9,7 @@
 #import "OptionViewController.h"
 
 @interface OptionViewController ()
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+
 @end
 
 @implementation OptionViewController
@@ -17,14 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    for (int index=0; index < 20; index++)
-    {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:@"Hello World" forState:UIControlStateNormal];
-        [self.containerView addSubview:button];
-    }
-    
 }
 
 - (void)didReceiveMemoryWarning {

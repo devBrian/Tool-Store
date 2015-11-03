@@ -73,7 +73,7 @@
             if ([self.delegate respondsToSelector:@selector(closeBottom:)])
             {
                 self.isBottomOpen = NO;
-                [self.delegate closeBottom:100.0f];
+                [self.delegate closeBottom:205.0f];
             }
         }
         else
@@ -81,11 +81,9 @@
             if ([self.delegate respondsToSelector:@selector(openBottom:)])
             {
                 self.isBottomOpen = YES;
-                [self.delegate openBottom:100.0f];
+                [self.delegate openBottom:205.0f];
             }
         }
-        
-
     }
 }
 #pragma mark - Private

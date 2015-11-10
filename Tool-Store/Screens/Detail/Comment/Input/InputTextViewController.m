@@ -14,7 +14,6 @@
 @interface InputTextViewController () <UITextViewDelegate, KeyboardManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic) CGFloat inputHeight;
-@property (nonatomic, assign) BOOL isBottomOpen;
 @end
 
 @implementation InputTextViewController
@@ -60,28 +59,6 @@
                 self.textView.text = @"";
                 [self.textView resignFirstResponder];
                 [self.delegate sendInputText:text];
-            }
-        }
-    }
-}
--(IBAction)otherAction:(id)sender
-{
-    if (self.delegate != nil)
-    {
-        if (self.isBottomOpen == YES)
-        {
-            if ([self.delegate respondsToSelector:@selector(closeBottom:)])
-            {
-                self.isBottomOpen = NO;
-                [self.delegate closeBottom:205.0f];
-            }
-        }
-        else
-        {
-            if ([self.delegate respondsToSelector:@selector(openBottom:)])
-            {
-                self.isBottomOpen = YES;
-                [self.delegate openBottom:205.0f];
             }
         }
     }

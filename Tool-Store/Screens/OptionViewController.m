@@ -23,6 +23,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#define GROW_DURATION 0.25f
+-(void)animateBubble:(UIButton *)button block:(void (^)(void))completion
+{
+    [UIView animateWithDuration:GROW_DURATION delay:0 usingSpringWithDamping:1.0f initialSpringVelocity:0 options: UIViewAnimationOptionCurveEaseIn animations:^{
+        button.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:GROW_DURATION delay:0 usingSpringWithDamping:1.0f initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            button.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+            if (completion)
+            {
+                completion();
+            }
+        }];
+    }];
+}
 
 /*
 #pragma mark - Navigation

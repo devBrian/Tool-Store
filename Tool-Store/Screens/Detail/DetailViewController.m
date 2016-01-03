@@ -38,7 +38,16 @@
     self.conditionLabel.text = [NSString stringWithFormat:@"%@", [self.loadedToolData.condition capitalizedString]];
     self.durationLabel.text = [NSString stringWithFormat:@"%i rental days", [self.loadedToolData.rent_duration intValue]];
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f rent price", [self.loadedToolData.rent_price floatValue]];
-    self.stockLabel.text = [NSString stringWithFormat:@"%i in stock",  [self.loadedToolData.stock intValue]];
+    
+    if ([self.loadedToolData.stock intValue] > 0)
+    {
+        self.stockLabel.text = [NSString stringWithFormat:@"In Stock (%i)", [self.loadedToolData.stock intValue]];
+    }
+    else
+    {
+        self.stockLabel.text = @"Out-of-Stock";
+        self.stockLabel.textColor = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
+    }
     self.originLabel.text = self.loadedToolData.origin;
     self.overdueLabel.text = [NSString stringWithFormat:@"%.2f overdue fee", [self.loadedToolData.overdue_fee floatValue]];
     self.conditionLabel.textColor = [Functions colorForCondition:self.loadedToolData.condition];

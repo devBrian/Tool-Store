@@ -100,23 +100,23 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     
     if (days < 0)
     {
-        color = [UIColor purpleColor];
+        color = [UIColor colorWithRed:0.371 green:0.257 blue:0.755 alpha:1.000];
     }
     else if (days < 1)
     {
-        color = [UIColor redColor];
+        color = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
     }
     else if (days == 1)
     {
-        color = [UIColor orangeColor];
+        color = [UIColor colorWithRed:0.853 green:0.422 blue:0.000 alpha:1.000];
     }
     else if (days < 30)
     {
-        color = [UIColor orangeColor];
+        color = [UIColor colorWithRed:0.853 green:0.422 blue:0.000 alpha:1.000];
     }
     else
     {
-        color = [UIColor blackColor];
+        color = [UIColor colorWithRed:0.151 green:0.569 blue:0.437 alpha:1.000];
     }
     return color;
 }
@@ -126,23 +126,23 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     
     if ([condition isEqualToString:@"best"])
     {
-        color = [UIColor purpleColor];
+        color = [UIColor colorWithRed:0.371 green:0.257 blue:0.755 alpha:1.000];
     }
     else if ([condition isEqualToString:@"good"])
     {
-        color = [UIColor redColor];
+        color = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
     }
     else if ([condition isEqualToString:@"average"])
     {
-        color = [UIColor orangeColor];
+        color = [UIColor colorWithRed:0.853 green:0.422 blue:0.000 alpha:1.000];
     }
     else if ([condition isEqualToString:@"poor"])
     {
-        color = [UIColor blackColor];
+        color = [UIColor colorWithWhite:0.126 alpha:1.000];
     }
     else
     {
-        color = [UIColor blackColor];
+        color = [UIColor colorWithRed:0.151 green:0.569 blue:0.437 alpha:1.000];
     }
     return color;
 }

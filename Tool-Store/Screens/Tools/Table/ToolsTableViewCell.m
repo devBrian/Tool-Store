@@ -8,6 +8,7 @@
 
 #import "ToolsTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "Functions.h"
 
 @interface ToolsTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *toolImageView;
@@ -30,14 +31,15 @@
     self.durationLabel.text = [NSString stringWithFormat:@"%i days",[tool.rent_duration intValue]];
     if ([tool.stock intValue] > 0)
     {
-        self.stockStatusLabel.text = @"In-Stock";
-        self.stockStatusLabel.textColor = [UIColor blueColor];
+        self.stockStatusLabel.text = [NSString stringWithFormat:@"In Stock (%i)", [tool.stock intValue]];
+        self.stockStatusLabel.textColor = [UIColor colorWithRed:0.194 green:0.509 blue:0.852 alpha:1.000];
     }
     else
     {
         self.stockStatusLabel.text = @"Out-of-Stock";
-        self.stockStatusLabel.textColor = [UIColor redColor];
+        self.stockStatusLabel.textColor = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
     }
+    self.conditionLabel.textColor = [Functions colorForCondition:tool.condition];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 @end

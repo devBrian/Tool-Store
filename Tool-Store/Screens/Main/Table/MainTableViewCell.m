@@ -25,7 +25,23 @@
 {
     Tool *tool = data.tool;
     [self.toolImageView sd_setImageWithURL:[NSURL URLWithString:tool.image_url]];
-    self.nameLabel.text = tool.name;
+    
+    if ([tool.rental.quantity intValue] > 1)
+    {
+        NSString *string = [NSString stringWithFormat:@"%@ (%i)", tool.name,[tool.rental.quantity intValue]];
+        NSString *subScript = [NSString stringWithFormat:@"(%i)",[tool.rental.quantity intValue]];
+        
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12.0f] range:[string rangeOfString:subScript]];
+        [attrString addAttribute:NSBaselineOffsetAttributeName value:@10 range:[string rangeOfString:subScript]];
+        
+        self.nameLabel.attributedText = attrString;
+    }
+    else
+    {
+        self.nameLabel.text = tool.name;
+    }
+    
     self.manufacturerLabel.text = tool.manufacturer;
     self.rentOnLabel.text = [NSString stringWithFormat:@"Rented on: %@",[Functions stringFromDate:data.rent_date]];
     NSInteger days = [Functions differenceInDays:[NSDate date] toDate:data.due_date];

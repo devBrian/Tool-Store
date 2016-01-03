@@ -47,8 +47,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView]; // FIXME: Textfield becomes unresponsive.
-    
     if ([[UserManager sharedInstance] isLoggedIn] == YES)
     {
         [self performSegueWithIdentifier:@"main" sender:self];
@@ -67,7 +65,6 @@
     }
     else
     {
-        [[KeyboardManager sharedInstance] hideKeyboard];
         return NO;
     }
     [textField resignFirstResponder];
@@ -120,10 +117,5 @@
         return NO;
     }
     return YES;
-}
-#pragma mark - Navigation
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
 }
 @end

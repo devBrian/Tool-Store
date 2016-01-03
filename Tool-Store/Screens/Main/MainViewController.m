@@ -29,6 +29,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     [[NSUserDefaults standardUserDefaults] setObject:[[UserManager sharedInstance] getCurrentUser].email forKey:LAST_EMAIL_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 -(IBAction)accountAction:(id)sender
 {

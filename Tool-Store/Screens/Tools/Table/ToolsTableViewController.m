@@ -9,6 +9,7 @@
 #import "ToolsTableViewController.h"
 #import "ToolsTableViewCell.h"
 #import "AppDelegate.h"
+#import "Functions.h"
 
 #define BATCH_SIZE 25
 
@@ -42,10 +43,7 @@
         self.searchText = searchText;
         self.fetchedResultsController = nil;
         [self fetchDataWithCompletion:^(NSError *error) {
-            if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0)
-            {
-                [self.tableView reloadData];
-            }
+            [self.tableView reloadData];
         }];
     }
     else if (searchText.length == 0)
@@ -57,6 +55,10 @@
              [self.tableView reloadData];
         }];
     }
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -103,7 +105,7 @@
             }
         }
     }];
-    rentAction.backgroundColor = [UIColor purpleColor];
+    rentAction.backgroundColor = [UIColor colorWithRed:0.278 green:0.185 blue:0.593 alpha:1.000];
     
     UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"More" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         if (self.toolsDelegate != nil)
@@ -113,16 +115,15 @@
                 [self.tableView setEditing:NO animated:YES];
                 Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
                 [self.toolsDelegate moreTool:tool];
-                
             }
         }
     }];
-    moreAction.backgroundColor = [UIColor blueColor];
+    moreAction.backgroundColor = [UIColor colorWithRed:0.154 green:0.413 blue:0.691 alpha:1.000];
     Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([tool.stock intValue] > 0)
     {
-        [array addObject:rentAction];
         [array addObject:moreAction];
+        [array addObject:rentAction];
     }
     else
     {

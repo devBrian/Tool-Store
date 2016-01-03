@@ -33,6 +33,8 @@
             [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
         }
     }];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 #pragma mark - Tools Delegate
 -(void)moreTool:(Tool *)tool

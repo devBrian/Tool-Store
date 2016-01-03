@@ -43,10 +43,7 @@
         self.searchText = searchText;
         self.fetchedResultsController = nil;
         [self fetchDataWithCompletion:^(NSError *error) {
-            if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0)
-            {
-                [self.tableView reloadData];
-            }
+            [self.tableView reloadData];
         }];
     }
     else if (searchText.length == 0)
@@ -107,6 +104,7 @@
             }
         }
     }];
+    returnAction.backgroundColor = [UIColor colorWithRed:0.278 green:0.185 blue:0.593 alpha:1.000];
     UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"More" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         if (self.mainTableDelegate != nil)
         {
@@ -118,6 +116,7 @@
             }
         }
     }];
+    moreAction.backgroundColor = [UIColor colorWithRed:0.154 green:0.413 blue:0.691 alpha:1.000];
     [array addObject:moreAction];
     [array addObject:returnAction];
     return array;

@@ -34,6 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [[KeyboardManager sharedInstance] setScrollViewContainer:self.scrollView];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 -(void)viewWillAppear:(BOOL)animated
 {

@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputContainerHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *inputContainerView;
 @property (weak, nonatomic) IBOutlet UIView *tableContainerView;
-@property (weak, nonatomic) IBOutlet UIView *optionsContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomInputConstraint;
 @end
 
 @implementation CommentViewController
@@ -63,15 +63,17 @@
     [self.commentTableViewController.tableData removeObject:comment];
     [self.commentTableViewController.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
-
 #pragma mark - InputViewController Delegate
 -(void)sendInputText:(NSString *)text
 {
     [self createCommentWithText:text];
 }
--(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY
+-(void)updateContainerPosition:(CGFloat)bottom
 {
-    self.inputContainerView.frame = CGRectMake(posX, posY, self.inputContainerView.frame.size.width, self.inputContainerView.frame.size.height);
+    [UIView animateWithDuration:0.1f animations:^{
+        self.bottomInputConstraint.constant = bottom;
+        [self.view layoutIfNeeded];
+    }];
 }
 -(void)updateContainerHeight:(CGFloat)height
 {

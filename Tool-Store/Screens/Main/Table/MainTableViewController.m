@@ -122,10 +122,6 @@
     [array addObject:returnAction];
     return array;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"My Rentals";
-}
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController
 {

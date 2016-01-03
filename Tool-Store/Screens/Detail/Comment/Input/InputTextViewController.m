@@ -22,7 +22,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.textView.text = @"";
     [KeyboardManager sharedInstance].delegate = self;
 }
 #pragma mark - Keyboard Delegates
@@ -30,9 +29,9 @@
 {
     if (self.delegate != nil)
     {
-        if ([self.delegate respondsToSelector:@selector(updateContainerPosition:andPosY:)])
+        if ([self.delegate respondsToSelector:@selector(updateContainerPosition:)])
         {
-            [self.delegate updateContainerPosition:0 andPosY:(height + 50)];
+            [self.delegate updateContainerPosition:(height)];
         }
     }
 }
@@ -40,9 +39,9 @@
 {
     if (self.delegate != nil)
     {
-        if ([self.delegate respondsToSelector:@selector(updateContainerPosition:andPosY:)])
+        if ([self.delegate respondsToSelector:@selector(updateContainerPosition:)])
         {
-            [self.delegate updateContainerPosition:0 andPosY:0];
+            [self.delegate updateContainerPosition:0];
         }
     }
 }
@@ -69,29 +68,33 @@
     return (self.textView.text.length > 0);
 }
 #pragma mark - TextView Delegate
-- (void)textViewDidChange:(UITextView *)textView
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    CGFloat height = [self.textView sizeThatFits:CGSizeMake(textView.frame.size.width, CGFLOAT_MAX)].height + 8 + 8;
-    if (height != self.inputHeight && self.inputHeight < MAX_HEIGHT)
+    if ([text isEqualToString:@"\n"]) // Send message on return
     {
-        if (self.delegate != nil)
+        if (textView.text.length > 1)
         {
-            if ([self.delegate respondsToSelector:@selector(updateContainerHeight:)])
+            if (self.delegate != nil)
             {
-                [self.view setNeedsUpdateConstraints];
-                [self.view updateConstraintsIfNeeded];
-                self.inputHeight = height;
-                [self.delegate updateContainerHeight:height];
+                if ([self.delegate respondsToSelector:@selector(sendInputText:)])
+                {
+                    NSString *text = self.textView.text;
+                    self.textView.text = @"";
+                    [self.textView resignFirstResponder];
+                    [self.delegate sendInputText:text];
+                }
             }
+            return NO;
+        }
+        else
+        {
+            return NO;
         }
     }
+    return YES;
 }
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    self.textView.text = @"";
-}
--(void)textViewDidEndEditing:(UITextView *)textView
-{
-    [self sendAction:nil];
+    textView.text = @"";
 }
 @end

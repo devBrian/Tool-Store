@@ -30,16 +30,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:[[UserManager sharedInstance] getCurrentUser].email forKey:LAST_EMAIL_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
--(void)viewDidAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [super viewDidAppear:animated];
-}
--(void)viewDidDisappear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [super viewDidDisappear:animated];
-}
 -(IBAction)accountAction:(id)sender
 {
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Actions" message:nil preferredStyle:UIAlertControllerStyleActionSheet];

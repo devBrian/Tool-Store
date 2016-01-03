@@ -33,7 +33,6 @@
             [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
         }
     }];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 #pragma mark - Tools Delegate
 -(void)moreTool:(Tool *)tool

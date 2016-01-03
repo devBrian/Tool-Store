@@ -12,7 +12,7 @@
 @optional
 -(void)sendInputText:(NSString *)text;
 -(void)updateContainerHeight:(CGFloat)height;
--(void)updateContainerPosition:(CGFloat)posX andPosY:(CGFloat)posY;
+-(void)updateContainerPosition:(CGFloat)bottom;
 @end
 
 @interface InputTextViewController : UIViewController

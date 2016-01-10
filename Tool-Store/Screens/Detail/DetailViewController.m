@@ -41,7 +41,7 @@
     
     if ([self.loadedToolData.stock intValue] > 0)
     {
-        self.stockLabel.text = [NSString stringWithFormat:@"In Stock (%i)", [self.loadedToolData.stock intValue]];
+        self.stockLabel.text = [NSString stringWithFormat:@"%i left in stock", [self.loadedToolData.stock intValue]];
     }
     else
     {

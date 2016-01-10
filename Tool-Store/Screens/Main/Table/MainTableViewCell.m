@@ -28,13 +28,13 @@
     
     if ([tool.rental.quantity intValue] > 1)
     {
-        self.qtyLabel.text = [NSString stringWithFormat:@"(%i)",[tool.rental.quantity intValue]];
+        self.qtyLabel.text = [NSString stringWithFormat:@"%@ (%i)",tool.condition,[tool.rental.quantity intValue]];
     }
     else
     {
-        self.qtyLabel.text = @" ";
+        self.qtyLabel.text = tool.condition;
     }
-    
+    self.qtyLabel.textColor = [Functions colorForCondition:tool.condition];
     self.nameLabel.text = tool.name;
     self.manufacturerLabel.text = tool.manufacturer;
     NSInteger days = [Functions differenceInDays:[NSDate date] toDate:data.due_date];

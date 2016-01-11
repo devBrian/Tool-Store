@@ -148,7 +148,7 @@
             [fetchRequest setPredicate:predicate];
         }
         // Edit the sort key as appropriate.
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"due_date" ascending:YES];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rent_date" ascending:NO];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
         
         // Edit the section name key path and cache name if appropriate.

@@ -47,10 +47,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([[UserManager sharedInstance] isLoggedIn] == YES)
-    {
-        [self performSegueWithIdentifier:@"main" sender:self];
-    }
+    [self.emailTextField becomeFirstResponder];
 }
 #pragma mark - UITextField Delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField

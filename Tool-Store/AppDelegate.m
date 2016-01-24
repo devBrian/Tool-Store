@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Functions.h"
+#import "UserManager.h"
 
 @interface AppDelegate ()
 
@@ -18,11 +19,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isLoaded"] == NO)
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:PRELOAD_KEY] == NO)
     {
         [Functions preloadTools:self.managedObjectContext];
         [Functions preloadUsers:self.managedObjectContext];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:PRELOAD_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    NSString *mainId = @"mainViewController";
+    NSString *signInId = @"signInViewController";
+    
+    NSString *storyboardId;
+    if ([[UserManager sharedInstance] isLoggedIn] == YES)
+    {
+        storyboardId = mainId;
+    }
+    else
+    {
+        storyboardId = signInId;
+    }
+    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:storyboardId];
+    
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application

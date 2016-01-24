@@ -15,3 +15,4 @@
 
 
 #define LAST_EMAIL_KEY @"last_email"
+#define PRELOAD_KEY @"PRELOAD"

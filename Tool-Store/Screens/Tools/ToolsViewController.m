@@ -99,7 +99,6 @@
     NSError *error;
     if ([[context executeFetchRequest:request error:&error] count] > 0)
     {
-        NSLog(@"%@",[context executeFetchRequest:request error:&error]);
         Rental *rental = [[context executeFetchRequest:request error:&error] lastObject];
         if([[NSCalendar currentCalendar] isDate:rental.rent_date inSameDayAsDate:[NSDate date]] == YES)
         {

@@ -32,6 +32,11 @@
     self.title = @"Comments";
     [self.commentTableViewController refreshTableData:[self.loadedToolData.comments allObjects].mutableCopy];
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 -(void)createCommentWithText:(NSString *)text
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

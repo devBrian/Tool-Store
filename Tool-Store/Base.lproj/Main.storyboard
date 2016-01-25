@@ -352,6 +352,9 @@
                             <outlet property="delegate" destination="t3j-0x-LY2" id="g2r-mH-FAf"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="Hnq-f4-lvq" id="LrK-JJ-kgE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKJ-Co-gdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -366,6 +369,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="SwH-J2-oWC">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Mae-H2-5Ra" kind="relationship" relationship="rootViewController" id="5GC-aJ-21g"/>
                     </connections>
@@ -378,7 +385,7 @@
         <scene sceneID="2nk-U5-9SJ">
             <objects>
                 <tableViewController id="yxo-Tf-Bc4" customClass="AccountTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="24Q-vS-Czh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="24Q-vS-Czh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

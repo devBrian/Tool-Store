@@ -997,4 +997,4 @@
 {"condition":"poor","image":"https://unsplash.it/1024/?random","manufacturer":"Katz","name":"ADVAIR HFA","origin":"Indonesia","overdue_fee":"26.17","rent_duration":63,"rent_price":"918.80","stock":4},
 {"condition":"poor","image":"https://unsplash.it/1024/?random","manufacturer":"Chatterpoint","name":"Lovastatin","origin":"Philippines","overdue_fee":"35.07","rent_duration":28,"rent_price":"382.22","stock":4},
 {"condition":"best","image":"https://unsplash.it/1024/?random","manufacturer":"Quimba","name":"Heparin Sodium","origin":"Ireland","overdue_fee":"35.01","rent_duration":40,"rent_price":"863.85","stock":19},
-{"condition":"poor","image":"https://unsplash.it/1024/?random","manufacturer":"Yambee","name":"Metformin Hydrochloride","origin":"Indonesia","overdue_fee":"12.97","rent_duration":53,"rent_price":"515.33","stock":23}]
+{"condition":"poor","image":"https://unsplash.it/1024/?random","manufacturer":"Yambee","name":"Metformin Hydrochloride","origin":"Indonesia","overdue_fee":"12.97","rent_duration":53,"rent_price":"515.33","stock":23} ]

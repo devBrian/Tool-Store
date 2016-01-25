@@ -28,6 +28,7 @@
     self.companyCell.detailTextLabel.text = [UserManager sharedInstance].getCurrentUser.company;
     self.versionCell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.joinCell.detailTextLabel.text = [Functions stringFromDate:[UserManager sharedInstance].getCurrentUser.joined_date];
+    self.tableView.tableFooterView = [UIView new];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

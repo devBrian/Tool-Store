@@ -10,10 +10,12 @@
 #import "MainTableViewCell.h"
 #import "AppDelegate.h"
 #import "UserManager.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface MainTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate>
+@interface MainTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSString *searchText;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation MainTableViewController
@@ -24,6 +26,23 @@
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 66.0f;
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.tableView.emptyDataSetVisible == NO)
+    {
+        self.searchBar.hidden = NO;
+    }
+    else
+    {
+        self.searchBar.hidden = YES;
+    }
 }
 -(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
@@ -55,6 +74,34 @@
             [self.tableView reloadData];
         }];
     }
+}
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ic_gavel"];
+}
+-(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    self.searchBar.hidden = YES;
+    NSString *text = @"No Rentals yet";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Visit the store and swipe to rent tools today";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

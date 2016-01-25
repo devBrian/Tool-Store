@@ -99,12 +99,11 @@
     NSError *error;
     if ([[context executeFetchRequest:request error:&error] count] > 0)
     {
+        NSLog(@"%@",[context executeFetchRequest:request error:&error]);
         Rental *rental = [[context executeFetchRequest:request error:&error] lastObject];
-        NSDateComponents *otherDay = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:rental.rent_date];
-        NSDateComponents *today = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:[NSDate date]];
-        if([today day] == [otherDay day] && [today month] == [otherDay month] && [today year] == [otherDay year] && [today era] == [otherDay era])
+        if([[NSCalendar currentCalendar] isDate:rental.rent_date inSameDayAsDate:[NSDate date]] == YES)
         {
-            rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]+1];
+            rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue] + 1];
             [self saveExistingTool:tool];
             return YES;
         }

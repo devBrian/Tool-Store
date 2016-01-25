@@ -806,7 +806,7 @@
                                                     <outlet property="delegate" destination="CM1-qg-WEv" id="VXm-Bv-HjX"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="••••••••••" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-u9-scH">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="●●●●●●●●●●" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-u9-scH">
                                                 <rect key="frame" x="0.0" y="65" width="304" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Vgk-US-Z0W"/>
@@ -1102,10 +1102,10 @@
             <objects>
                 <tabBarController id="Mae-H2-5Ra" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="FEq-Sf-GNm"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="oYC-WZ-HqR">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="oYC-WZ-HqR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="x9n-of-F8d" kind="relationship" relationship="viewControllers" id="FdM-ap-2hY"/>

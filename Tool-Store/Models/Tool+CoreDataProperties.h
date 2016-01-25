@@ -2,8 +2,8 @@
 //  Tool+CoreDataProperties.h
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 10/17/15.
-//  Copyright © 2015 Brian Sinnicke. All rights reserved.
+//  Created by Brian Sinnicke on 1/24/16.
+//  Copyright © 2016 Brian Sinnicke. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -11,6 +11,7 @@
 
 #import "Tool.h"
 #import "Comment.h"
+#import "Rental.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *rent_price;
 @property (nullable, nonatomic, retain) NSNumber *stock;
 @property (nullable, nonatomic, retain) NSSet<Comment *> *comments;
-@property (nullable, nonatomic, retain) Rental *rental;
+@property (nullable, nonatomic, retain) NSSet<Rental *> *rental;
 
 @end
 
@@ -36,6 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeCommentsObject:(Comment *)value;
 - (void)addComments:(NSSet<Comment *> *)values;
 - (void)removeComments:(NSSet<Comment *> *)values;
+
+- (void)addRentalObject:(Rental *)value;
+- (void)removeRentalObject:(Rental *)value;
+- (void)addRental:(NSSet<Rental *> *)values;
+- (void)removeRental:(NSSet<Rental *> *)values;
 
 @end
 

@@ -77,12 +77,14 @@
 {
     [UIView animateWithDuration:0.1f animations:^{
         self.bottomInputConstraint.constant = bottom;
-        [self.view layoutIfNeeded];
+        [self.inputContainerView layoutIfNeeded];
     }];
 }
 -(void)updateContainerHeight:(CGFloat)height
 {
-    self.inputContainerHeightConstraint.constant = height;
+    [UIView animateWithDuration:0.1f animations:^{
+        self.inputContainerHeightConstraint.constant = height;
+    }];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

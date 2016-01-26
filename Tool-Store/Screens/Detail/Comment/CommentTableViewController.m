@@ -10,8 +10,9 @@
 #import "CommentTableViewCell.h"
 #import "AppDelegate.h"
 #import "UserManager.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface CommentTableViewController ()
+@interface CommentTableViewController () <DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @end
 
@@ -23,6 +24,11 @@
     self.tableData = [NSMutableArray new];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100.0f;
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
 }
 #pragma mark - Public
 -(void)refreshTableData:(NSMutableArray *)data
@@ -32,14 +38,45 @@
     NSArray *sortedArray = [data sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
     [self.tableData addObjectsFromArray:sortedArray];
     [self.tableView reloadData];
-    [self scrollToBottom];
+    [self performSelector:@selector(scrollToBottom) withObject:nil afterDelay:0.25f];
 }
 -(void)scrollToBottom
 {
     if ([self.tableData count] > 0)
     {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableData count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        NSIndexPath *bottomIndexPath = [NSIndexPath indexPathForRow:[self.tableData count]-1 inSection:0];
+        if ([self.tableView.indexPathsForVisibleRows containsObject:bottomIndexPath] == NO)
+        {
+            [self.tableView scrollToRowAtIndexPath:bottomIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
     }
+}
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ic_comment"];
+}
+-(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Be the first";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Comment about the Tool";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -68,7 +105,14 @@
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Comments";
+    if ([self.tableData count] > 0)
+    {
+        return @"Comments";
+    }
+    else
+    {
+        return @"";
+    }
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

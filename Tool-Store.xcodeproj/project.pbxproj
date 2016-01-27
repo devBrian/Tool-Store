@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		148C302B44CC367CB2067432 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E144775A4495D626CCD0B9 /* libPods.a */; };
+		DC12D6461C586866007B37C8 /* RentalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC12D6451C586866007B37C8 /* RentalManager.m */; };
+		DC12D6491C58687D007B37C8 /* ToolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC12D6481C58687D007B37C8 /* ToolManager.m */; };
 		DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */; };
 		DC2DC13A1BD1E26C0071FB8E /* Rental.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1301BD1E26C0071FB8E /* Rental.m */; };
 		DC2DC13B1BD1E26C0071FB8E /* Tool+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1321BD1E26C0071FB8E /* Tool+CoreDataProperties.m */; };
@@ -60,6 +62,10 @@
 		06E144775A4495D626CCD0B9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		269513383A3E07B1CDD36C81 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2F564F1710FB5287860AD900 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DC12D6441C586866007B37C8 /* RentalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalManager.h; sourceTree = "<group>"; };
+		DC12D6451C586866007B37C8 /* RentalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalManager.m; sourceTree = "<group>"; };
+		DC12D6471C58687D007B37C8 /* ToolManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolManager.h; sourceTree = "<group>"; };
+		DC12D6481C58687D007B37C8 /* ToolManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolManager.m; sourceTree = "<group>"; };
 		DC2DC12D1BD1E26C0071FB8E /* Rental+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rental+CoreDataProperties.h"; sourceTree = "<group>"; };
 		DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Rental+CoreDataProperties.m"; sourceTree = "<group>"; };
 		DC2DC12F1BD1E26C0071FB8E /* Rental.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rental.h; sourceTree = "<group>"; };
@@ -267,6 +273,10 @@
 				DC9CF5AE1B44F477004DA1B4 /* KeyboardManager.m */,
 				DC9CF5A51B44F349004DA1B4 /* UserManager.h */,
 				DC9CF5A61B44F349004DA1B4 /* UserManager.m */,
+				DC12D6441C586866007B37C8 /* RentalManager.h */,
+				DC12D6451C586866007B37C8 /* RentalManager.m */,
+				DC12D6471C58687D007B37C8 /* ToolManager.h */,
+				DC12D6481C58687D007B37C8 /* ToolManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -541,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC2DC13A1BD1E26C0071FB8E /* Rental.m in Sources */,
+				DC12D6491C58687D007B37C8 /* ToolManager.m in Sources */,
 				DCFDD5A91C38986900B88F87 /* WebViewController.m in Sources */,
 				DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */,
 				DC9CF5BA1B44F990004DA1B4 /* ToolsViewController.m in Sources */,
@@ -570,6 +581,7 @@
 				DC9CF5B51B44F496004DA1B4 /* Functions.m in Sources */,
 				DC9CF5791B44D7E1004DA1B4 /* MainViewController.m in Sources */,
 				DC9CF5761B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld in Sources */,
+				DC12D6461C586866007B37C8 /* RentalManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@
 
 @interface UserManager()
 @property (strong, nonatomic) User *currentUser;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 @end
 
 @implementation UserManager
@@ -25,8 +26,8 @@
         sharedInstance = [[UserManager alloc] init];
         // Allocates a currentUser for Core Data.
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+        sharedInstance.context = [appDelegate managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:sharedInstance.context];
         if (sharedInstance.currentUser == nil)
         {
             sharedInstance.currentUser = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
@@ -44,10 +45,8 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"email == '%@'",[[NSUserDefaults standardUserDefaults] stringForKey:LAST_EMAIL_KEY]]];
     [request setPredicate:predicate];
     
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSError *error;
-    NSArray *results = [context executeFetchRequest:request error:&error];
+    NSArray *results = [self.context executeFetchRequest:request error:&error];
     
     if ([results count] == 1)
     {
@@ -58,11 +57,9 @@
 }
 -(void)insertUser:(User *)user completion:(void (^)(NSError *error))completion
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    [context insertObject:user];
+    [self.context insertObject:user];
     NSError *error;
-    if (![context save:&error])
+    if (![self.context save:&error])
     {
         if (completion)
         {
@@ -80,10 +77,8 @@
 }
 -(void)saveUser:(User *)user completion:(void (^)(NSError *error))completion
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSError *error;
-    if (![context save:&error])
+    if (![self.context save:&error])
     {
         if (completion)
         {
@@ -107,9 +102,7 @@
 }
 -(BOOL)userExistsWithEmail:(NSString *)email
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.context];
     NSFetchRequest *request = [NSFetchRequest new];
     [request setEntity:entity];
     
@@ -117,15 +110,13 @@
     [request setPredicate:predicate];
     
     NSError *error;
-    NSArray *results = [context executeFetchRequest:request error:&error];
+    NSArray *results = [self.context executeFetchRequest:request error:&error];
     
     return (results && results.count > 0);
 }
 -(BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.context];
     NSFetchRequest *request = [NSFetchRequest new];
     [request setEntity:entity];
     
@@ -133,7 +124,7 @@
     [request setPredicate:predicate];
     
     NSError *error;
-    NSArray *results = [context executeFetchRequest:request error:&error];
+    NSArray *results = [self.context executeFetchRequest:request error:&error];
     
     if (results && results.count > 0)
     {

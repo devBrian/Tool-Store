@@ -14,6 +14,8 @@
 #import "Functions.h"
 #import "Tool.h"
 #import "DetailViewController.h"
+#import "ToolManager.h"
+#import "RentalManager.h"
 
 @interface MainViewController () <MainTableViewControllerDelegate>
 @property (strong, nonatomic) MainTableViewController *mainTableViewController;
@@ -55,48 +57,15 @@
 }
 -(void)returnRental:(Rental *)rental
 {
-    if ([Functions isDateOverDue:rental.due_date])
+    NSString *errorMessage = [[RentalManager sharedInstance] returnRental:rental];
+    if (errorMessage.length > 0)
     {
-        [Functions showErrorWithMessage:[NSString stringWithFormat:@"Rental is overdue! You will be charged %.2f.", [rental.tool.overdue_fee floatValue]] forViewController:self];
-    }
-    if ([rental.quantity intValue] == 1)
-    {
-        [self updateExistingTool:rental.tool];
-        [self deleteTool:rental];
-    }
-    else
-    {
-        rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue]-1];
-    }
-}
--(void)deleteTool:(Rental *)rental
-{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    [context deleteObject:rental];
-    NSError *error;
-    if (![context save:&error])
-    {
-        [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+       [Functions showErrorWithMessage:errorMessage forViewController:self];
     }
 }
 -(void)updateExistingTool:(Tool *)tool
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tool"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == %@", tool];
-    request.predicate = predicate;
-    
-    NSError *error;
-    Tool *temp = [[context executeFetchRequest:request error:&error] lastObject];
-    temp.stock = [NSNumber numberWithInt:[tool.stock intValue] + 1];
-    
-    if (![context save:&error])
-    {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
+    [[ToolManager sharedInstance] updateExistingTool:tool];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

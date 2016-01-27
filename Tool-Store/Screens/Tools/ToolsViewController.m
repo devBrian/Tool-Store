@@ -14,6 +14,8 @@
 #import "AppDelegate.h"
 #import "Functions.h"
 #import "DetailViewController.h"
+#import "ToolManager.h"
+#import "RentalManager.h"
 
 @interface ToolsViewController () <ToolsTableViewControllerDelegate>
 @property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
@@ -52,69 +54,15 @@
 }
 -(void)createRentalForTool:(Tool *)tool andUser:(User *)user
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    Rental *rental = [NSEntityDescription insertNewObjectForEntityForName:@"Rental" inManagedObjectContext:context];
-    rental.tool = tool;
-    rental.user = user;
-    rental.rent_date = [NSDate date];
-    rental.quantity = [NSNumber numberWithInt:1];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *due_date = [calendar dateByAddingUnit:NSCalendarUnitDay value:[tool.rent_duration intValue] toDate:[NSDate date] options:0];
-    rental.due_date = due_date;
-    NSError *error;
-    if (![context save:&error])
-    {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
+    [[RentalManager sharedInstance] createRentalForTool:tool andUser:user];
 }
 -(void)saveExistingTool:(Tool *)tool
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tool"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == %@", tool];
-    request.predicate = predicate;
-    
-    NSError *error;
-    Tool *temp = [[context executeFetchRequest:request error:&error] lastObject];
-    temp.stock = [NSNumber numberWithInt:[tool.stock intValue]-1];
-    
-    if (![context save:&error])
-    {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
+    [[ToolManager sharedInstance] saveExistingTool:tool];
 }
 -(BOOL)toolRentalExists:(Tool *)tool
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Rental"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tool == %@", tool];
-    request.predicate = predicate;
-    
-    NSError *error;
-    if ([[context executeFetchRequest:request error:&error] count] > 0)
-    {
-        Rental *rental = [[context executeFetchRequest:request error:&error] lastObject];
-        if([[NSCalendar currentCalendar] isDate:rental.rent_date inSameDayAsDate:[NSDate date]] == YES)
-        {
-            rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue] + 1];
-            [self saveExistingTool:tool];
-            return YES;
-        }
-        else
-        {
-            return NO;
-        }
-    }
-    else
-    {
-        return NO;
-    }
+    return [[ToolManager sharedInstance] toolRentalExists:tool];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

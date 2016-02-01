@@ -10,6 +10,13 @@
 #import "Rental.h"
 #import "Tool.h"
 
+@protocol MainTableViewCellDelegate <NSObject>
+@optional
+-(void)returnRental:(Rental *)rental;
+@end
+
 @interface MainTableViewCell : UITableViewCell
+@property (weak,nonatomic) id <MainTableViewCellDelegate> delegate;
+@property(nonatomic, readwrite) id activeData;
 -(void)setCellData:(Rental *)data;
 @end

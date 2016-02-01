@@ -10,12 +10,15 @@
 #import "UserManager.h"
 #import "Functions.h"
 #import "SignInViewController.h"
+#import "Form.h"
+#import "FormViewController.h"
 
-@interface AccountTableViewController ()
+@interface AccountTableViewController () <FormViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableViewCell *emailCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *companyCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *versionCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *joinCell;
+@property (nonatomic, strong) NSMutableArray *formData;
 @end
 
 @implementation AccountTableViewController
@@ -29,6 +32,7 @@
     self.versionCell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.joinCell.detailTextLabel.text = [Functions stringFromDate:[UserManager sharedInstance].getCurrentUser.joined_date];
     self.tableView.tableFooterView = [UIView new];
+    self.formData = [NSMutableArray new];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -38,37 +42,16 @@
         {
             if (indexPath.row == 0)
             {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Edit Email" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                    textField.placeholder = [UserManager sharedInstance].getCurrentUser.email;
-                    textField.keyboardType = UIKeyboardTypeEmailAddress;
-                    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-                }];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    NSString *newEmail = alertController.textFields[0].text;
-                    if (NSStringIsValidEmail(newEmail, YES) == YES)
-                    {
-                        [UserManager sharedInstance].getCurrentUser.email = newEmail;
-                        [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
-                            if (error != nil)
-                            {
-                                [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
-                            }
-                            else
-                            {
-                                self.emailCell.detailTextLabel.text = newEmail;
-                            }
-                        }];
-                    }
-                    else
-                    {
-                        [Functions showErrorWithMessage:@"Your email is in Bad format" forViewController:self];
-                    }
-                }]];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    
-                }]];
-                [self presentViewController:alertController animated:YES completion:nil];
+                Form *form = [Form new];
+                form.form_id = 1;
+                form.formText = [UserManager sharedInstance].getCurrentUser.email;
+                form.formTitle = @"Email";
+                form.formPlaceholder = @"Email";
+                form.keyboardType = UIKeyboardTypeEmailAddress;
+                [self.formData removeAllObjects];
+                [self.formData addObject:form];
+                
+                [self performSegueWithIdentifier:@"formSegue" sender:self];
             }
             else if (indexPath.row == 1)
             {
@@ -170,6 +153,41 @@
             
         default:
             break;
+    }
+}
+-(void)formSubmitted:(Form *)formData
+{
+    if ([formData.formTitle isEqualToString:@"Email"] == YES)
+    {
+        NSString *newEmail = formData.formText;
+        if (NSStringIsValidEmail(newEmail, YES) == YES)
+        {
+            [UserManager sharedInstance].getCurrentUser.email = newEmail;
+            [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
+                if (error != nil)
+                {
+                    [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+                }
+                else
+                {
+                    self.emailCell.detailTextLabel.text = newEmail;
+                }
+            }];
+        }
+        else
+        {
+            [Functions showErrorWithMessage:@"Your email is in Bad format" forViewController:self];
+        }
+    }
+}
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"formSegue"])
+    {
+        FormViewController *vc = (FormViewController *)segue.destinationViewController;
+        vc.delegate = self;
+        vc.loadedFormData = self.formData;
     }
 }
 @end

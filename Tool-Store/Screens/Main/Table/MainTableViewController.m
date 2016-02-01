@@ -12,24 +12,22 @@
 #import "UserManager.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@interface MainTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface MainTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, MainTableViewCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSString *searchText;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation MainTableViewController
-
+#pragma mark - Life
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 66.0f;
-    
+    self.tableView.estimatedRowHeight = 88.0f;
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
-    
     self.tableView.tableFooterView = [UIView new];
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -44,6 +42,7 @@
         self.searchBar.hidden = YES;
     }
 }
+#pragma mark - Public
 -(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
     NSError *error = nil;
@@ -54,7 +53,7 @@
     }
     completion(error);
 }
-#pragma mark - Search bar Delegate
+#pragma mark - UISearchBar Delegate
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length > 2)
@@ -75,6 +74,18 @@
         }];
     }
 }
+#pragma mark - MainTableViewCell Delegate
+-(void)returnRental:(Rental *)rental
+{
+    if (self.mainTableDelegate != nil)
+    {
+        if ([self.mainTableDelegate respondsToSelector:@selector(returnRental:)])
+        {
+            [self.mainTableDelegate returnRental:rental];
+        }
+    }
+}
+#pragma mark - DZNEmptyDataSet
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
     return [UIImage imageNamed:@"ic_gavel"];
@@ -82,25 +93,20 @@
 -(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
     self.searchBar.hidden = YES;
-    NSString *text = @"No Rentals yet";
-    
+    NSString *text = @"No Tool Rentals yet";
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"Visit the store and swipe to rent tools today";
-    
+    NSString *text = @"Tools you rent will live here. Visit the store and start renting today!";
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
     paragraph.alignment = NSTextAlignmentCenter;
-    
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
                                  NSForegroundColorAttributeName: [UIColor lightGrayColor],
                                  NSParagraphStyleAttributeName: paragraph};
-    
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 #pragma mark - Table view data source
@@ -131,6 +137,7 @@
 - (void)configureCell:(MainTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Rental *rental = (Rental *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.delegate = self;
     [cell setCellData:rental];
 }
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,18 +147,6 @@
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *array = [NSMutableArray new];
-    UITableViewRowAction *returnAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Return" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        if (self.mainTableDelegate != nil)
-        {
-            if ([self.mainTableDelegate respondsToSelector:@selector(returnRental:)])
-            {
-                [self.tableView setEditing:NO animated:YES];
-                Rental *rental = (Rental *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-                [self.mainTableDelegate returnRental:rental];
-            }
-        }
-    }];
-    returnAction.backgroundColor = [UIColor colorWithRed:0.278 green:0.185 blue:0.593 alpha:1.000];
     UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"More" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         if (self.mainTableDelegate != nil)
         {
@@ -165,7 +160,6 @@
     }];
     moreAction.backgroundColor = [UIColor colorWithRed:0.154 green:0.413 blue:0.691 alpha:1.000];
     [array addObject:moreAction];
-    [array addObject:returnAction];
     return array;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

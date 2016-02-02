@@ -11,7 +11,7 @@
 
 @protocol FormViewControllerDelegate <NSObject>
 @optional
--(void)formSubmitted:(Form *)formData;
+-(void)formSubmitted:(NSMutableArray *)formData;
 @end
 
 @interface FormViewController : UIViewController

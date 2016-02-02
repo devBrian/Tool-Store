@@ -23,6 +23,13 @@
     self.formTextfield.text = formData.formText;
     self.formTextfield.autocorrectionType = UITextAutocorrectionTypeNo;
     self.formTextfield.delegate = self;
+    self.formTextfield.secureTextEntry = formData.isSecure;
+    self.formTextfield.tag = formData.form_id;
+    self.formTextfield.returnKeyType = formData.returnKeyType;
+    if (formData.form_id == 1)
+    {
+        [self.formTextfield becomeFirstResponder];
+    }
 }
 -(void)formSubmitted:(Form *)formData
 {
@@ -41,5 +48,26 @@
     data.formText = textField.text;
     [self formSubmitted:data];
     return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    Form *data = (Form *)self.activeData;
+    data.formText = textField.text;
+    [self formSubmitted:data];
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSInteger nextTag = textField.tag + 1;
+    UIResponder *nextResponder = [self.superview viewWithTag:nextTag];
+    UITextField *cell = (UITextField *) nextResponder;
+    if (cell)
+    {
+        [cell becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+    }
+    return NO;
 }
 @end

@@ -17,4 +17,5 @@
 @property (nonatomic, strong) NSString *formText;
 @property (nonatomic, readwrite) UIKeyboardType keyboardType;
 @property (nonatomic, readwrite) BOOL isSecure;
+@property (nonatomic, readwrite) UIReturnKeyType returnKeyType;
 @end

@@ -1136,7 +1136,7 @@
         <scene sceneID="aPR-Vc-a3g">
             <objects>
                 <tableViewController id="0ae-J9-Jf5" customClass="FormTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="emc-xS-fAB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" id="emc-xS-fAB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1148,17 +1148,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="text" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81c-Zw-pHM">
-                                            <rect key="frame" x="8" y="22" width="304" height="22"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="text" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="81c-Zw-pHM">
+                                            <rect key="frame" x="15" y="8" width="297" height="49"/>
                                             <color key="textColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="81c-Zw-pHM" firstAttribute="centerY" secondItem="loC-MC-MhF" secondAttribute="centerY" id="WWr-fg-vxQ"/>
                                         <constraint firstAttribute="trailing" secondItem="81c-Zw-pHM" secondAttribute="trailing" constant="8" id="feU-K5-cds"/>
-                                        <constraint firstItem="81c-Zw-pHM" firstAttribute="leading" secondItem="loC-MC-MhF" secondAttribute="leading" constant="8" id="sgC-Ly-uNO"/>
+                                        <constraint firstItem="81c-Zw-pHM" firstAttribute="top" secondItem="loC-MC-MhF" secondAttribute="top" constant="8" id="rwB-Kv-r5Q"/>
+                                        <constraint firstItem="81c-Zw-pHM" firstAttribute="leading" secondItem="loC-MC-MhF" secondAttribute="leading" constant="15" id="sgC-Ly-uNO"/>
+                                        <constraint firstAttribute="bottom" secondItem="81c-Zw-pHM" secondAttribute="bottom" constant="8" id="sxd-v9-5zO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

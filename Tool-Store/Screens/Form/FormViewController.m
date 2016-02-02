@@ -23,7 +23,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(submit)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-    self.title = @"Form";
+    self.title = @"Edit";
     [self.formTableViewController refreshTableData:self.loadedFormData];
     self.formItem = self.loadedFormData.lastObject;
 }
@@ -47,14 +47,23 @@
     {
         if ([self.delegate respondsToSelector:@selector(formSubmitted:)])
         {
-            [self.delegate formSubmitted:self.formItem];
+            [self.delegate formSubmitted:self.loadedFormData];
         }
     }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)formSubmitted:(Form *)formData
 {
-    self.formItem = formData;
+    NSInteger index = 0;
+    for (Form *data in self.loadedFormData)
+    {
+        if (data.form_id == formData.form_id)
+        {
+            break;
+        }
+        index++;
+    }
+    [self.loadedFormData replaceObjectAtIndex:index withObject:formData];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

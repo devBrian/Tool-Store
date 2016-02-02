@@ -48,6 +48,7 @@
                 form.formTitle = @"Email";
                 form.formPlaceholder = @"Email";
                 form.keyboardType = UIKeyboardTypeEmailAddress;
+                form.returnKeyType = UIReturnKeyDone;
                 [self.formData removeAllObjects];
                 [self.formData addObject:form];
                 
@@ -55,82 +56,53 @@
             }
             else if (indexPath.row == 1)
             {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Edit Company" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                    textField.placeholder = [UserManager sharedInstance].getCurrentUser.company;
-                    textField.keyboardType = UIKeyboardTypeDefault;
-                    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-                }];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    NSString *newCompany = alertController.textFields[0].text;
-                    if (newCompany.length >= 3)
-                    {
-                        [UserManager sharedInstance].getCurrentUser.company = newCompany;
-                        [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
-                            if (error != nil)
-                            {
-                                [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
-                            }
-                            else
-                            {
-                               self.companyCell.detailTextLabel.text = newCompany;
-                            }
-                        }];
-                    }
-                    else
-                    {
-                        [Functions showErrorWithMessage:@"Too short (3)" forViewController:self];
-                    }
-                }]];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    
-                }]];
-                [self presentViewController:alertController animated:YES completion:nil];
+                
+                Form *form = [Form new];
+                form.form_id = 1;
+                form.formText = [UserManager sharedInstance].getCurrentUser.company;
+                form.formTitle = @"Company";
+                form.formPlaceholder = @"Company";
+                form.keyboardType = UIKeyboardTypeDefault;
+                form.returnKeyType = UIReturnKeyDone;
+                [self.formData removeAllObjects];
+                [self.formData addObject:form];
+                
+                [self performSegueWithIdentifier:@"formSegue" sender:self];
             }
             else if (indexPath.row == 3)
             {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Edit Password" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                    textField.placeholder = @"Password";
-                    textField.secureTextEntry = YES;
-                }];
-                [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                    textField.placeholder = @"New Password";
-                    textField.secureTextEntry = YES;
-                }];
-                [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                    textField.placeholder = @"Confirm New Password";
-                    textField.secureTextEntry = YES;
-                }];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    
-                    NSString *password = alertController.textFields[0].text;
-                    if ([password isEqualToString:[UserManager sharedInstance].getCurrentUser.password])
-                    {
-                        NSString *newPassword = alertController.textFields[1].text;
-                        NSString *confirmNewPassword = alertController.textFields[2].text;
-                        
-                        if ([newPassword isEqualToString:confirmNewPassword])
-                        {
-                            [UserManager sharedInstance].getCurrentUser.password = newPassword;
-                            [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
-                                //
-                            }];
-                        }
-                        else
-                        {
-                            [Functions showErrorWithMessage:@"Passwords do not match" forViewController:self];
-                        }
-                    }
-                    else
-                    {
-                        [Functions showErrorWithMessage:@"Password incorrect" forViewController:self];
-                    }
-                }]];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    
-                }]];
-                [self presentViewController:alertController animated:YES completion:nil];
+                Form *form = [Form new];
+                form.form_id = 1;
+                form.formText = @"";
+                form.formTitle = @"Password";
+                form.formPlaceholder = @"Password";
+                form.keyboardType = UIKeyboardTypeDefault;
+                form.returnKeyType = UIReturnKeyNext;
+                form.isSecure = YES;
+                
+                Form *form1 = [Form new];
+                form1.form_id = 2;
+                form1.formText = @"";
+                form1.formTitle = @"New Password";
+                form1.formPlaceholder = @"New Password";
+                form1.keyboardType = UIKeyboardTypeDefault;
+                form1.returnKeyType = UIReturnKeyNext;
+                form1.isSecure = YES;
+                
+                Form *form2 = [Form new];
+                form2.form_id = 3;
+                form2.formText = @"";
+                form2.formTitle = @"Confirm new password";
+                form2.formPlaceholder = @"Confirm new password";
+                form2.keyboardType = UIKeyboardTypeDefault;
+                form2.returnKeyType = UIReturnKeyDone;
+                form2.isSecure = YES;
+                
+                [self.formData removeAllObjects];
+                [self.formData addObjectsFromArray:@[form,form1,form2]];
+                
+                [self performSegueWithIdentifier:@"formSegue" sender:self];
+                
             }
             break;
             }
@@ -155,28 +127,82 @@
             break;
     }
 }
--(void)formSubmitted:(Form *)formData
+-(void)formSubmitted:(NSMutableArray *)formData
 {
-    if ([formData.formTitle isEqualToString:@"Email"] == YES)
+    if ([formData count] == 1)
     {
-        NSString *newEmail = formData.formText;
-        if (NSStringIsValidEmail(newEmail, YES) == YES)
+        Form *form = (Form *)formData.firstObject;
+        if ([form.formTitle isEqualToString:@"Email"] == YES)
         {
-            [UserManager sharedInstance].getCurrentUser.email = newEmail;
-            [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
-                if (error != nil)
-                {
-                    [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
-                }
-                else
-                {
-                    self.emailCell.detailTextLabel.text = newEmail;
-                }
-            }];
+            NSString *newEmail = form.formText;
+            if (NSStringIsValidEmail(newEmail, YES) == YES)
+            {
+                [UserManager sharedInstance].getCurrentUser.email = newEmail;
+                [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
+                    if (error != nil)
+                    {
+                        [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+                    }
+                    else
+                    {
+                        self.emailCell.detailTextLabel.text = newEmail;
+                    }
+                }];
+            }
+            else
+            {
+                [Functions showErrorWithMessage:@"Your email is in Bad format" forViewController:self];
+            }
+        }
+        else if ([form.formTitle isEqualToString:@"Company"] == YES)
+        {
+            NSString *newCompany = form.formText;
+            if (newCompany.length >= 3)
+            {
+                [UserManager sharedInstance].getCurrentUser.company = newCompany;
+                [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
+                    if (error != nil)
+                    {
+                        [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+                    }
+                    else
+                    {
+                        self.companyCell.detailTextLabel.text = newCompany;
+                    }
+                }];
+            }
+            else
+            {
+                [Functions showErrorWithMessage:@"Too short (3)" forViewController:self];
+            }
+        }
+    }
+    else
+    {
+        Form *form = (Form *)formData.firstObject;
+        NSString *password = form.formText;
+        if ([password isEqualToString:[UserManager sharedInstance].getCurrentUser.password])
+        {
+            Form *form1 = (Form *)formData[1];
+            Form *form2 = (Form *)formData.lastObject;
+            NSString *newPassword = form1.formText;
+            NSString *confirmNewPassword = form2.formText;
+            
+            if ([newPassword isEqualToString:confirmNewPassword])
+            {
+                [UserManager sharedInstance].getCurrentUser.password = newPassword;
+                [[UserManager sharedInstance] saveUser:[UserManager sharedInstance].getCurrentUser completion:^(NSError *error) {
+                    //
+                }];
+            }
+            else
+            {
+                [Functions showErrorWithMessage:@"Passwords do not match" forViewController:self];
+            }
         }
         else
         {
-            [Functions showErrorWithMessage:@"Your email is in Bad format" forViewController:self];
+            [Functions showErrorWithMessage:@"Password incorrect" forViewController:self];
         }
     }
 }

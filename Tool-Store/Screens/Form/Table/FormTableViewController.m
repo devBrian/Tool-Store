@@ -46,7 +46,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.tableData.count;
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -65,7 +65,7 @@
 }
 - (void)configureCell:(FormTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Form *form = (Form *)[self.tableData objectAtIndex:indexPath.row];
+    Form *form = (Form *)[self.tableData objectAtIndex:indexPath.section];
     [cell setCellData:form];
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

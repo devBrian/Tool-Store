@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *emailCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *companyCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *versionCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *buildCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *joinCell;
 @property (nonatomic, strong) NSMutableArray *formData;
 @end
@@ -30,6 +31,7 @@
     self.emailCell.detailTextLabel.text = [UserManager sharedInstance].getCurrentUser.email;
     self.companyCell.detailTextLabel.text = [UserManager sharedInstance].getCurrentUser.company;
     self.versionCell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    self.buildCell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     self.joinCell.detailTextLabel.text = [Functions stringFromDate:[UserManager sharedInstance].getCurrentUser.joined_date];
     self.tableView.tableFooterView = [UIView new];
     self.formData = [NSMutableArray new];
@@ -69,7 +71,7 @@
                 
                 [self performSegueWithIdentifier:@"formSegue" sender:self];
             }
-            else if (indexPath.row == 3)
+            else if (indexPath.row == 2)
             {
                 Form *form = [Form new];
                 form.form_id = 1;
@@ -111,12 +113,12 @@
             if (indexPath.row == 0)
             {
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sign out?" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                     [[UserManager sharedInstance] signOut];
                     UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"signInViewController"];
                     [self.navigationController showViewController:navController sender:self];
                 }]];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
                 }]];
                 [self presentViewController:alertController animated:YES completion:nil];
             }

@@ -15,7 +15,6 @@
 #import "AppDelegate.h"
 
 @interface SignInViewController ()<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @end

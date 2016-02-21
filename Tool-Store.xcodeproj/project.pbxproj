@@ -49,6 +49,7 @@
 		DCD66E951BD2AE1800D06B1C /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E941BD2AE1800D06B1C /* CommentTableViewController.m */; };
 		DCD66E981BD2AE3200D06B1C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E971BD2AE3200D06B1C /* DetailViewController.m */; };
 		DCFC05CD1C7956B300E5607A /* DesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC05CC1C7956B300E5607A /* DesignableButton.m */; };
+		DCFC05D11C79927700E5607A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC05D01C79927700E5607A /* HomeViewController.m */; };
 		DCFDD5A51C38911500B88F87 /* AccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */; };
 		DCFDD5A91C38986900B88F87 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFDD5A81C38986900B88F87 /* WebViewController.m */; };
 /* End PBXBuildFile section */
@@ -145,6 +146,8 @@
 		DCD66E971BD2AE3200D06B1C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Detail/DetailViewController.m; sourceTree = "<group>"; };
 		DCFC05CB1C7956B300E5607A /* DesignableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignableButton.h; sourceTree = "<group>"; };
 		DCFC05CC1C7956B300E5607A /* DesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignableButton.m; sourceTree = "<group>"; };
+		DCFC05CF1C79927700E5607A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Home/HomeViewController.h; sourceTree = "<group>"; };
+		DCFC05D01C79927700E5607A /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Home/HomeViewController.m; sourceTree = "<group>"; };
 		DCFDD5A31C38911500B88F87 /* AccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewController.h; sourceTree = "<group>"; };
 		DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewController.m; sourceTree = "<group>"; };
 		DCFDD5A71C38986900B88F87 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -322,6 +325,7 @@
 		DC9CF5A11B44F276004DA1B4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				DCFC05CE1C79924A00E5607A /* Home */,
 				DC4791A21C5ECE5A004CD4FE /* Form */,
 				DCFDD5A61C38984E00B88F87 /* Web */,
 				DC9CF5AC1B44F3A2004DA1B4 /* Account */,
@@ -409,6 +413,15 @@
 				DCB172021BDB2055005C4AAC /* CommentViewController.m */,
 			);
 			name = Comment;
+			sourceTree = "<group>";
+		};
+		DCFC05CE1C79924A00E5607A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DCFC05CF1C79927700E5607A /* HomeViewController.h */,
+				DCFC05D01C79927700E5607A /* HomeViewController.m */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		DCFDD5A61C38984E00B88F87 /* Web */ = {
@@ -608,6 +621,7 @@
 				DC58ED8E1B45A06F0012926B /* ToolsTableViewCell.m in Sources */,
 				DCD66E981BD2AE3200D06B1C /* DetailViewController.m in Sources */,
 				DC9CF5A71B44F349004DA1B4 /* UserManager.m in Sources */,
+				DCFC05D11C79927700E5607A /* HomeViewController.m in Sources */,
 				DCFC05CD1C7956B300E5607A /* DesignableButton.m in Sources */,
 				DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */,
 				DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */,
@@ -761,7 +775,7 @@
 				INFOPLIST_FILE = "Tool-Store/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bs.rentatool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -776,7 +790,7 @@
 				INFOPLIST_FILE = "Tool-Store/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.brian.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bs.rentatool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

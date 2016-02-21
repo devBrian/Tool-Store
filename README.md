@@ -1,5 +1,9 @@
-##### Tool-Store
-A project to demonstrate and try out Core Data framework. 
+##### Rent a Tool
+A project to learn more about Core Data framework and the advantages and disadvantages. Placeholder data is used.
 
-![screenshot](https://raw.github.com/devBrian/Tool-Store/master/rentals.png)
+##### Screenshots
+![screenshot](https://raw.github.com/devBrian/Tool-Store/master/login.png)
+![screenshot](https://raw.github.com/devBrian/Tool-Store/master/signup.png)
+![screenshot](https://raw.github.com/devBrian/Tool-Store/master/home.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/store.png)
+![screenshot](https://raw.github.com/devBrian/Tool-Store/master/rentals.png)

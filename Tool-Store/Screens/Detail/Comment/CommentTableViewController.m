@@ -53,7 +53,7 @@
 }
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIImage imageNamed:@"ic_comment"];
+    return [UIImage imageNamed:@"ic_chat"];
 }
 -(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {

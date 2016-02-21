@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.title = @"Sign In";
+    self.title = @"Login";
 }
 - (void)didReceiveMemoryWarning
 {
@@ -42,7 +42,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
 }
 -(void)viewDidAppear:(BOOL)animated
 {

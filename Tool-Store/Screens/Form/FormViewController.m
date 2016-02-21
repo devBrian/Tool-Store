@@ -27,19 +27,9 @@
     [self.formTableViewController refreshTableData:self.loadedFormData];
     self.formItem = self.loadedFormData.lastObject;
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
 -(void)cancel
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)submit
 {
@@ -50,7 +40,7 @@
             [self.delegate formSubmitted:self.loadedFormData];
         }
     }
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)formSubmitted:(Form *)formData
 {

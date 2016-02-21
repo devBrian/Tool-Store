@@ -48,6 +48,7 @@
 		DCD66E921BD2AE0000D06B1C /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E911BD2AE0000D06B1C /* CommentTableViewCell.m */; };
 		DCD66E951BD2AE1800D06B1C /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E941BD2AE1800D06B1C /* CommentTableViewController.m */; };
 		DCD66E981BD2AE3200D06B1C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E971BD2AE3200D06B1C /* DetailViewController.m */; };
+		DCFC05CD1C7956B300E5607A /* DesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC05CC1C7956B300E5607A /* DesignableButton.m */; };
 		DCFDD5A51C38911500B88F87 /* AccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */; };
 		DCFDD5A91C38986900B88F87 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFDD5A81C38986900B88F87 /* WebViewController.m */; };
 /* End PBXBuildFile section */
@@ -142,6 +143,8 @@
 		DCD66E941BD2AE1800D06B1C /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = Detail/Comment/CommentTableViewController.m; sourceTree = "<group>"; };
 		DCD66E961BD2AE3200D06B1C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Detail/DetailViewController.h; sourceTree = "<group>"; };
 		DCD66E971BD2AE3200D06B1C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Detail/DetailViewController.m; sourceTree = "<group>"; };
+		DCFC05CB1C7956B300E5607A /* DesignableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignableButton.h; sourceTree = "<group>"; };
+		DCFC05CC1C7956B300E5607A /* DesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignableButton.m; sourceTree = "<group>"; };
 		DCFDD5A31C38911500B88F87 /* AccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewController.h; sourceTree = "<group>"; };
 		DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewController.m; sourceTree = "<group>"; };
 		DCFDD5A71C38986900B88F87 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 		DC9CF5B01B44F480004DA1B4 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
+				DCFC05CB1C7956B300E5607A /* DesignableButton.h */,
+				DCFC05CC1C7956B300E5607A /* DesignableButton.m */,
 				DC9CF5B31B44F496004DA1B4 /* Constants.h */,
 				DC9CF5B41B44F496004DA1B4 /* Constants.m */,
 				DC9CF5B11B44F496004DA1B4 /* Functions.h */,
@@ -603,6 +608,7 @@
 				DC58ED8E1B45A06F0012926B /* ToolsTableViewCell.m in Sources */,
 				DCD66E981BD2AE3200D06B1C /* DetailViewController.m in Sources */,
 				DC9CF5A71B44F349004DA1B4 /* UserManager.m in Sources */,
+				DCFC05CD1C7956B300E5607A /* DesignableButton.m in Sources */,
 				DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */,
 				DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */,
 				DC4791A11C5ECB7D004CD4FE /* Form.m in Sources */,

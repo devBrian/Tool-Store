@@ -23,16 +23,6 @@
     [self loadUrlWithUrlString:@"http://www.apple.com"];
     self.title = @"Policy";
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
 #pragma mark - UIWebviewDelegate
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {

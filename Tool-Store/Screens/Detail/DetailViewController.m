@@ -64,12 +64,6 @@
     {
         [self.commentButton setTitle:[NSString stringWithFormat:@"Comment (%lu)",self.loadedToolData.comments.count] forState:UIControlStateNormal];
     }
-    self.navigationController.navigationBarHidden = NO;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

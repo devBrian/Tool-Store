@@ -13,7 +13,7 @@
 
 #define BATCH_SIZE 25
 
-@interface ToolsTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate>
+@interface ToolsTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSString *searchText;
 @end
@@ -24,6 +24,7 @@
     [super viewDidLoad];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100.0f;
+    self.tableView.delegate = self;
 }
 -(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
@@ -91,45 +92,17 @@
     Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell setCellData:tool];
 }
-- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *array = [NSMutableArray new];
-    UITableViewRowAction *rentAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Rent" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        if (self.toolsDelegate != nil)
-        {
-            if ([self.toolsDelegate respondsToSelector:@selector(selectedTool:)])
-            {
-                [self.tableView setEditing:NO animated:YES];
-                Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-                [self.toolsDelegate selectedTool:tool];
-            }
-        }
-    }];
-    rentAction.backgroundColor = [UIColor colorWithRed:0.278 green:0.185 blue:0.593 alpha:1.000];
-    
-    UITableViewRowAction *moreAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"More" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        if (self.toolsDelegate != nil)
-        {
-            if ([self.toolsDelegate respondsToSelector:@selector(moreTool:)])
-            {
-                [self.tableView setEditing:NO animated:YES];
-                Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-                [self.toolsDelegate moreTool:tool];
-            }
-        }
-    }];
-    moreAction.backgroundColor = [UIColor colorWithRed:0.154 green:0.413 blue:0.691 alpha:1.000];
-    Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([tool.stock intValue] > 0)
+    if (self.toolsDelegate != nil)
     {
-        [array addObject:moreAction];
-        [array addObject:rentAction];
+        if ([self.toolsDelegate respondsToSelector:@selector(moreTool:)])
+        {
+            [self.tableView setEditing:NO animated:YES];
+            Tool *tool = (Tool *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+            [self.toolsDelegate moreTool:tool];
+        }
     }
-    else
-    {
-        [array addObject:moreAction];
-    }
-    return array;
 }
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController

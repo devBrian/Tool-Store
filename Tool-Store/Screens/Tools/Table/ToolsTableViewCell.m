@@ -28,11 +28,11 @@
     self.durationLabel.text = [NSString stringWithFormat:@"Rent for %i days",[tool.rent_duration intValue]];
     if ([tool.stock intValue] > 0)
     {
-        self.priceLabel.text = [NSString stringWithFormat:@"%i for %.2f",[tool.stock intValue],[tool.rent_price floatValue]];
+        self.priceLabel.text = [NSString stringWithFormat:@"%i available for $%.2f",[tool.stock intValue],[tool.rent_price floatValue]];
     }
     else
     {
-        self.priceLabel.text = [NSString stringWithFormat:@"More on the way at $%.2f",[tool.rent_price floatValue]];
+        self.priceLabel.text = [NSString stringWithFormat:@"Not available currently"];
     }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

@@ -36,6 +36,7 @@
         }
     }];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
+    [tapGesture setCancelsTouchesInView:NO];
     [self.view addGestureRecognizer:tapGesture];
 }
 #pragma mark - Tools Delegate
@@ -43,26 +44,6 @@
 {
     self.selectedTool = tool;
     [self performSegueWithIdentifier:@"detailSegue" sender:self];
-}
--(void)selectedTool:(Tool *)tool
-{
-    if ([self toolRentalExists:tool] == NO)
-    {
-        [self createRentalForTool:tool andUser:[[UserManager sharedInstance] getCurrentUser]];
-        [self saveExistingTool:tool];
-    }
-}
--(void)createRentalForTool:(Tool *)tool andUser:(User *)user
-{
-    [[RentalManager sharedInstance] createRentalForTool:tool andUser:user];
-}
--(void)saveExistingTool:(Tool *)tool
-{
-    [[ToolManager sharedInstance] saveExistingTool:tool];
-}
--(BOOL)toolRentalExists:(Tool *)tool
-{
-    return [[ToolManager sharedInstance] toolRentalExists:tool];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

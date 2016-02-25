@@ -146,6 +146,28 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     }
     return color;
 }
++ (NSInteger)indexForSegmentedControlForCondition:(NSString *)condition
+{
+    NSInteger index = -1;
+    
+    if ([condition isEqualToString:@"best"])
+    {
+        index = 3;
+    }
+    else if ([condition isEqualToString:@"good"])
+    {
+        index = 2;
+    }
+    else if ([condition isEqualToString:@"average"])
+    {
+        index = 1;
+    }
+    else if ([condition isEqualToString:@"poor"])
+    {
+        index = 0;
+    }
+    return index;
+}
 + (void)showErrorWithMessage:(NSString *)message forViewController:(UIViewController *)viewController
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:message preferredStyle:UIAlertControllerStyleAlert];

@@ -17,7 +17,6 @@
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *manufactorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *conditionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stockLabel;
@@ -26,9 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *inventoryLabel;
 @property (strong, nonatomic) CommentViewController *commentViewController;
-@property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *rentButton;
 @property (nonatomic, readwrite) int inventoryAmount;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *conditionSegmentedControl;
 @end
 
 @implementation DetailViewController
@@ -41,9 +41,9 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.loadedToolData.image_url]];
     self.nameLabel.text = self.title;
     self.manufactorLabel.text = [NSString stringWithFormat:@"%@", self.loadedToolData.manufacturer];
-    self.conditionLabel.text = [NSString stringWithFormat:@"%@", [self.loadedToolData.condition capitalizedString]];
+    [self.conditionSegmentedControl setSelectedSegmentIndex:[Functions indexForSegmentedControlForCondition:self.loadedToolData.condition]];
     self.durationLabel.text = [NSString stringWithFormat:@"%i rental days", [self.loadedToolData.rent_duration intValue]];
-    self.priceLabel.text = [NSString stringWithFormat:@"%.2f rent price", [self.loadedToolData.rent_price floatValue]];
+    self.priceLabel.text = [NSString stringWithFormat:@"$ %.2f rent price", [self.loadedToolData.rent_price floatValue]];
     [self.rentButton setTitle:[NSString stringWithFormat:@"Rent for %i days", [self.loadedToolData.rent_duration intValue]] forState:UIControlStateNormal];
     
     if ([self.loadedToolData.stock intValue] > 0)
@@ -56,8 +56,7 @@
         self.stockLabel.textColor = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
     }
     self.originLabel.text = self.loadedToolData.origin;
-    self.overdueLabel.text = [NSString stringWithFormat:@"%.2f overdue fee", [self.loadedToolData.overdue_fee floatValue]];
-    self.conditionLabel.textColor = [Functions colorForCondition:self.loadedToolData.condition];
+    self.overdueLabel.text = [NSString stringWithFormat:@"$ %.2f overdue fee", [self.loadedToolData.overdue_fee floatValue]];
     
     for (Rental *rent in [UserManager sharedInstance].getCurrentUser.rental)
     {
@@ -68,6 +67,10 @@
             break;
         }
     }
+    if (self.inventoryAmount == 0)
+    {
+        self.inventoryLabel.text = @"";
+    }
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -75,15 +78,24 @@
     
     if (self.loadedToolData.comments.count == 0)
     {
-        [self.commentButton setTitle:[NSString stringWithFormat:@"Comment - Be the first"] forState:UIControlStateNormal];
+        self.commentLabel.text = [NSString stringWithFormat:@"comment - be the first"];
     }
     else
     {
-        [self.commentButton setTitle:[NSString stringWithFormat:@"Comment (%lu)",self.loadedToolData.comments.count] forState:UIControlStateNormal];
+        if (self.loadedToolData.comments.count > 1)
+        {
+            self.commentLabel.text = [NSString stringWithFormat:@"%lu comments", self.loadedToolData.comments.count];
+        }
+        else
+        {
+            self.commentLabel.text = [NSString stringWithFormat:@"%lu comment", self.loadedToolData.comments.count];
+        }
     }
 }
 -(IBAction)rentAction:(id)sender
 {
+    [Functions showErrorWithMessage:@"Added 1 to your inventory" forViewController:self];
+    
     if ([self.loadedToolData.stock intValue] > 0)
     {
         if ([self toolRentalExists:self.loadedToolData] == NO)

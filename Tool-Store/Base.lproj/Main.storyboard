@@ -1222,7 +1222,7 @@
             </objects>
             <point key="canvasLocation" x="1004" y="1476"/>
         </scene>
-        <!--Detail-->
+        <!--Tool-->
         <scene sceneID="Fh0-Fu-Zi9">
             <objects>
                 <viewController id="hHc-La-6nf" customClass="DetailViewController" sceneMemberID="viewController">
@@ -1249,7 +1249,7 @@
                             <constraint firstItem="F9N-CR-oX4" firstAttribute="top" secondItem="RpS-2g-mm2" secondAttribute="bottom" id="Ptl-GT-hF6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="5tc-Nq-iAb">
+                    <navigationItem key="navigationItem" title="Tool" id="5tc-Nq-iAb">
                         <barButtonItem key="rightBarButtonItem" image="ic_chat-24" id="UZQ-jY-mhf">
                             <color key="tintColor" red="0.12637259070000001" green="0.12639245390000001" blue="0.1263653636" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

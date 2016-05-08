@@ -21,14 +21,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.qtyLabel.text = @"1";
+    self.stepper.value = 1;
     self.stepper.minimumValue = 1;
     self.stepper.maximumValue = [self.loadedToolData.stock intValue];
-    self.availableLabel.text = [NSString stringWithFormat:@"Available: %.0f", (self.stepper.maximumValue - self.stepper.minimumValue)];
-}
-- (IBAction)stepperValueChanged:(id)sender
-{
-    self.qtyLabel.text = [NSString stringWithFormat:@"%.0f", self.stepper.value];
     float left = self.stepper.maximumValue - self.stepper.value;
+    [self updateAvailable:left];
+}
+-(void)updateAvailable:(float)left
+{
     if (left > 0)
     {
         self.availableLabel.text = [NSString stringWithFormat:@"Available: %.0f", left];
@@ -38,20 +38,16 @@
         self.availableLabel.text = @"Rent All";
     }
 }
+#pragma mark - IBActions
+- (IBAction)stepperValueChanged:(id)sender
+{
+    self.qtyLabel.text = [NSString stringWithFormat:@"%.0f", self.stepper.value];
+    float left = self.stepper.maximumValue - self.stepper.value;
+    [self updateAvailable:left];
+}
 - (IBAction)doneAction:(id)sender
 {
     [self.delegate qtyDone:self.stepper.value];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

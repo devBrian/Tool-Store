@@ -1,5 +1,5 @@
 ##### Rent a Tool
-A project to learn more about Core Data framework and the advantages and disadvantages. Placeholder data is used.
+A project to learn more about Core Data.
 
 ##### Screenshots
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/login.png)
@@ -8,3 +8,4 @@ A project to learn more about Core Data framework and the advantages and disadva
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/store.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/detail.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/rentals.png)
+![screenshot](https://raw.github.com/devBrian/Tool-Store/master/qty.png)

@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Tool.h"
 
+@protocol CommentViewControllerDelegate <NSObject>
+@optional
+-(void)commentsUpdated;
+@end
+
 @interface CommentViewController : UIViewController
 @property (strong, nonatomic) Tool *loadedToolData;
+@property (weak, nonatomic) id <CommentViewControllerDelegate> delegate;
 @end

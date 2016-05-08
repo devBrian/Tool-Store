@@ -10,12 +10,16 @@
 		148C302B44CC367CB2067432 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E144775A4495D626CCD0B9 /* libPods.a */; };
 		DC12D6461C586866007B37C8 /* RentalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC12D6451C586866007B37C8 /* RentalManager.m */; };
 		DC12D6491C58687D007B37C8 /* ToolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC12D6481C58687D007B37C8 /* ToolManager.m */; };
+		DC13F5581CDFC33300BDAB93 /* DetailMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC13F5571CDFC33300BDAB93 /* DetailMainTableViewCell.m */; };
+		DC13F55B1CDFC3E700BDAB93 /* DetailSubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC13F55A1CDFC3E700BDAB93 /* DetailSubTableViewCell.m */; };
+		DC13F55E1CDFC45700BDAB93 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC13F55D1CDFC45700BDAB93 /* DetailTableViewController.m */; };
 		DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */; };
 		DC2DC13A1BD1E26C0071FB8E /* Rental.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1301BD1E26C0071FB8E /* Rental.m */; };
 		DC2DC13B1BD1E26C0071FB8E /* Tool+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1321BD1E26C0071FB8E /* Tool+CoreDataProperties.m */; };
 		DC2DC13C1BD1E26C0071FB8E /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1341BD1E26C0071FB8E /* Tool.m */; };
 		DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */; };
 		DC2DC13E1BD1E26C0071FB8E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1381BD1E26C0071FB8E /* User.m */; };
+		DC3410821CDF9E1B00169ECC /* QuantityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3410811CDF9E1B00169ECC /* QuantityViewController.m */; };
 		DC4791A11C5ECB7D004CD4FE /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4791A01C5ECB7D004CD4FE /* Form.m */; };
 		DC4791A51C5ECE85004CD4FE /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4791A41C5ECE85004CD4FE /* FormViewController.m */; };
 		DC4791A91C5ECEA9004CD4FE /* FormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4791A81C5ECEA9004CD4FE /* FormTableViewController.m */; };
@@ -72,6 +76,12 @@
 		DC12D6451C586866007B37C8 /* RentalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalManager.m; sourceTree = "<group>"; };
 		DC12D6471C58687D007B37C8 /* ToolManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolManager.h; sourceTree = "<group>"; };
 		DC12D6481C58687D007B37C8 /* ToolManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolManager.m; sourceTree = "<group>"; };
+		DC13F5561CDFC33300BDAB93 /* DetailMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailMainTableViewCell.h; path = Detail/Table/DetailMainTableViewCell.h; sourceTree = "<group>"; };
+		DC13F5571CDFC33300BDAB93 /* DetailMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailMainTableViewCell.m; path = Detail/Table/DetailMainTableViewCell.m; sourceTree = "<group>"; };
+		DC13F5591CDFC3E700BDAB93 /* DetailSubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailSubTableViewCell.h; path = Detail/Table/DetailSubTableViewCell.h; sourceTree = "<group>"; };
+		DC13F55A1CDFC3E700BDAB93 /* DetailSubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailSubTableViewCell.m; path = Detail/Table/DetailSubTableViewCell.m; sourceTree = "<group>"; };
+		DC13F55C1CDFC45700BDAB93 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailTableViewController.h; path = Detail/Table/DetailTableViewController.h; sourceTree = "<group>"; };
+		DC13F55D1CDFC45700BDAB93 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailTableViewController.m; path = Detail/Table/DetailTableViewController.m; sourceTree = "<group>"; };
 		DC2DC12D1BD1E26C0071FB8E /* Rental+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rental+CoreDataProperties.h"; sourceTree = "<group>"; };
 		DC2DC12E1BD1E26C0071FB8E /* Rental+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Rental+CoreDataProperties.m"; sourceTree = "<group>"; };
 		DC2DC12F1BD1E26C0071FB8E /* Rental.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rental.h; sourceTree = "<group>"; };
@@ -84,6 +94,8 @@
 		DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
 		DC2DC1371BD1E26C0071FB8E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		DC2DC1381BD1E26C0071FB8E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DC3410801CDF9E1B00169ECC /* QuantityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuantityViewController.h; path = Detail/Quantity/QuantityViewController.h; sourceTree = "<group>"; };
+		DC3410811CDF9E1B00169ECC /* QuantityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuantityViewController.m; path = Detail/Quantity/QuantityViewController.m; sourceTree = "<group>"; };
 		DC47919F1C5ECB7D004CD4FE /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
 		DC4791A01C5ECB7D004CD4FE /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Form.m; sourceTree = "<group>"; };
 		DC4791A31C5ECE85004CD4FE /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = Form/FormViewController.h; sourceTree = "<group>"; };
@@ -173,6 +185,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC13F5551CDFC20E00BDAB93 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				DC13F5561CDFC33300BDAB93 /* DetailMainTableViewCell.h */,
+				DC13F5571CDFC33300BDAB93 /* DetailMainTableViewCell.m */,
+				DC13F5591CDFC3E700BDAB93 /* DetailSubTableViewCell.h */,
+				DC13F55A1CDFC3E700BDAB93 /* DetailSubTableViewCell.m */,
+				DC13F55C1CDFC45700BDAB93 /* DetailTableViewController.h */,
+				DC13F55D1CDFC45700BDAB93 /* DetailTableViewController.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
 		DC4791A21C5ECE5A004CD4FE /* Form */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +239,15 @@
 				DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		DC8788261CBA1A7A00B48737 /* Quantity */ = {
+			isa = PBXGroup;
+			children = (
+				DC3410801CDF9E1B00169ECC /* QuantityViewController.h */,
+				DC3410811CDF9E1B00169ECC /* QuantityViewController.m */,
+			);
+			name = Quantity;
 			sourceTree = "<group>";
 		};
 		DC9CF5611B44D7E1004DA1B4 = {
@@ -394,6 +428,8 @@
 		DCD66E8E1BD2AD8F00D06B1C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				DC13F5551CDFC20E00BDAB93 /* Table */,
+				DC8788261CBA1A7A00B48737 /* Quantity */,
 				DCD66E8F1BD2ADBE00D06B1C /* Comment */,
 				DCD66E961BD2AE3200D06B1C /* DetailViewController.h */,
 				DCD66E971BD2AE3200D06B1C /* DetailViewController.m */,
@@ -610,6 +646,7 @@
 				DC58ED841B459FE90012926B /* MainTableViewController.m in Sources */,
 				DC9CF5BA1B44F990004DA1B4 /* ToolsViewController.m in Sources */,
 				DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */,
+				DC3410821CDF9E1B00169ECC /* QuantityViewController.m in Sources */,
 				DCD66E951BD2AE1800D06B1C /* CommentTableViewController.m in Sources */,
 				DC9CF5AF1B44F477004DA1B4 /* KeyboardManager.m in Sources */,
 				DC4791A91C5ECEA9004CD4FE /* FormTableViewController.m in Sources */,
@@ -623,6 +660,7 @@
 				DC9CF5A71B44F349004DA1B4 /* UserManager.m in Sources */,
 				DCFC05D11C79927700E5607A /* HomeViewController.m in Sources */,
 				DCFC05CD1C7956B300E5607A /* DesignableButton.m in Sources */,
+				DC13F55B1CDFC3E700BDAB93 /* DetailSubTableViewCell.m in Sources */,
 				DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */,
 				DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */,
 				DC4791A11C5ECB7D004CD4FE /* Form.m in Sources */,
@@ -632,6 +670,7 @@
 				DC57AD281BD2B5BC005BA16E /* Comment+CoreDataProperties.m in Sources */,
 				DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */,
 				DC4791AC1C5ECEC2004CD4FE /* FormTableViewCell.m in Sources */,
+				DC13F55E1CDFC45700BDAB93 /* DetailTableViewController.m in Sources */,
 				DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */,
 				DC9CF5701B44D7E1004DA1B4 /* main.m in Sources */,
 				DCFDD5A51C38911500B88F87 /* AccountTableViewController.m in Sources */,
@@ -642,6 +681,7 @@
 				DC9CF5791B44D7E1004DA1B4 /* MainViewController.m in Sources */,
 				DC9CF5761B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld in Sources */,
 				DC12D6461C586866007B37C8 /* RentalManager.m in Sources */,
+				DC13F5581CDFC33300BDAB93 /* DetailMainTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

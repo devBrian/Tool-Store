@@ -54,13 +54,13 @@
        NSLog(@"Whoops, couldn't deleted: %@", [error localizedDescription]);
     }
 }
--(void)createRentalForTool:(Tool *)tool andUser:(User *)user
+-(void)createRentalForTool:(Tool *)tool andUser:(User *)user andQty:(int)qty
 {
     Rental *rental = [NSEntityDescription insertNewObjectForEntityForName:@"Rental" inManagedObjectContext:self.context];
     rental.tool = tool;
     rental.user = user;
     rental.rent_date = [NSDate date];
-    rental.quantity = [NSNumber numberWithInt:1];
+    rental.quantity = [NSNumber numberWithInt:qty];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *due_date = [calendar dateByAddingUnit:NSCalendarUnitDay value:[tool.rent_duration intValue] toDate:[NSDate date] options:0];
     rental.due_date = due_date;

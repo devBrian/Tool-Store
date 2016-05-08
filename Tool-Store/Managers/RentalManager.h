@@ -13,5 +13,5 @@
 +(RentalManager *)sharedInstance;
 -(NSString *)returnRental:(Rental *)rental;
 -(void)deleteRental:(Rental *)rental;
--(void)createRentalForTool:(Tool *)tool andUser:(User *)user;
+-(void)createRentalForTool:(Tool *)tool andUser:(User *)user andQty:(int)qty;
 @end

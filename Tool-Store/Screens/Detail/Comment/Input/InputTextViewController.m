@@ -12,7 +12,6 @@
 #define MAX_HEIGHT 150.0f
 
 @interface InputTextViewController () <UITextViewDelegate, KeyboardManagerDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic) CGFloat inputHeight;
 @end
 

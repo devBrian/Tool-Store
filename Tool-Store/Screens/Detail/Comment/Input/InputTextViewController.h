@@ -17,4 +17,5 @@
 
 @interface InputTextViewController : UIViewController
 @property (weak, nonatomic) id <InputTextViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end

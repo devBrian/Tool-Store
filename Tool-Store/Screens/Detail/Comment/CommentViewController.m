@@ -36,6 +36,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    [self.inputTextViewController.textView becomeFirstResponder];
 }
 -(void)createCommentWithText:(NSString *)text
 {
@@ -54,6 +55,7 @@
     }
     [[self.loadedToolData.comments allObjects].mutableCopy addObject:comment];
     [self.commentTableViewController refreshTableData:[self.loadedToolData.comments allObjects].mutableCopy];
+    [self.delegate commentsUpdated];
 }
 -(void)deleteComment:(Comment *)comment atIndexPath:(NSIndexPath *)indexPath
 {
@@ -67,6 +69,7 @@
     }
     [self.commentTableViewController.tableData removeObject:comment];
     [self.commentTableViewController.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.delegate commentsUpdated];
 }
 #pragma mark - InputViewController Delegate
 -(void)sendInputText:(NSString *)text

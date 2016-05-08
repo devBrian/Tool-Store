@@ -6,4 +6,5 @@ A project to learn more about Core Data framework and the advantages and disadva
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/signup.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/home.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/store.png)
+![screenshot](https://raw.github.com/devBrian/Tool-Store/master/detail.png)
 ![screenshot](https://raw.github.com/devBrian/Tool-Store/master/rentals.png)

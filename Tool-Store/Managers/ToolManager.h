@@ -11,7 +11,7 @@
 
 @interface ToolManager : NSObject
 +(ToolManager *)sharedInstance;
--(void)updateExistingTool:(Tool *)tool;
--(void)saveExistingTool:(Tool *)tool;
--(BOOL)toolRentalExists:(Tool *)tool;
+-(void)updateExistingTool:(Tool *)tool withQty:(int)qty;
+-(void)saveExistingTool:(Tool *)tool withQty:(int)qty;
+-(BOOL)toolRentalExists:(Tool *)tool withQty:(int)qty;
 @end

@@ -10,13 +10,16 @@
 #import "Tool.h"
 
 @protocol ToolsTableViewControllerDelegate <NSObject>
-@required
+@optional
 -(void)selectedTool:(Tool *)tool;
 -(void)moreTool:(Tool *)tool;
 @end
 
 @interface ToolsTableViewController : UITableViewController
 @property (weak, nonatomic) id <ToolsTableViewControllerDelegate> toolsDelegate;
+@property (strong, nonatomic) NSString *searchText;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 -(void)fetchDataWithCompletion:(void (^)(NSError *error))completion;
-//-(void)searchForText:(NSString *)text completion:(void (^)(NSError *error))completion;
+
 @end

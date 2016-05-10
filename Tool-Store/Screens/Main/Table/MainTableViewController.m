@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSString *searchText;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, assign) BOOL isSearching;
 @end
 
 @implementation MainTableViewController
@@ -61,6 +62,7 @@
         self.searchText = searchText;
         self.fetchedResultsController = nil;
         [self fetchDataWithCompletion:^(NSError *error) {
+            self.isSearching = YES;
             [self.tableView reloadData];
         }];
     }
@@ -70,9 +72,14 @@
         self.searchText = @"";
         self.fetchedResultsController = nil;
         [self fetchDataWithCompletion:^(NSError *error) {
+            self.isSearching = YES;
             [self.tableView reloadData];
         }];
     }
+}
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    self.isSearching = NO;
 }
 #pragma mark - MainTableViewCell Delegate
 -(void)returnRental:(Rental *)rental
@@ -88,26 +95,50 @@
 #pragma mark - DZNEmptyDataSet
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIImage imageNamed:@"ic_gavel"];
+    return [UIImage imageNamed:@"ic_build"];
 }
 -(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    self.searchBar.hidden = YES;
-    NSString *text = @"No Tool Rentals yet";
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    if (self.isSearching == NO)
+    {
+        self.searchBar.hidden = YES;
+        NSString *text = @"You haven't rented a tool yet.";
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }
+    else
+    {
+        NSString *text = @"Sorry, we did not find a match. Please try again.";
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }
 }
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"Tools you rent will live here. Visit the store and start renting today!";
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    if (self.isSearching == NO)
+    {
+        NSString *text = @"Visit the store and start picking out some tools today.";
+        NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+        paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraph.alignment = NSTextAlignmentCenter;
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                     NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                     NSParagraphStyleAttributeName: paragraph};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }
+    else
+    {
+        NSString *text = @"Tip: Double check your spelling.";
+        NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+        paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraph.alignment = NSTextAlignmentCenter;
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:13.0f],
+                                     NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                     NSParagraphStyleAttributeName: paragraph};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

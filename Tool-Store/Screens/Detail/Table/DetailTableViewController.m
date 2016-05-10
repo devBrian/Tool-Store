@@ -89,7 +89,7 @@
         }
         else
         {
-            return @"Comments";
+            return [NSString stringWithFormat:@"%lu Comments", (unsigned long)args.count];
         }
         
     }

@@ -26,7 +26,7 @@
     });
     return sharedInstance;
 }
--(void)updateExistingTool:(Tool *)tool
+-(void)updateExistingTool:(Tool *)tool withQty:(int)qty
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tool"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == %@", tool];
@@ -34,14 +34,14 @@
     
     NSError *error;
     Tool *temp = [[self.context executeFetchRequest:request error:&error] lastObject];
-    temp.stock = [NSNumber numberWithInt:[tool.stock intValue] + 1];
+    temp.stock = [NSNumber numberWithInt:[tool.stock intValue] + qty];
     
     if (![self.context save:&error])
     {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
 }
--(void)saveExistingTool:(Tool *)tool
+-(void)saveExistingTool:(Tool *)tool withQty:(int)qty
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tool"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == %@", tool];
@@ -49,14 +49,14 @@
     
     NSError *error;
     Tool *temp = [[self.context executeFetchRequest:request error:&error] lastObject];
-    temp.stock = [NSNumber numberWithInt:[tool.stock intValue]-1];
+    temp.stock = [NSNumber numberWithInt:[tool.stock intValue] - qty];
     
     if (![self.context save:&error])
     {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
 }
--(BOOL)toolRentalExists:(Tool *)tool
+-(BOOL)toolRentalExists:(Tool *)tool withQty:(int)qty
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Rental"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tool == %@", tool];
@@ -68,8 +68,8 @@
         Rental *rental = [[self.context executeFetchRequest:request error:&error] lastObject];
         if([[NSCalendar currentCalendar] isDate:rental.rent_date inSameDayAsDate:[NSDate date]] == YES)
         {
-            rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue] + 1];
-            [self saveExistingTool:tool];
+            rental.quantity = [NSNumber numberWithInt:[rental.quantity intValue] + qty];
+            [self saveExistingTool:tool withQty:qty];
             return YES;
         }
         else

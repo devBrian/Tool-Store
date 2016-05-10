@@ -17,14 +17,13 @@
 #import "ToolManager.h"
 #import "RentalManager.h"
 
-@interface ToolsViewController () <ToolsTableViewControllerDelegate>
+@interface ToolsViewController () <ToolsTableViewControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) ToolsTableViewController *toolsTableViewController;
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) Tool *selectedTool;
 @end
 
 @implementation ToolsViewController
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,6 +38,45 @@
     [tapGesture setCancelsTouchesInView:NO];
     [self.view addGestureRecognizer:tapGesture];
 }
+#pragma mark - Search bar Delegate
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length > 2)
+    {
+        self.toolsTableViewController.searchText = searchText;
+        self.toolsTableViewController.fetchedResultsController = nil;
+        [self.toolsTableViewController fetchDataWithCompletion:^(NSError *error) {
+            if (error)
+            {
+                [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+            }
+            else
+            {
+                [self.toolsTableViewController.tableView reloadData];
+            }
+        }];
+    }
+    else if (searchText.length == 0)
+    {
+        [searchBar resignFirstResponder];
+        self.toolsTableViewController.searchText = @"";
+        self.toolsTableViewController.fetchedResultsController = nil;
+        [self.toolsTableViewController fetchDataWithCompletion:^(NSError *error) {
+            if (error)
+            {
+                [Functions showErrorWithMessage:error.localizedDescription forViewController:self];
+            }
+            else
+            {
+                [self.toolsTableViewController.tableView reloadData];
+            }
+        }];
+    }
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
 #pragma mark - Tools Delegate
 -(void)moreTool:(Tool *)tool
 {
@@ -46,7 +84,7 @@
     [self performSegueWithIdentifier:@"detailSegue" sender:self];
 }
 #pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"toolsTable"])
     {

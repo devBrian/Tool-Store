@@ -15,7 +15,7 @@
 @interface DetailMainTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *productImageView;
-@property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *rentedImageView;
 @property (weak, nonatomic) IBOutlet UILabel *rentedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceWithDurationLabel;
@@ -31,23 +31,15 @@
     self.nameLabel.text = tool.name;
     self.priceWithDurationLabel.text = [NSString stringWithFormat:@"$%.2f for %i days", [tool.rent_price floatValue], [tool.rent_duration intValue]];
     
-    if (tool.comments.count == 0)
-    {
-        self.commentsLabel.text = @"";
-    }
-    else
-    {
-        self.commentsLabel.text = [NSString stringWithFormat:@"%lu comments", tool.comments.count];
-    }
     if ([tool.stock intValue] > 0)
     {
-        self.stockLabel.text = [NSString stringWithFormat:@"%i left in stock", [tool.stock intValue]];
+        self.stockLabel.text = [NSString stringWithFormat:@"%i available", [tool.stock intValue]];
         self.rentButton.userInteractionEnabled = YES;
         self.rentButton.alpha = 1.0f;
     }
     else
     {
-        self.stockLabel.text = @"Out-of-Stock";
+        self.stockLabel.text = @"not available";
         self.stockLabel.textColor = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
         self.rentButton.userInteractionEnabled = NO;
         self.rentButton.alpha = 0.5f;
@@ -57,7 +49,7 @@
     {
         if ([rent.tool isEqual:tool])
         {
-            self.rentedLabel.text = [NSString stringWithFormat:@"%i rented", [rent.quantity intValue]];
+            self.rentedLabel.text = [NSString stringWithFormat:@"%i", [rent.quantity intValue]];
             amount = [rent.quantity intValue];
             break;
         }
@@ -65,6 +57,11 @@
     if (amount == 0)
     {
         self.rentedLabel.text = @"";
+        self.rentedImageView.hidden = YES;
+    }
+    else
+    {
+        self.rentedImageView.hidden = NO;
     }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

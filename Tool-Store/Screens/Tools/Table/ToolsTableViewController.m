@@ -10,12 +10,12 @@
 #import "ToolsTableViewCell.h"
 #import "AppDelegate.h"
 #import "Functions.h"
+#import "UIScrollView+EmptyDataSet.h"
 
 #define BATCH_SIZE 25
 
-@interface ToolsTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSString *searchText;
+@interface ToolsTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+
 @end
 
 @implementation ToolsTableViewController
@@ -25,6 +25,9 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100.0f;
     self.tableView.delegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.tableFooterView = [UIView new];
 }
 -(void)fetchDataWithCompletion:(void (^)(NSError *error))completion
 {
@@ -36,30 +39,28 @@
     }
     completion(error);
 }
-#pragma mark - Search bar Delegate
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+#pragma mark - DZNEmptyDataSet
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    if (searchText.length > 2)
-    {
-        self.searchText = searchText;
-        self.fetchedResultsController = nil;
-        [self fetchDataWithCompletion:^(NSError *error) {
-            [self.tableView reloadData];
-        }];
-    }
-    else if (searchText.length == 0)
-    {
-        [searchBar resignFirstResponder];
-        self.searchText = @"";
-        self.fetchedResultsController = nil;
-        [self fetchDataWithCompletion:^(NSError *error) {
-             [self.tableView reloadData];
-        }];
-    }
+    return [UIImage imageNamed:@"ic_store"];
 }
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+-(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    [searchBar resignFirstResponder];
+    NSString *text = @"Sorry, we did not find a match. Please try again.";
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Tip: Double check your spelling";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:13.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

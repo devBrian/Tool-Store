@@ -49,10 +49,11 @@
 #pragma mark - QuantityViewControllerDelegate
 -(void)qtyDone:(int)qty
 {
-    int temp = [self.loadedToolData.stock intValue] - qty;
-    self.loadedToolData.stock = [NSNumber numberWithInt:temp];
-    [self saveExistingTool:self.loadedToolData];
-    [self createRentalForTool:self.loadedToolData andUser:[[UserManager sharedInstance] getCurrentUser] andQty:qty];
+    if ([self toolRentalExists:self.loadedToolData withQty:qty] == NO)
+    {
+        [self createRentalForTool:self.loadedToolData andUser:[[UserManager sharedInstance] getCurrentUser] andQty:qty];
+        [self saveExistingTool:self.loadedToolData withQty:qty];
+    }
     [self.detailTable.tableView reloadData];
 }
 -(void)commentsUpdated
@@ -63,13 +64,13 @@
 {
     [[RentalManager sharedInstance] createRentalForTool:tool andUser:user andQty:qty];
 }
--(void)saveExistingTool:(Tool *)tool
+-(void)saveExistingTool:(Tool *)tool withQty:(int)qty
 {
-    [[ToolManager sharedInstance] saveExistingTool:tool];
+    [[ToolManager sharedInstance] saveExistingTool:tool withQty:(int)qty];
 }
--(BOOL)toolRentalExists:(Tool *)tool
+-(BOOL)toolRentalExists:(Tool *)tool withQty:(int)qty
 {
-    return [[ToolManager sharedInstance] toolRentalExists:tool];
+    return [[ToolManager sharedInstance] toolRentalExists:tool withQty:(int)qty];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

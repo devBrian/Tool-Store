@@ -63,10 +63,6 @@
        [Functions showErrorWithMessage:errorMessage forViewController:self];
     }
 }
--(void)updateExistingTool:(Tool *)tool
-{
-    [[ToolManager sharedInstance] updateExistingTool:tool];
-}
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

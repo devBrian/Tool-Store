@@ -50,8 +50,7 @@
         if ([rent.tool isEqual:tool])
         {
             self.rentedLabel.text = [NSString stringWithFormat:@"%i", [rent.quantity intValue]];
-            amount = [rent.quantity intValue];
-            break;
+            amount += [rent.quantity intValue];
         }
     }
     if (amount == 0)
@@ -61,6 +60,7 @@
     }
     else
     {
+        self.rentedLabel.text = [NSString stringWithFormat:@"%i", amount];
         self.rentedImageView.hidden = NO;
     }
     self.selectionStyle = UITableViewCellSelectionStyleNone;

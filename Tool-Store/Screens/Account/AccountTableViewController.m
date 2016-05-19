@@ -13,7 +13,9 @@
 #import "Form.h"
 #import "FormViewController.h"
 
-@interface AccountTableViewController () <FormViewControllerDelegate>
+@import QuickLook;
+
+@interface AccountTableViewController () <FormViewControllerDelegate, QLPreviewControllerDataSource, QLPreviewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableViewCell *emailCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *companyCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *versionCell;
@@ -109,6 +111,17 @@
             break;
             }
         case 1:
+        {
+            if (indexPath.row == 1)
+            {
+                QLPreviewController *qlController = [[QLPreviewController alloc] init];
+                qlController.dataSource = self;
+                qlController.delegate = self;
+                qlController.title = @"Terms of Service";
+                [self.navigationController pushViewController:qlController animated:YES];
+            }
+        }
+        case 2:
         {
             if (indexPath.row == 2)
             {
@@ -207,6 +220,16 @@
             [Functions showErrorWithMessage:@"Password incorrect" forViewController:self];
         }
     }
+}
+#pragma mark - QuickLook
+-(NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller
+{
+    return 1;
+}
+- (id <QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index
+{
+    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"RentaToolTerms" ofType:@"pdf"];
+    return [NSURL fileURLWithPath:pathString];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

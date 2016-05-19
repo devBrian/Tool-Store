@@ -638,7 +638,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Return Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YmZ-Mq-AbL">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YmZ-Mq-AbL">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -648,9 +648,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <segue destination="elb-ex-oFQ" kind="push" id="s4I-OO-tRS"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -764,7 +761,7 @@
                                 <color key="color" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVe-N1-gd0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="elb-ex-oFQ" id="0h1-Pl-Afu"/>
@@ -775,7 +772,7 @@
                         <constraints>
                             <constraint firstItem="ONo-Vg-pPx" firstAttribute="centerX" secondItem="DY9-5z-eqg" secondAttribute="centerX" id="Kg6-sN-bZT"/>
                             <constraint firstItem="fN8-jd-n0s" firstAttribute="top" secondItem="pVe-N1-gd0" secondAttribute="bottom" id="Spd-35-nMj"/>
-                            <constraint firstItem="pVe-N1-gd0" firstAttribute="top" secondItem="DY9-5z-eqg" secondAttribute="top" id="Zgk-Vf-Giv"/>
+                            <constraint firstItem="pVe-N1-gd0" firstAttribute="top" secondItem="DY9-5z-eqg" secondAttribute="top" constant="64" id="Zgk-Vf-Giv"/>
                             <constraint firstItem="pVe-N1-gd0" firstAttribute="leading" secondItem="DY9-5z-eqg" secondAttribute="leading" id="bKi-FU-8ef"/>
                             <constraint firstAttribute="trailing" secondItem="pVe-N1-gd0" secondAttribute="trailing" id="igG-Ss-uHk"/>
                             <constraint firstItem="ONo-Vg-pPx" firstAttribute="centerY" secondItem="DY9-5z-eqg" secondAttribute="centerY" id="mls-po-Bn0"/>
@@ -1638,7 +1635,6 @@
         <image name="ic_view_list" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s4I-OO-tRS"/>
         <segue reference="edM-Ky-9sV"/>
     </inferredMetricsTieBreakers>
 </document>

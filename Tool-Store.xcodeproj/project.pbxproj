@@ -52,6 +52,7 @@
 		DCD66E921BD2AE0000D06B1C /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E911BD2AE0000D06B1C /* CommentTableViewCell.m */; };
 		DCD66E951BD2AE1800D06B1C /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E941BD2AE1800D06B1C /* CommentTableViewController.m */; };
 		DCD66E981BD2AE3200D06B1C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD66E971BD2AE3200D06B1C /* DetailViewController.m */; };
+		DCDE86D71CEE23A9001D8944 /* RentaToolTerms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DCDE86D61CEE23A9001D8944 /* RentaToolTerms.pdf */; };
 		DCFC05CD1C7956B300E5607A /* DesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC05CC1C7956B300E5607A /* DesignableButton.m */; };
 		DCFC05D11C79927700E5607A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC05D01C79927700E5607A /* HomeViewController.m */; };
 		DCFDD5A51C38911500B88F87 /* AccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */; };
@@ -156,6 +157,7 @@
 		DCD66E941BD2AE1800D06B1C /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = Detail/Comment/CommentTableViewController.m; sourceTree = "<group>"; };
 		DCD66E961BD2AE3200D06B1C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Detail/DetailViewController.h; sourceTree = "<group>"; };
 		DCD66E971BD2AE3200D06B1C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Detail/DetailViewController.m; sourceTree = "<group>"; };
+		DCDE86D61CEE23A9001D8944 /* RentaToolTerms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = RentaToolTerms.pdf; sourceTree = "<group>"; };
 		DCFC05CB1C7956B300E5607A /* DesignableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignableButton.h; sourceTree = "<group>"; };
 		DCFC05CC1C7956B300E5607A /* DesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignableButton.m; sourceTree = "<group>"; };
 		DCFC05CF1C79927700E5607A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Home/HomeViewController.h; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 		DC9CF5AC1B44F3A2004DA1B4 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				DCDE86D61CEE23A9001D8944 /* RentaToolTerms.pdf */,
 				DCFDD5A31C38911500B88F87 /* AccountTableViewController.h */,
 				DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */,
 				DC58ED7F1B4590200012926B /* SignInViewController.h */,
@@ -573,6 +576,7 @@
 				DC9CF57C1B44D7E1004DA1B4 /* Main.storyboard in Resources */,
 				DC9CF5811B44D7E1004DA1B4 /* LaunchScreen.xib in Resources */,
 				DC9CF57E1B44D7E1004DA1B4 /* Images.xcassets in Resources */,
+				DCDE86D71CEE23A9001D8944 /* RentaToolTerms.pdf in Resources */,
 				DC4999AB1B5B496000C1005A /* Users.json in Resources */,
 				DC4999AA1B5B496000C1005A /* Tools.json in Resources */,
 			);

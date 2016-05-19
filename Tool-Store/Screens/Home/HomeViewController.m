@@ -7,44 +7,53 @@
 //
 
 #import "HomeViewController.h"
+#import "UserManager.h"
+#import "Rental.h"
+#import "Functions.h"
 
 @interface HomeViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
 @end
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.messageLabel.text = [self statusMessage];
+    if ([self.messageLabel.text containsString:@"Invite"] == NO)
+    {
+        self.messageLabel.textColor = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
+    }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(IBAction)shareAction:(id)sender
+-(NSString *)statusMessage
 {
-    NSString *string = @"Hi, I just wanted to share Rent a Tool. Check it out.";
+    NSString *message = @"Invite your family and friends to test out the app";
+    NSSet *rentals = [UserManager sharedInstance].getCurrentUser.rental;
+    NSArray *rents = [rentals allObjects];
+    for (Rental *rental in rents)
+    {
+        NSInteger days = [Functions differenceInDays:[NSDate date] toDate:rental.due_date];
+        if (days < 0)
+        {
+            message = @"You have rentals that are pass due.";
+            break;
+        }
+        else if (days < 1)
+        {
+            message = @"You have rentals that will be due soon.";
+            break;
+        }
+    }
+    return message;
+}
+- (IBAction)shareAction:(id)sender
+{
+    NSString *string = @"Check out this app called Rent a Tool. You rent a tool and return it, it's that easy.";
     NSURL *URL = [NSURL URLWithString:@""];
-    
-    UIActivityViewController *activityViewController =
-    [[UIActivityViewController alloc] initWithActivityItems:@[string, URL]
-                                      applicationActivities:nil];
-    [self.navigationController presentViewController:activityViewController
-                                       animated:YES
-                                     completion:^{
-                                         // ...
-                                     }];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[string, URL] applicationActivities:nil];
+    [self.navigationController presentViewController:activityViewController animated:YES completion:nil];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

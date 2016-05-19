@@ -32,12 +32,11 @@
     NSString *errorMessage;
     if ([Functions isDateOverDue:rental.due_date])
     {
-        errorMessage = [NSString stringWithFormat:@"Rental is overdue! You will be charged %.2f.", [rental.tool.overdue_fee floatValue]];
+        errorMessage = [NSString stringWithFormat:@"Rental was overdue. You will be charged a $%.2f fee.", [rental.tool.overdue_fee floatValue]];
     }
     [[ToolManager sharedInstance] updateExistingTool:rental.tool withQty:1];
     if ([rental.quantity intValue] == 1)
     {
-//        [[ToolManager sharedInstance] updateExistingTool:rental.tool withQty:1];
         [self deleteRental:rental];
     }
     else

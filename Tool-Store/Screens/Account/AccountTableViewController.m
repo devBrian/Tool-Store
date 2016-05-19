@@ -108,9 +108,9 @@
             }
             break;
             }
-        case 3:
+        case 1:
         {
-            if (indexPath.row == 0)
+            if (indexPath.row == 2)
             {
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sign out?" message:@"" preferredStyle:UIAlertControllerStyleAlert];
                 [alertController addAction:[UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

@@ -98,17 +98,9 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
 {
     UIColor *color = [UIColor clearColor];
     
-    if (days < 0)
-    {
-        color = [UIColor colorWithRed:0.371 green:0.257 blue:0.755 alpha:1.000];
-    }
-    else if (days < 1)
+    if (days <= 1)
     {
         color = [UIColor colorWithRed:0.850 green:0.218 blue:0.159 alpha:1.000];
-    }
-    else if (days == 1)
-    {
-        color = [UIColor colorWithRed:0.853 green:0.422 blue:0.000 alpha:1.000];
     }
     else if (days < 30)
     {

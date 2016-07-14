@@ -34,6 +34,8 @@
 		DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED861B45A0020012926B /* MainTableViewCell.m */; };
 		DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */; };
 		DC58ED8E1B45A06F0012926B /* ToolsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC58ED8D1B45A06F0012926B /* ToolsTableViewCell.m */; };
+		DC8E89701D371370004CCFBC /* Payment+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8E896C1D371370004CCFBC /* Payment+CoreDataProperties.m */; };
+		DC8E89711D371370004CCFBC /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8E896E1D371370004CCFBC /* Payment.m */; };
 		DC9CF5701B44D7E1004DA1B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF56F1B44D7E1004DA1B4 /* main.m */; };
 		DC9CF5731B44D7E1004DA1B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5721B44D7E1004DA1B4 /* AppDelegate.m */; };
 		DC9CF5761B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC9CF5741B44D7E1004DA1B4 /* Tool_Store.xcdatamodeld */; };
@@ -123,6 +125,10 @@
 		DC58ED8A1B45A0530012926B /* ToolsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsTableViewController.m; sourceTree = "<group>"; };
 		DC58ED8C1B45A06F0012926B /* ToolsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsTableViewCell.h; sourceTree = "<group>"; };
 		DC58ED8D1B45A06F0012926B /* ToolsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsTableViewCell.m; sourceTree = "<group>"; };
+		DC8E896B1D371370004CCFBC /* Payment+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Payment+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DC8E896C1D371370004CCFBC /* Payment+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Payment+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DC8E896D1D371370004CCFBC /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
+		DC8E896E1D371370004CCFBC /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
 		DC9CF56A1B44D7E1004DA1B4 /* Tool-Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tool-Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC9CF56E1B44D7E1004DA1B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC9CF56F1B44D7E1004DA1B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -321,6 +327,10 @@
 		DC9CF5961B44E208004DA1B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC8E896B1D371370004CCFBC /* Payment+CoreDataProperties.h */,
+				DC8E896C1D371370004CCFBC /* Payment+CoreDataProperties.m */,
+				DC8E896D1D371370004CCFBC /* Payment.h */,
+				DC8E896E1D371370004CCFBC /* Payment.m */,
 				DC57AD241BD2B5BC005BA16E /* Comment+CoreDataProperties.h */,
 				DC57AD251BD2B5BC005BA16E /* Comment+CoreDataProperties.m */,
 				DC57AD261BD2B5BC005BA16E /* Comment.h */,
@@ -652,9 +662,11 @@
 				DC9CF5B61B44F496004DA1B4 /* Constants.m in Sources */,
 				DC3410821CDF9E1B00169ECC /* QuantityViewController.m in Sources */,
 				DCD66E951BD2AE1800D06B1C /* CommentTableViewController.m in Sources */,
+				DC8E89701D371370004CCFBC /* Payment+CoreDataProperties.m in Sources */,
 				DC9CF5AF1B44F477004DA1B4 /* KeyboardManager.m in Sources */,
 				DC4791A91C5ECEA9004CD4FE /* FormTableViewController.m in Sources */,
 				DC2DC13B1BD1E26C0071FB8E /* Tool+CoreDataProperties.m in Sources */,
+				DC8E89711D371370004CCFBC /* Payment.m in Sources */,
 				DCBFB3E91BD5CD0200AC6999 /* InputTextViewController.m in Sources */,
 				DC2DC13C1BD1E26C0071FB8E /* Tool.m in Sources */,
 				DC58ED7D1B458D300012926B /* SignupViewController.m in Sources */,

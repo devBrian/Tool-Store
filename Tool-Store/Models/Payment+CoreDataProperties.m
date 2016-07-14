@@ -1,5 +1,5 @@
 //
-//  User+CoreDataProperties.m
+//  Payment+CoreDataProperties.m
 //  Tool-Store
 //
 //  Created by Brian Sinnicke on 7/13/16.
@@ -9,17 +9,13 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "User+CoreDataProperties.h"
+#import "Payment+CoreDataProperties.h"
 
-@implementation User (CoreDataProperties)
+@implementation Payment (CoreDataProperties)
 
-@dynamic company;
-@dynamic email;
-@dynamic joined_date;
-@dynamic password;
-@dynamic balance;
-@dynamic comments;
-@dynamic rental;
-@dynamic payments;
+@dynamic amount;
+@dynamic createdAt;
+@dynamic tool_name;
+@dynamic user;
 
 @end

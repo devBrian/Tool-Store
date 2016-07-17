@@ -121,7 +121,7 @@
                 [self.navigationController pushViewController:qlController animated:YES];
             }
         }
-        case 2:
+        case 3:
         {
             if (indexPath.row == 2)
             {

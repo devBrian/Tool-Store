@@ -45,9 +45,9 @@
     </entity>
     <elements>
         <element name="Comment" positionX="-218" positionY="-1513" width="128" height="118"/>
+        <element name="Payment" positionX="-497" positionY="-1348" width="110" height="103"/>
         <element name="Rental" positionX="-207" positionY="-1377" width="101" height="118"/>
         <element name="Tool" positionX="-45" positionY="-1467" width="128" height="208"/>
         <element name="User" positionX="-351" positionY="-1431" width="99" height="163"/>
-        <element name="Payment" positionX="-497" positionY="-1348" width="110" height="103"/>
     </elements>
 </model>

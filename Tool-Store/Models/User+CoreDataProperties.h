@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *balance;
 @property (nullable, nonatomic, retain) NSSet<Comment *> *comments;
 @property (nullable, nonatomic, retain) NSSet<Rental *> *rental;
-@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *payments;
+@property (nullable, nonatomic, retain) NSSet<Payment *> *payments;
 
 @end
 
@@ -40,10 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addRental:(NSSet<Rental *> *)values;
 - (void)removeRental:(NSSet<Rental *> *)values;
 
-- (void)addPaymentsObject:(NSManagedObject *)value;
-- (void)removePaymentsObject:(NSManagedObject *)value;
-- (void)addPayments:(NSSet<NSManagedObject *> *)values;
-- (void)removePayments:(NSSet<NSManagedObject *> *)values;
+- (void)addPaymentsObject:(Payment *)value;
+- (void)removePaymentsObject:(Payment *)value;
+- (void)addPayments:(NSSet<Payment *> *)values;
+- (void)removePayments:(NSSet<Payment *> *)values;
 
 @end
 

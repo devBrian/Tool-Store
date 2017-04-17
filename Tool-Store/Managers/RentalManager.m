@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Constants.h"
 #import "ToolManager.h"
+#import "PaymentManager.h"
 
 @interface RentalManager()
 @property (strong, nonatomic) NSManagedObjectContext *context;
@@ -61,6 +62,8 @@
     rental.user = user;
     rental.rent_date = [NSDate date];
     rental.quantity = [NSNumber numberWithInt:qty];
+    float total = [tool.rent_price floatValue] * qty;
+    [[PaymentManager sharedInstance] createPayment:@"rent" amount:total andTool:tool.name];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *due_date = [calendar dateByAddingUnit:NSCalendarUnitDay value:[tool.rent_duration intValue] toDate:[NSDate date] options:0];
     rental.due_date = due_date;

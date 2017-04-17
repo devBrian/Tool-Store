@@ -225,4 +225,10 @@ BOOL NSStringIsValidEmail(NSString* checkString, BOOL useStrictFilter)
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [df dateFromString:string];
 }
++ (NSString *)timeStringFromDate:(NSDate *)date
+{
+    NSDateFormatter *df = [NSDateFormatter new];
+    [df setDateFormat:@"h:mm a"];
+    return [df stringFromDate:date];
+}
 @end

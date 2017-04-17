@@ -1,21 +1,23 @@
 //
 //  Payment+CoreDataProperties.m
-//  Tool-Store
+//  
 //
-//  Created by Brian Sinnicke on 7/13/16.
-//  Copyright © 2016 Brian Sinnicke. All rights reserved.
+//  Created by Brian Sinnicke on 4/16/17.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 #import "Payment+CoreDataProperties.h"
 
 @implementation Payment (CoreDataProperties)
 
++ (NSFetchRequest<Payment *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"Payment"];
+}
+
 @dynamic amount;
 @dynamic createdAt;
 @dynamic tool_name;
+@dynamic type;
 @dynamic user;
 
 @end

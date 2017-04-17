@@ -19,6 +19,11 @@
 		DC2DC13C1BD1E26C0071FB8E /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1341BD1E26C0071FB8E /* Tool.m */; };
 		DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */; };
 		DC2DC13E1BD1E26C0071FB8E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2DC1381BD1E26C0071FB8E /* User.m */; };
+		DC314D381EA44D7700A413F2 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC314D371EA44D7700A413F2 /* HistoryViewController.m */; };
+		DC314D3B1EA44DA400A413F2 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC314D3A1EA44DA400A413F2 /* HistoryTableViewController.m */; };
+		DC314D3E1EA44DC500A413F2 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC314D3D1EA44DC500A413F2 /* WalletViewController.m */; };
+		DC314D411EA44EEE00A413F2 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC314D401EA44EEE00A413F2 /* HistoryTableViewCell.m */; };
+		DC314D441EA4594A00A413F2 /* PaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC314D431EA4594A00A413F2 /* PaymentManager.m */; };
 		DC3410821CDF9E1B00169ECC /* QuantityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3410811CDF9E1B00169ECC /* QuantityViewController.m */; };
 		DC4791A11C5ECB7D004CD4FE /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4791A01C5ECB7D004CD4FE /* Form.m */; };
 		DC4791A51C5ECE85004CD4FE /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4791A41C5ECE85004CD4FE /* FormViewController.m */; };
@@ -97,6 +102,16 @@
 		DC2DC1361BD1E26C0071FB8E /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
 		DC2DC1371BD1E26C0071FB8E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		DC2DC1381BD1E26C0071FB8E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DC314D361EA44D7700A413F2 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = History/HistoryViewController.h; sourceTree = "<group>"; };
+		DC314D371EA44D7700A413F2 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViewController.m; path = History/HistoryViewController.m; sourceTree = "<group>"; };
+		DC314D391EA44DA400A413F2 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewController.h; path = History/Table/HistoryTableViewController.h; sourceTree = "<group>"; };
+		DC314D3A1EA44DA400A413F2 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewController.m; path = History/Table/HistoryTableViewController.m; sourceTree = "<group>"; };
+		DC314D3C1EA44DC500A413F2 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletViewController.h; path = Wallet/WalletViewController.h; sourceTree = "<group>"; };
+		DC314D3D1EA44DC500A413F2 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletViewController.m; path = Wallet/WalletViewController.m; sourceTree = "<group>"; };
+		DC314D3F1EA44EEE00A413F2 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTableViewCell.h; path = History/Table/HistoryTableViewCell.h; sourceTree = "<group>"; };
+		DC314D401EA44EEE00A413F2 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTableViewCell.m; path = History/Table/HistoryTableViewCell.m; sourceTree = "<group>"; };
+		DC314D421EA4594A00A413F2 /* PaymentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentManager.h; sourceTree = "<group>"; };
+		DC314D431EA4594A00A413F2 /* PaymentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentManager.m; sourceTree = "<group>"; };
 		DC3410801CDF9E1B00169ECC /* QuantityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuantityViewController.h; path = Detail/Quantity/QuantityViewController.h; sourceTree = "<group>"; };
 		DC3410811CDF9E1B00169ECC /* QuantityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuantityViewController.m; path = Detail/Quantity/QuantityViewController.m; sourceTree = "<group>"; };
 		DC47919F1C5ECB7D004CD4FE /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
@@ -202,6 +217,36 @@
 				DC13F55A1CDFC3E700BDAB93 /* DetailSubTableViewCell.m */,
 				DC13F55C1CDFC45700BDAB93 /* DetailTableViewController.h */,
 				DC13F55D1CDFC45700BDAB93 /* DetailTableViewController.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		DC314D331EA44BC600A413F2 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				DC314D351EA44D4B00A413F2 /* Table */,
+				DC314D361EA44D7700A413F2 /* HistoryViewController.h */,
+				DC314D371EA44D7700A413F2 /* HistoryViewController.m */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		DC314D341EA44BF100A413F2 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				DC314D3C1EA44DC500A413F2 /* WalletViewController.h */,
+				DC314D3D1EA44DC500A413F2 /* WalletViewController.m */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
+		DC314D351EA44D4B00A413F2 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				DC314D391EA44DA400A413F2 /* HistoryTableViewController.h */,
+				DC314D3A1EA44DA400A413F2 /* HistoryTableViewController.m */,
+				DC314D3F1EA44EEE00A413F2 /* HistoryTableViewCell.h */,
+				DC314D401EA44EEE00A413F2 /* HistoryTableViewCell.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -364,6 +409,8 @@
 				DC12D6451C586866007B37C8 /* RentalManager.m */,
 				DC12D6471C58687D007B37C8 /* ToolManager.h */,
 				DC12D6481C58687D007B37C8 /* ToolManager.m */,
+				DC314D421EA4594A00A413F2 /* PaymentManager.h */,
+				DC314D431EA4594A00A413F2 /* PaymentManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -395,6 +442,8 @@
 		DC9CF5AC1B44F3A2004DA1B4 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				DC314D341EA44BF100A413F2 /* Wallet */,
+				DC314D331EA44BC600A413F2 /* History */,
 				DCDE86D61CEE23A9001D8944 /* RentaToolTerms.pdf */,
 				DCFDD5A31C38911500B88F87 /* AccountTableViewController.h */,
 				DCFDD5A41C38911500B88F87 /* AccountTableViewController.m */,
@@ -680,18 +729,23 @@
 				DC2DC13D1BD1E26C0071FB8E /* User+CoreDataProperties.m in Sources */,
 				DC2DC1391BD1E26C0071FB8E /* Rental+CoreDataProperties.m in Sources */,
 				DC4791A11C5ECB7D004CD4FE /* Form.m in Sources */,
+				DC314D441EA4594A00A413F2 /* PaymentManager.m in Sources */,
 				DCB172031BDB2055005C4AAC /* CommentViewController.m in Sources */,
 				DC4791A51C5ECE85004CD4FE /* FormViewController.m in Sources */,
 				DC9CF5731B44D7E1004DA1B4 /* AppDelegate.m in Sources */,
+				DC314D3E1EA44DC500A413F2 /* WalletViewController.m in Sources */,
 				DC57AD281BD2B5BC005BA16E /* Comment+CoreDataProperties.m in Sources */,
 				DC58ED871B45A0020012926B /* MainTableViewCell.m in Sources */,
 				DC4791AC1C5ECEC2004CD4FE /* FormTableViewCell.m in Sources */,
 				DC13F55E1CDFC45700BDAB93 /* DetailTableViewController.m in Sources */,
 				DC58ED8B1B45A0530012926B /* ToolsTableViewController.m in Sources */,
+				DC314D3B1EA44DA400A413F2 /* HistoryTableViewController.m in Sources */,
 				DC9CF5701B44D7E1004DA1B4 /* main.m in Sources */,
 				DCFDD5A51C38911500B88F87 /* AccountTableViewController.m in Sources */,
+				DC314D411EA44EEE00A413F2 /* HistoryTableViewCell.m in Sources */,
 				DCD66E921BD2AE0000D06B1C /* CommentTableViewCell.m in Sources */,
 				DC57AD291BD2B5BC005BA16E /* Comment.m in Sources */,
+				DC314D381EA44D7700A413F2 /* HistoryViewController.m in Sources */,
 				DC58ED801B4590200012926B /* SignInViewController.m in Sources */,
 				DC9CF5B51B44F496004DA1B4 /* Functions.m in Sources */,
 				DC9CF5791B44D7E1004DA1B4 /* MainViewController.m in Sources */,

@@ -15,4 +15,5 @@
 - (BOOL)userExistsWithEmail:(NSString *)email andPassword:(NSString *)password;
 - (void)saveUser:(User *)user completion:(void (^)(NSError *error))completion;
 - (void)insertUser:(User *)user completion:(void (^)(NSError *error))completion;
+- (void)updateBalance:(float)amount andType:(NSString *)type;
 @end

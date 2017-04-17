@@ -49,6 +49,13 @@
 #pragma mark - QuantityViewControllerDelegate
 -(void)qtyDone:(int)qty
 {
+    float total = [self.loadedToolData.rent_price floatValue] * qty;
+    if (total > [[[UserManager sharedInstance] getCurrentUser].balance floatValue])
+    {
+        NSString *message = [NSString stringWithFormat:@"Sorry, insufficent wallet funds. Your balance is %@. Please deposit more and try again.", [[[UserManager sharedInstance] getCurrentUser].balance stringValue]];
+        [Functions showErrorWithMessage:message forViewController:self];
+        return;
+    }
     if ([self toolRentalExists:self.loadedToolData withQty:qty] == NO)
     {
         [self createRentalForTool:self.loadedToolData andUser:[[UserManager sharedInstance] getCurrentUser] andQty:qty];

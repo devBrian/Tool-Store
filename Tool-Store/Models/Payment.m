@@ -12,5 +12,10 @@
 @implementation Payment
 
 // Insert code here to add functionality to your managed object subclass
-
+- (NSString *)day
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    return [dateFormatter stringFromDate:self.createdAt];
+}
 @end

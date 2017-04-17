@@ -132,4 +132,19 @@
     }
     return (results && results.count > 0);
 }
+-(void)updateBalance:(float)amount andType:(NSString *)type
+{
+    float balance = [self.currentUser.balance floatValue];
+    if ([type isEqualToString:@"rent"] || [type isEqualToString:@"withdraw"])
+    {
+        float newBalance = balance - amount;
+        self.currentUser.balance = [NSNumber numberWithFloat:newBalance];
+    }
+    else if ([type isEqualToString:@"deposit"])
+    {
+        float newBalance = balance + amount;
+        self.currentUser.balance = [NSNumber numberWithFloat:newBalance];
+    }
+    [self saveUser:self.currentUser completion:nil];
+}
 @end

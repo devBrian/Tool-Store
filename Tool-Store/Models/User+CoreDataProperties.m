@@ -2,8 +2,8 @@
 //  User+CoreDataProperties.m
 //  Tool-Store
 //
-//  Created by Brian Sinnicke on 10/17/15.
-//  Copyright © 2015 Brian Sinnicke. All rights reserved.
+//  Created by Brian Sinnicke on 7/13/16.
+//  Copyright © 2016 Brian Sinnicke. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -17,7 +17,9 @@
 @dynamic email;
 @dynamic joined_date;
 @dynamic password;
-@dynamic rental;
+@dynamic balance;
 @dynamic comments;
+@dynamic rental;
+@dynamic payments;
 
 @end

@@ -12,15 +12,17 @@
 #import "SignInViewController.h"
 #import "Form.h"
 #import "FormViewController.h"
+#import "WalletViewController.h"
 
 @import QuickLook;
 
-@interface AccountTableViewController () <FormViewControllerDelegate, QLPreviewControllerDataSource, QLPreviewControllerDelegate>
+@interface AccountTableViewController () <FormViewControllerDelegate, QLPreviewControllerDataSource, QLPreviewControllerDelegate, WalletViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableViewCell *emailCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *companyCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *versionCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *buildCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *joinCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *walletAmountCell;
 @property (nonatomic, strong) NSMutableArray *formData;
 @end
 
@@ -35,6 +37,7 @@
     self.versionCell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.buildCell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     self.joinCell.detailTextLabel.text = [Functions stringFromDate:[UserManager sharedInstance].getCurrentUser.joined_date];
+    self.walletAmountCell.detailTextLabel.text = [[[UserManager sharedInstance] getCurrentUser].balance stringValue];
     self.tableView.tableFooterView = [UIView new];
     self.formData = [NSMutableArray new];
 }
@@ -121,7 +124,7 @@
                 [self.navigationController pushViewController:qlController animated:YES];
             }
         }
-        case 2:
+        case 3:
         {
             if (indexPath.row == 2)
             {
@@ -221,6 +224,11 @@
         }
     }
 }
+-(void)finishedTransaction
+{
+    self.walletAmountCell.detailTextLabel.text = [[[UserManager sharedInstance] getCurrentUser].balance stringValue];
+    [self.tableView reloadData];
+}
 #pragma mark - QuickLook
 -(NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller
 {
@@ -239,6 +247,11 @@
         FormViewController *vc = (FormViewController *)segue.destinationViewController;
         vc.delegate = self;
         vc.loadedFormData = self.formData;
+    }
+    else if ([segue.identifier isEqualToString:@"walletSegue"])
+    {
+        WalletViewController *walletViewController = (WalletViewController *)segue.destinationViewController;
+        walletViewController.delegate = self;
     }
 }
 @end
